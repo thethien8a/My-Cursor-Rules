@@ -1,0 +1,1 @@
+Repository này chỉ chứa những rules tôi set cho Cursor AI Editor
