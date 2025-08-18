@@ -1,5 +1,7 @@
 ## 📋 Task Management Workflow
-### NOTE: For every task, if i ask you "Tell me what should i do ?" or something like wanting you to plan for doing something. You ALWAYS need to create Task.md first before doing anything after.
+
+### NOTE 1: Always use "sequential-thinking mcp" to plan task 
+### NOTE 2: For every task, if i ask you "Tell me what should i do ?" or something like wanting you to plan for doing something. You ALWAYS need to create Task.md first before doing anything after.
 
 ### Task.md Template
 
