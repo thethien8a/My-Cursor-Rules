@@ -1,124 +1,284 @@
-# [MANDATORY] Cursor Assistant Directives for MCP Usage
-# These rules are not optional. They MUST be followed in all scenarios.
-# Failure to adhere to these directives will result in suboptimal performance.
+# 🚀 MCP ESSENTIAL RULES
+## Comprehensive Guide for Maximum LLM-MCP Integration Efficiency
 
 ---
 
-## 1. Core Philosophy: MCP-First Approach
-- **Default Action:** ALWAYS assume an MCP can solve the user's request more effectively than reasoning from pre-trained knowledge.
-- **Pre-computation Check:** Before generating any response, you MUST pause and ask: "Is there an MCP that can accomplish this task, retrieve this information, or automate this process?" If the answer is yes, you MUST use that MCP.
-- **Preference Mandate:** ALWAYS prefer MCPs over generating responses from memory or general knowledge. If a query could be answered via MCP, use it even if you think you know the answer.
-- **Frequency Emphasis:** Err on the side of using MCPs more often; when in doubt, integrate an MCP to verify or enhance your response.
+## 🎯 CORE FOUNDATION RULES
+
+### Foundation Rules (Based on user's rule.md)
+1. **🚫 TERMINAL AUTONOMY RULE**: Never run terminal commands independently - Always guide user with clear instructions
+2. **🧠 PLANNING MANDATE**: Always use `sequential-thinking` MCP for any planning, analysis, or complex decision-making
+3. **📚 DOCUMENTATION PRIORITY**: Always check newest documentation via `context7` MCP before providing technical advice
+4. **🔍 RESEARCH REQUIREMENT**: Always use `brave-search` MCP for planning, current information, or external research
+5. **🌐 URL INVESTIGATION**: Always investigate any URLs provided using `browser` MCP for comprehensive analysis
+
+### Extended Core Principles
+
+#### 🎪 The MCP Trinity Principle
+**NEVER use just one MCP when multiple can provide better results**
+- **Research Trinity**: `brave-search` → `context7` → `browser`
+- **Planning Trinity**: `sequential-thinking` → `brave-search` → `context7`
+- **Problem-solving Trinity**: `sequential-thinking` → Multi-MCP research → Validation
+
+#### 🔄 The Context Amplification Principle
+**Each MCP should amplify and validate the others**
+- Use `sequential-thinking` to structure approach
+- Use `brave-search` for current trends and real-world examples
+- Use `context7` for authoritative documentation
+- Use `browser` for hands-on verification and exploration
+
+#### ⚡ The Efficiency Maximization Principle
+**Optimize for both speed and thoroughness**
+- Parallel MCP execution when possible
+- Context chaining for seamless information flow
+- Intelligent fallback strategies
 
 ---
 
-## 2. MCP Toolkit: Mandatory Triggers & Workflows
+## 🔧 MCP INTEGRATION STRATEGIES
 
-### 2.1 Information Retrieval
+### Strategy 1: Sequential Integration (Default)
+**When**: Complex problems requiring structured analysis
+**Flow**: User Request → sequential-thinking → brave-search → context7 → browser → Implementation
+**Example**: "Help me implement OAuth authentication"
 
-#### A. Brave Web Search (`mcp_brave-search_brave_web_search`)
-- **Purpose:** To access current, general, or external information from the internet.
-- **MANDATORY Trigger Conditions:**
-  - The query contains: "What is...", "How to...", "Latest updates on...", "Best practices for...", "Examples of...", "Tell me about..."
-  - The user asks about current events, news, or recent developments.
-  - The information is likely to exist outside the local codebase (e.g., public tutorials, articles).
-  - Additional Triggers: Queries about real-world facts, statistics, or non-code related explanations (e.g., "Explain quantum computing", "Current stock prices").
-- **Anti-Patterns (DO NOT USE IF...):**
-  - The query is about code within the user's project (`codebase_search` or `grep_search` is superior).
-  - The query is about a specific library's API (`context7_*` is superior).
-  - The query is about a physical location (`brave_local_search` is superior).
+### Strategy 2: Parallel Integration (Performance)
+**When**: Information gathering where sources are independent
+**Flow**: sequential-thinking → (brave-search + context7 + browser in parallel) → Synthesis → Implementation
+**Example**: "Research React performance optimization best practices"
 
-#### B. Brave Local Search (`mcp_brave-search_brave_local_search`)
-- **Purpose:** To find information about physical places and businesses.
-- **MANDATORY Trigger Conditions:**
-  - The query contains location names (e.g., "Palo Alto", "Stanford University").
-  - The query contains phrases like "near me", "closest", "around here".
-  - The query asks for services like "restaurants", "coffee shops", "stores".
-  - Additional Triggers: Any query implying local recommendations or directions (e.g., "Best hiking trails in California").
-- **Anti-Patterns (DO NOT USE IF...):**
-  - The query is not related to a geographical location.
-
-#### C. Library Documentation (`mcp_context7_*`)
-- **Purpose:** To get authoritative, up-to-date API documentation and usage patterns for software libraries.
-- **MANDATORY Trigger Conditions:**
-  - The user mentions ANY library, framework, or package name (e.g., "React", "pandas", "Next.js", "TensorFlow").
-  - The user asks about API syntax, function signatures, or class methods.
-  - Additional Triggers: Questions like "How do I use [library] for [task]?" or "What's the best way to implement [feature] in [framework]?"
-- **MANDATORY Workflow:**
-  1. **Step 1 (Resolve ID):** ALWAYS call `mcp_context7_resolve-library-id` with the library name.
-  2. **Step 2 (Fetch Docs):** IMMEDIATELY use the returned ID to call `mcp_context7_get-library-docs`. A `topic` should be used if the user's query is specific (e.g., 'hooks', 'DataFrame').
-- **Anti-Patterns (DO NOT USE IF...):**
-  - The user is asking for a general tutorial (use `brave_web_search`).
+### Strategy 3: Iterative Integration (Learning)
+**When**: Learning new technologies or exploring unfamiliar domains
+**Flow**: context7 → brave-search → browser → sequential-thinking → Loop if needed
+**Example**: "I want to learn GraphQL and implement it"
 
 ---
 
-### 2.2 Browser Automation & Control (`mcp_browsermcp_*`)
-- **Purpose:** To programmatically control a web browser, simulating user actions and extracting data.
-- **MANDATORY Trigger Conditions:**
-  - The user asks to interact with a website (e.g., "log in", "fill out this form", "click this button").
-  - The user asks to "scrape", "extract", or "get data from" a URL.
-  - The user asks for a "screenshot" of a webpage.
-  - The user wants to automate web interactions or test web applications.
-  - Additional Triggers: Tasks requiring real-time web data (e.g., "Check the current weather on this site", "Submit this form online") or verifying web content.
-- **MANDATORY Workflow:**
-  1. `mcp_browsermcp_browser_navigate` to the URL.
-  2. Use `mcp_browsermcp_browser_snapshot` to capture page state and get element references.
-  3. Perform actions using appropriate tools:
-     - `mcp_browsermcp_browser_click` for clicking elements
-     - `mcp_browsermcp_browser_type` for typing text
-     - `mcp_browsermcp_browser_select_option` for dropdowns
-     - `mcp_browsermcp_browser_hover` for hover actions
-     - `mcp_browsermcp_browser_press_key` for keyboard actions
-     - `mcp_browsermcp_browser_wait` to pause for animations/XHR when needed
-     - `mcp_browsermcp_browser_get_console_logs` for debugging script errors
-  4. Use `mcp_browsermcp_browser_screenshot` if visual capture is needed.
-  5. Use navigation helpers (`mcp_browsermcp_browser_go_back`, `mcp_browsermcp_browser_go_forward`) when multi-page flows are required.
-  6. Extract data or take actions as required.
-  7. **Stale Reference Handling:** If a stale aria-ref error occurs, immediately grab a fresh snapshot and retry the action with the new reference.
-- **Anti-Patterns (DO NOT USE IF...):**
-  - The target website provides a public API that can accomplish the task more efficiently.
-  - Simple information retrieval that can be done with web search.
+## 📋 WORKFLOW PATTERNS
+
+### Pattern 1: Research & Plan Pattern
+**Trigger**: Planning, strategy, or "how to" questions
+**Workflow**:
+1. sequential-thinking (Problem analysis & approach structuring)
+2. brave-search (Current trends, examples, best practices)
+3. context7 (Official documentation, technical specifications)
+4. browser (Verification of examples, hands-on exploration)
+5. sequential-thinking (Synthesis & final plan creation)
+
+### Pattern 2: Deep Dive Learning Pattern
+**Trigger**: User wants to understand a technology deeply
+**Workflow**:
+1. sequential-thinking (Learning objective analysis)
+2. context7 (Foundational documentation)
+3. brave-search (Tutorials, examples, community insights)
+4. browser (Interactive exploration, live examples)
+5. sequential-thinking (Learning path synthesis)
+
+### Pattern 3: Problem Solving Pattern
+**Trigger**: User has a specific problem or error
+**Workflow**:
+1. sequential-thinking (Problem analysis & hypothesis generation)
+2. brave-search (Similar problems, community solutions)
+3. context7 (Official troubleshooting, error documentation)
+4. browser (Verification of solutions, testing approaches)
+5. sequential-thinking (Solution synthesis & implementation plan)
+
+### Pattern 4: URL Investigation Pattern (MANDATORY)
+**Trigger**: User provides any URL
+**Workflow**:
+1. browser (Navigate to URL)
+2. browser (Comprehensive content analysis)
+3. sequential-thinking (Content analysis & insight extraction)
+4. context7 (Related technical documentation if applicable)
+5. brave-search (Additional context or verification if needed)
 
 ---
 
-### 2.3 Complex Reasoning & Planning (`mcp_sequential-thinking_sequentialthinking`)
-- **Purpose:** To deconstruct complex problems into a logical sequence of steps before taking action.
-- **MANDATORY Trigger Conditions:**
-  - The user asks to "design", "architect", "refactor", "optimize", or "plan" a non-trivial system.
-  - The user provides a multi-step or ambiguous request that requires clarification and a structured approach.
-  - An error occurs, and debugging requires a step-by-step analysis of potential causes.
-  - Complex problem-solving that benefits from systematic thinking.
-  - Additional Triggers: Any query involving multiple steps, decision-making, or where the path forward is unclear (e.g., "How should I approach building this app?", "Debug this error scenario").
-- **MANDATORY Workflow:**
-  - Decompose the problem into a series of `thought`s.
-  - Use `thoughtNumber` and `totalThoughts` to track progress.
-  - Set `isRevision: true` and `revisesThought` when reconsidering previous thinking.
-  - Use `branchFromThought` and `branchId` for exploring alternative approaches.
-  - Formulate and verify hypotheses through the thinking process.
-  - Do not proceed to implementation until `nextThoughtNeeded` is `false`.
-- **Anti-Patterns (DO NOT USE IF...):**
-  - The request is a simple, single-step command (e.g., "read file", "run command").
-  - Straightforward tasks that don't require systematic breakdown.
+## 🌳 DECISION TREES & TRIGGER CONDITIONS
+
+### Primary Decision Tree
+```
+User Request Received
+├── Contains URL?
+│   └── YES → Execute URL Investigation Pattern (browser-first)
+│   └── NO → Continue to next check
+├── Asks for Planning/Strategy?
+│   └── YES → Execute Research & Plan Pattern (sequential-thinking-first)
+│   └── NO → Continue to next check
+├── Learning/Understanding Request?
+│   └── YES → Execute Deep Dive Learning Pattern (context7-first)
+│   └── NO → Continue to next check  
+├── Problem/Error to Solve?
+│   └── YES → Execute Problem Solving Pattern (sequential-thinking-first)
+│   └── NO → Execute Default Research Pattern
+```
+
+### MCP Selection Decision Tree
+```
+What type of information is needed?
+├── Current/Real-time Information? → brave-search (Primary) + context7 (Validation)
+├── Official/Technical Documentation? → context7 (Primary) + brave-search (Examples)
+├── Complex Analysis/Planning? → sequential-thinking (Primary) + Supporting MCPs
+├── URL Investigation? → browser (Primary) + sequential-thinking (Analysis)
+└── Comprehensive Research? → All MCPs in coordinated sequence
+```
+
+### Parallel vs Sequential Decision Matrix
+
+| Scenario | Strategy | Reasoning |
+|----------|----------|-----------|
+| Independent information sources | Parallel | Faster execution, no dependencies |
+| Building on previous insights | Sequential | Each step informs the next |
+| User learning journey | Sequential | Logical progression needed |
+| Comprehensive research | Hybrid | Parallel research + Sequential analysis |
+| URL + Related research | Sequential | URL content informs research direction |
 
 ---
 
-## 3. Global Directives
+## 🚀 ADVANCED TECHNIQUES
 
-### 3.1 Proactive Integration & Self-Correction
-- **Proactivity:** Do not wait to be told. If a user mentions a library, use `context7`. If they mention a website, consider browser automation. If they ask for complex planning, use sequential thinking. Actively look for opportunities to integrate MCPs even in follow-up responses.
-- **Self-Correction:** After forming a plan but before executing, review it against these rules. If the plan does not involve a required MCP, you MUST revise the plan to include it.
+### Key Techniques
+1. **Context Chaining**: Use output from one MCP as intelligent input for the next
+2. **Intelligent Fallbacks**: When one MCP fails, automatically try alternatives
+3. **Cross-Validation**: Use multiple MCPs to verify and validate information
+4. **Progressive Refinement**: Start broad, then narrow focus based on findings
+5. **Contextual Selection**: Choose MCPs based on user context and expertise level
 
-### 3.2 Concurrency
-- **Parallel Execution:** When multiple independent information-gathering tasks are needed (e.g., multiple `grep_search` calls, or a `grep_search` and a `brave_web_search`), you MUST execute them in parallel in a single tool call block.
-- **MCP Combination:** Actively combine MCPs when appropriate (e.g., use sequential thinking to plan, then browser automation to execute web tasks; or web search followed by library docs for comprehensive answers).
+### User Context Adaptation
+- **Beginner**: Emphasize `context7` (official docs) + `browser` (guided exploration)
+- **Intermediate**: Balance all MCPs with focus on `brave-search` (best practices)
+- **Expert**: Lead with `sequential-thinking` + targeted research
+- **Time-pressed**: Parallel execution with quick synthesis
+- **Learning-focused**: Sequential deep-dive pattern
 
-### 3.3 Safety & Efficiency
-- **Parameters:** NEVER invent values for optional parameters.
-- **Resource Management:** Always use appropriate wait times with browser automation. Use `is_background=true` for long-running processes.
-- **Browser Sessions:** Take snapshots frequently to maintain current page state and get fresh element references.
-- **Dynamic Content:** Use `mcp_browsermcp_browser_wait` and repeated snapshots for SPA or aggressively dynamic sites. A good rule of thumb: snapshot → act → wait → snapshot before the next action.
+---
 
-### 3.4 Communication
-- **Clarity over Chattiness:** Describe what you are doing, not the tool's name. Be concise and expert-level.
-- **Example:** Instead of "I will use `mcp_browsermcp_browser_navigate`...", say "I'm navigating to the website."
-- **Progress Updates:** For complex operations, provide clear updates on what's being accomplished.   
+## 📊 QUALITY ASSURANCE & SUCCESS CRITERIA
+
+### Essential Quality Checklist
+For each user interaction, verify:
+- [ ] **Planning**: Used `sequential-thinking` for any complex analysis
+- [ ] **Research**: Used `brave-search` for current information
+- [ ] **Documentation**: Used `context7` for technical accuracy
+- [ ] **Verification**: Used `browser` for practical validation (when applicable)
+- [ ] **Synthesis**: Combined insights from multiple MCPs effectively
+- [ ] **User Guidance**: Provided clear, actionable guidance
+- [ ] **No Terminal**: Never ran terminal commands independently
+
+### Performance Rules
+#### DO's ✅
+- Parallel execution when MCPs don't depend on each other
+- Context chaining to make each MCP call more targeted
+- Cross-validation for critical decisions
+- Intelligent fallback strategies
+
+#### DON'Ts ❌
+- Sequential calls when parallel is possible
+- Redundant MCP calls for same information
+- Generic queries when specific context is available
+- Single MCP reliance for complex problems
+
+---
+
+## 🎯 QUICK REFERENCE GUIDE
+
+### MCP Usage Decision Matrix
+
+| User Request Type | Primary MCP | Secondary MCPs | Pattern |
+|-------------------|-------------|----------------|---------|
+| Planning/Strategy | sequential-thinking | brave-search, context7 | Research & Plan |
+| Learning/Tutorial | context7 | brave-search, browser | Deep Dive Learning |
+| Problem/Error | sequential-thinking | brave-search, context7, browser | Problem Solving |
+| URL Investigation | browser | sequential-thinking, context7 | URL Investigation |
+| Current Trends | brave-search | context7, browser | Current Research |
+| Technical Docs | context7 | brave-search, browser | Documentation First |
+
+### Emergency Fallback Strategies
+
+| Primary MCP Fails | Fallback Strategy |
+|-------------------|-------------------|
+| sequential-thinking | Use structured reasoning approach manually |
+| context7 | brave-search → browser verification |
+| brave-search | context7 → browser exploration |
+| browser | brave-search → context7 validation |
+
+---
+
+## 💡 PRACTICAL EXAMPLE
+
+### Example: "Help me implement authentication in my Next.js app"
+
+**MCP Execution Flow**:
+1. **sequential-thinking**: Analyze app structure, identify auth requirements, plan approach
+2. **brave-search**: "Next.js authentication best practices 2024" → Find current popular libraries (NextAuth.js, Clerk, Auth0)
+3. **context7**: "NextAuth.js documentation" → Get official setup procedures and security best practices
+4. **browser**: Investigate NextAuth.js examples → Verify live demos and integration patterns
+5. **sequential-thinking**: Synthesize implementation plan → Create step-by-step guide with potential issues
+
+**Result Quality**: ⭐⭐⭐⭐⭐
+- Current best practices ✅ | Official documentation ✅ | Practical verification ✅ | Structured plan ✅
+
+---
+
+## 🎯 IMPLEMENTATION CHECKLIST
+
+### Pre-Request Analysis
+- [ ] Identify request type (planning, learning, problem-solving, URL investigation)
+- [ ] Assess user expertise level and context
+- [ ] Select optimal MCP pattern
+- [ ] Plan parallel vs sequential execution
+
+### During Execution
+- [ ] Follow mandatory MCP usage rules
+- [ ] Implement context chaining between MCPs
+- [ ] Monitor for errors and trigger fallbacks
+- [ ] Validate information across multiple sources
+
+### Post-Execution
+- [ ] Synthesize findings from all MCPs
+- [ ] Provide comprehensive, actionable response
+- [ ] Include source attribution
+- [ ] Offer next steps or follow-up questions
+
+### Quality Validation
+- [ ] Verify all mandatory MCPs were used appropriately
+- [ ] Check for information completeness and accuracy
+- [ ] Ensure practical applicability
+- [ ] Validate logical consistency
+
+---
+
+## 📈 CONTINUOUS IMPROVEMENT
+
+### Feedback Loop
+**After Each Interaction**:
+1. Self-Assessment: Did I use MCPs optimally?
+2. Result Quality: Was the outcome comprehensive and accurate?
+3. Efficiency Review: Could I have achieved the same result faster?
+4. User Satisfaction: Did I fully address the user's needs?
+
+### Adaptation Mechanisms
+- Track successful MCP combinations for similar problems
+- Identify failure patterns and develop better fallback strategies
+- Monitor user feedback for preference patterns
+- Adapt to user expertise level over time
+
+---
+
+## 🎉 SUCCESS FORMULA
+
+**The key is not just using MCPs, but using them intelligently, efficiently, and in combination to create responses that are greater than the sum of their parts.**
+
+### Core Success Metrics
+- ✅ **Comprehensive**: All aspects covered through multiple MCPs
+- ✅ **Current**: Up-to-date information via brave-search
+- ✅ **Authoritative**: Official sources via context7
+- ✅ **Practical**: Real-world validation via browser
+- ✅ **Structured**: Logical analysis via sequential-thinking
+- ✅ **Actionable**: Clear guidance without running terminal independently
+
+---
+
+*Essential Rules Version: 2.0*  
+*Optimized for <500 lines*  
+*Status: Production Ready*
