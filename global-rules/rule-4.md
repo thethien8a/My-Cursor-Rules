@@ -1,280 +1,464 @@
-# 🚀 MCP ESSENTIAL RULES
-## Comprehensive Guide for Maximum LLM-MCP Integration Efficiency
+## Task Management Workflow
 
----
+### NOTE 1: You always use "sequential-thinking mcp" to planning task
+### NOTE 2: For every task, if i ask you "Tell me what should i do ?" or something like wanting you to plan for doing something (like: "plan for me" or "lên kế hoạch/plan cho tôi"). You ALWAYS need to create Task.md first before doing anything after.
 
-## 🎯 CORE FOUNDATION RULES
+### Task.md Template
 
-### Foundation Rules (Based on user's rule.md)
-1. **🚫 TERMINAL AUTONOMY RULE**: Never run terminal commands independently - Always guide user with clear instructions
-2. **🧠 PLANNING MANDATE**: Always use `sequential-thinking` MCP for any planning, analysis, or complex decision-making
-3. **📚 DOCUMENTATION PRIORITY**: Always check newest documentation via `context7` MCP before providing technical advice
-4. **🔍 RESEARCH REQUIREMENT**: Always use `brave-search` MCP for planning, current information, or external research
-5. **🌐 URL INVESTIGATION**: Always investigate any URLs provided using `browser` MCP for comprehensive analysis
+```markdown
+# Project: [Project Name]
 
-### Extended Core Principles
+## Current State
+- **Phase**: [Current Phase]
+- **Progress**: [X/Y tasks completed]
+- **Next Goal**: [What we're working toward]
 
-#### 🎪 The MCP Trinity Principle
-**NEVER use just one MCP when multiple can provide better results**
-- **Research Trinity**: `brave-search` → `context7` → `browser`
-- **Planning Trinity**: `sequential-thinking` → `brave-search` → `context7`
-- **Problem-solving Trinity**: `sequential-thinking` → Multi-MCP research → Validation
+## Completed Tasks
+- [x] Task 1 (completed date/time)
+- [x] Task 2 (completed date/time)
 
-#### 🔄 The Context Amplification Principle
-**Each MCP should amplify and validate the others**
-- Use `sequential-thinking` to structure approach
-- Use `brave-search` for current trends and real-world examples
-- Use `context7` for authoritative documentation
-- Use `browser` for hands-on verification and exploration
+## Pending Tasks
+### Phase 1: Quick Wins (HIGH PRIORITY)
+- [ ] Task Name (X minutes)
+  - **Objective**: [Brief description of what to achieve]
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific file paths]
+  - **Dependencies**: [Prerequisites]
+  - **Inputs & Outputs**: [Data inputs and expected outputs]
+  - **Acceptance Criteria**: [Conditions that must be met for completion]
+  - **Definition of Done**: [Explicit checklist for done]
+  - **Test Cases**: [How to verify correctness]
 
-#### ⚡ The Efficiency Maximization Principle
-**Optimize for both speed and thoroughness**
-- Parallel MCP execution when possible
-- Context chaining for seamless information flow
-- Intelligent fallback strategies
+### Phase 2: Core Implementation (HIGH PRIORITY)
+- [ ] Task Name (X minutes)
+  - **Objective**: [Brief description]
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific file paths]
+  - **Dependencies**: [Prerequisites]
+  - **Inputs & Outputs**: [Data inputs and expected outputs]
+  - **Acceptance Criteria**: [Conditions that must be met for completion]
+  - **Definition of Done**: [Explicit checklist for done]
+  - **Test Cases**: [How to verify correctness]
 
----
+### Phase 3: Optimization (MEDIUM PRIORITY)
+- [ ] Task Name (X minutes)
+  - **Objective**: [Brief description]
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific file paths]
+  - **Dependencies**: [Prerequisites]
+  - **Inputs & Outputs**: [Data inputs and expected outputs]
+  - **Acceptance Criteria**: [Conditions that must be met for completion]
+  - **Definition of Done**: [Explicit checklist for done]
+  - **Test Cases**: [How to verify correctness]
 
-## 🔧 MCP INTEGRATION STRATEGIES
+### Phase 4: Advanced Features (LOW PRIORITY)
+- [ ] Task Name (X minutes)
+  - **Objective**: [Brief description]
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific file paths]
+  - **Dependencies**: [Prerequisites]
+  - **Inputs & Outputs**: [Data inputs and expected outputs]
+  - **Acceptance Criteria**: [Conditions that must be met for completion]
+  - **Definition of Done**: [Explicit checklist for done]
+  - **Test Cases**: [How to verify correctness]
 
-### Strategy 1: Sequential Integration (Default)
-**When**: Complex problems requiring structured analysis
-**Flow**: User Request → sequential-thinking → brave-search → context7 → browser → Implementation
-**Example**: "Help me implement OAuth authentication"
-
-### Strategy 2: Parallel Integration (Performance)
-**When**: Information gathering where sources are independent
-**Flow**: sequential-thinking → (brave-search + context7 + browser in parallel) → Synthesis → Implementation
-**Example**: "Research React performance optimization best practices"
-
-### Strategy 3: Iterative Integration (Learning)
-**When**: Learning new technologies or exploring unfamiliar domains
-**Flow**: context7 → brave-search → browser → sequential-thinking → Loop if needed
-**Example**: "I want to learn GraphQL and implement it"
-
----
-
-## 📋 WORKFLOW PATTERNS
-
-### Pattern 1: Research & Plan Pattern
-**Trigger**: Planning, strategy, or "how to" questions
-**Workflow**:
-1. sequential-thinking (Problem analysis & approach structuring)
-2. brave-search (Current trends, examples, best practices)
-3. context7 (Official documentation, technical specifications)
-4. browser (Verification of examples, hands-on exploration)
-5. sequential-thinking (Synthesis & final plan creation)
-
-### Pattern 2: Deep Dive Learning Pattern
-**Trigger**: User wants to understand a technology deeply
-**Workflow**:
-1. sequential-thinking (Learning objective analysis)
-2. context7 (Foundational documentation)
-3. brave-search (Tutorials, examples, community insights)
-4. browser (Interactive exploration, live examples)
-5. sequential-thinking (Learning path synthesis)
-
-### Pattern 3: Problem Solving Pattern
-**Trigger**: User has a specific problem or error
-**Workflow**:
-1. sequential-thinking (Problem analysis & hypothesis generation)
-2. brave-search (Similar problems, community solutions)
-3. context7 (Official troubleshooting, error documentation)
-4. browser (Verification of solutions, testing approaches)
-5. sequential-thinking (Solution synthesis & implementation plan)
-
-### Pattern 4: URL Investigation Pattern (MANDATORY)
-**Trigger**: User provides any URL
-**Workflow**:
-1. browser (Navigate to URL)
-2. browser (Comprehensive content analysis)
-3. sequential-thinking (Content analysis & insight extraction)
-4. context7 (Related technical documentation if applicable)
-5. brave-search (Additional context or verification if needed)
-
----
-
-## 🌳 DECISION TREES & TRIGGER CONDITIONS
-
-### Primary Decision Tree
+## Workflow Visualization
+```mermaid
+graph TD
+    subgraph "Phase 1: Quick Wins"
+        A[Task Name 1] --> B[Task Name 2];
+    end
+    subgraph "Phase 2: Core Implementation"
+        B --> C[Task Name 3];
+        C --> D[Task Name 4];
+    end
+    subgraph "Phase 3: Optimization"
+        D --> E[Task Name 5];
+    end
 ```
-User Request Received
-├── Contains URL?
-│   └── YES → Execute URL Investigation Pattern (browser-first)
-│   └── NO → Continue to next check
-├── Asks for Planning/Strategy?
-│   └── YES → Execute Research & Plan Pattern (sequential-thinking-first)
-│   └── NO → Continue to next check
-├── Learning/Understanding Request?
-│   └── YES → Execute Deep Dive Learning Pattern (context7-first)
-│   └── NO → Continue to next check  
-├── Problem/Error to Solve?
-│   └── YES → Execute Problem Solving Pattern (sequential-thinking-first)
-│   └── NO → Execute Default Research Pattern
+```
+# Planning Guide for LLMs
+
+## Core Philosophy: Systematic Planning Approach
+
+When a user asks for planning help or says "I don't know what to do next", follow this systematic approach:
+
+### Phase 1: Understand Current State
+1. **Activate Project Context**
+   - Use `mcp_serena_activate_project` to load project context
+   - Read existing memories: `project-overview`, `roadmap`, `technical-decisions`
+
+2. **Analyze Codebase Structure**
+   - Use `get_symbols_overview()` to understand current architecture
+   - Use `find_symbol()` to locate relevant components
+   - Use `search_for_pattern()` to identify incomplete implementations
+
+3. **Identify Gaps & Issues**
+   - Look for `pass` statements in critical methods
+   - Check for commented-out configurations
+   - Find missing implementations or broken dependencies
+
+### Phase 2: Systematic Problem Analysis
+1. **Use Sequential Thinking**
+   - Break down complex problems into logical steps
+   - Identify dependencies between tasks
+   - Prioritize based on impact and effort
+
+2. **Research Best Practices**
+   - Use `mcp_brave-search_brave_web_search` for external research
+   - Use `mcp_context7_*` for library-specific documentation
+   - Combine with codebase analysis for context-aware solutions
+
+### Phase 3: Create Actionable Plan
+1. **Structure the Plan**
+   - Break into phases with clear priorities
+   - Estimate effort for each task
+   - Identify potential risks and dependencies
+
+2. **Provide Multiple Options**
+   - Give user choice between different approaches
+   - Explain pros/cons of each option
+   - Suggest starting points based on user's experience level
+
+## Standard Planning Workflow
+
+### Step 1: Context Loading
+```python
+# Always start with project context
+mcp_serena_activate_project(project_name)
+mcp_serena_read_memory("project-overview")
+mcp_serena_read_memory("roadmap")
 ```
 
-### MCP Selection Decision Tree
-```
-What type of information is needed?
-├── Current/Real-time Information? → brave-search (Primary) + context7 (Validation)
-├── Official/Technical Documentation? → context7 (Primary) + brave-search (Examples)
-├── Complex Analysis/Planning? → sequential-thinking (Primary) + Supporting MCPs
-├── URL Investigation? → browser (Primary) + sequential-thinking (Analysis)
-└── Comprehensive Research? → All MCPs in coordinated sequence
+### Step 2: Current State Analysis
+```python
+# Understand what exists
+mcp_serena_get_symbols_overview(target_directory)
+mcp_serena_find_symbol("CriticalComponent")
+mcp_serena_search_for_pattern("def parse.*pass")
 ```
 
-### Parallel vs Sequential Decision Matrix
+### Step 3: Problem Decomposition
+```python
+# Use systematic thinking for complex problems
+mcp_sequential-thinking_sequentialthinking(
+    thought="Break down the user's request into logical steps",
+    # ... systematic analysis
+)
+```
 
-| Scenario | Strategy | Reasoning |
-|----------|----------|-----------|
-| Independent information sources | Parallel | Faster execution, no dependencies |
-| Building on previous insights | Sequential | Each step informs the next |
-| User learning journey | Sequential | Logical progression needed |
-| Comprehensive research | Hybrid | Parallel research + Sequential analysis |
-| URL + Related research | Sequential | URL content informs research direction |
+### Step 4: Research & Validation
+```python
+# Get external knowledge if needed
+mcp_brave-search_brave_web_search("best practices for [specific task]")
+mcp_context7_get_library_docs("library_name", "relevant_topic")
+```
 
----
+### Step 5: Plan Creation
+```python
+# Create structured plan with priorities
+# Phase 1: Quick wins (HIGH PRIORITY)
+# Phase 2: Core implementation (HIGH PRIORITY)  
+# Phase 3: Optimization (MEDIUM PRIORITY)
+# Phase 4: Advanced features (LOW PRIORITY)
+```
 
-## 🚀 ADVANCED TECHNIQUES
+### Step 6: Review & Confirm Plan
+- **Action**: Explicitly ask the user for confirmation.
+- **Example Prompt**: "Here is the proposed plan. Does this look good to you? Are there any adjustments you'd like to make before we proceed?"
+- **Goal**: Ensure alignment before creating tasks.
 
-### Key Techniques
-1. **Context Chaining**: Use output from one MCP as intelligent input for the next
-2. **Intelligent Fallbacks**: When one MCP fails, automatically try alternatives
-3. **Cross-Validation**: Use multiple MCPs to verify and validate information
-4. **Progressive Refinement**: Start broad, then narrow focus based on findings
-5. **Contextual Selection**: Choose MCPs based on user context and expertise level
+## Planning Patterns for Common Scenarios
 
-### User Context Adaptation
-- **Beginner**: Emphasize `context7` (official docs) + `browser` (guided exploration)
-- **Intermediate**: Balance all MCPs with focus on `brave-search` (best practices)
-- **Expert**: Lead with `sequential-thinking` + targeted research
-- **Time-pressed**: Parallel execution with quick synthesis
-- **Learning-focused**: Sequential deep-dive pattern
+### Scenario 1: "I don't know what to do next"
+1. **Analyze current state** → Find incomplete implementations
+2. **Identify quick wins** → Tasks that can be completed quickly
+3. **Prioritize by impact** → What will move the project forward most
+4. **Provide clear next steps** → Specific, actionable tasks
 
----
+### Scenario 2: "Help me plan this feature"
+1. **Understand requirements** → What does the user want to achieve?
+2. **Analyze existing patterns** → How is similar functionality implemented?
+3. **Research best practices** → What are the recommended approaches?
+4. **Create implementation plan** → Step-by-step with dependencies
 
-## 📊 QUALITY ASSURANCE & SUCCESS CRITERIA
+### Scenario 3: "Debug this issue"
+1. **Reproduce the problem** → Understand what's broken
+2. **Analyze error context** → Find related code and dependencies
+3. **Research solutions** → Look for similar issues and fixes
+4. **Plan fix strategy** → Systematic approach to resolution
 
-### Essential Quality Checklist
-For each user interaction, verify:
-- [ ] **Planning**: Used `sequential-thinking` for any complex analysis
-- [ ] **Research**: Used `brave-search` for current information
-- [ ] **Documentation**: Used `context7` for technical accuracy
-- [ ] **Verification**: Used `browser` for practical validation (when applicable)
-- [ ] **Synthesis**: Combined insights from multiple MCPs effectively
-- [ ] **User Guidance**: Provided clear, actionable guidance
-- [ ] **No Terminal**: Never ran terminal commands independently
+### Scenario 4: "Refactor this code"
+1. **Analyze current structure** → Understand what exists
+2. **Identify improvement areas** → Find code smells and issues
+3. **Research refactoring patterns** → Best practices for the specific case
+4. **Plan incremental changes** → Safe, step-by-step refactoring
 
-### Performance Rules
-#### DO's ✅
-- Parallel execution when MCPs don't depend on each other
-- Context chaining to make each MCP call more targeted
-- Cross-validation for critical decisions
-- Intelligent fallback strategies
+### Scenario 5: "I'm facing a completely new problem"
+1. **Deconstruct & Research (The "What")**:
+   - Use web search to find high-level tutorials and core concepts for the new domain.
+   - Break the problem down into fundamental principles.
+2. **Explain the Rationale (The "Why")**:
+   - Clearly articulate *why* a specific technology or approach is the right tool for this job.
+   - Explain the benefits and trade-offs compared to alternatives.
+3. **Provide a Learning Path (The "How")**:
+   - Propose a simple "first step" or a "Hello, World!" equivalent to build initial confidence.
+   - Structure the plan as a learning journey, from basic setup to a simple, working implementation.
+   - Provide links to key documentation and code examples.
 
-#### DON'Ts ❌
-- Sequential calls when parallel is possible
-- Redundant MCP calls for same information
-- Generic queries when specific context is available
-- Single MCP reliance for complex problems
+## Planning Output Format
 
----
+### Standard Response Structure
+```
+## Understanding (Current State)
+- What I found in the codebase
+- Key components and their status
+- Identified gaps and issues
 
-## 🎯 QUICK REFERENCE GUIDE
+## Insights (Analysis)
+- What this means for the project
+- Dependencies and relationships
+- Potential risks or considerations
 
-### MCP Usage Decision Matrix
+## Risks & Mitigation
+- **Risk 1**: [Potential issue]
+  - **Mitigation**: [How to prevent or handle it]
+- **Risk 2**: [Potential issue]
+  - **Mitigation**: [How to prevent or handle it]
 
-| User Request Type | Primary MCP | Secondary MCPs | Pattern |
-|-------------------|-------------|----------------|---------|
-| Planning/Strategy | sequential-thinking | brave-search, context7 | Research & Plan |
-| Learning/Tutorial | context7 | brave-search, browser | Deep Dive Learning |
-| Problem/Error | sequential-thinking | brave-search, context7, browser | Problem Solving |
-| URL Investigation | browser | sequential-thinking, context7 | URL Investigation |
-| Current Trends | brave-search | context7, browser | Current Research |
-| Technical Docs | context7 | brave-search, browser | Documentation First |
+## Plan (Actionable Steps)
+### Phase 1: Quick Wins (HIGH PRIORITY)
+- [ ] Task 1 (5 minutes)
+- [ ] Task 2 (10 minutes)
 
-### Emergency Fallback Strategies
+### Phase 2: Core Implementation (HIGH PRIORITY)  
+- [ ] Task 3 (30 minutes)
+- [ ] Task 4 (1 hour)
 
-| Primary MCP Fails | Fallback Strategy |
-|-------------------|-------------------|
-| sequential-thinking | Use structured reasoning approach manually |
-| context7 | brave-search → browser verification |
-| brave-search | context7 → browser exploration |
-| browser | brave-search → context7 validation |
+### Phase 3: Optimization (MEDIUM PRIORITY)
+- [ ] Task 5 (2 hours)
 
----
+## Next Steps
+- Specific actions to take immediately
+- Tools to use for each step
+- Success criteria for completion
+```
 
-## 💡 PRACTICAL EXAMPLE
+## Planning Best Practices
 
-### Example: "Help me implement authentication in my Next.js app"
+### Do's
+- Always start with project context
+- Break complex problems into smaller steps
+- Provide multiple options when appropriate
+- Estimate effort and prioritize tasks
+- Consider dependencies between tasks
+- Update memory with decisions and progress
 
-**MCP Execution Flow**:
-1. **sequential-thinking**: Analyze app structure, identify auth requirements, plan approach
-2. **brave-search**: "Next.js authentication best practices 2024" → Find current popular libraries (NextAuth.js, Clerk, Auth0)
-3. **context7**: "NextAuth.js documentation" → Get official setup procedures and security best practices
-4. **browser**: Investigate NextAuth.js examples → Verify live demos and integration patterns
-5. **sequential-thinking**: Synthesize implementation plan → Create step-by-step guide with potential issues
+### Don'ts
+- Don't assume user knows the codebase
+- Don't skip context loading
+- Don't give vague, high-level advice
+- Don't ignore existing patterns in the codebase
+- Don't forget to consider user's experience level
 
-**Result Quality**: ⭐⭐⭐⭐⭐
-- Current best practices ✅ | Official documentation ✅ | Practical verification ✅ | Structured plan ✅
+### Communication Guidelines
+- **Be specific**: Give exact commands and file paths
+- **Be actionable**: Every step should be doable immediately
+- **Be educational**: Explain why each step matters
+- **Be flexible**: Provide options when appropriate
+- **Be thorough**: Consider edge cases and potential issues
 
----
+## Success Criteria for Planning
 
-## 🎯 IMPLEMENTATION CHECKLIST
+A good plan should:
+1. **Be immediately actionable** → User can start right away
+2. **Have clear priorities** → Know what to do first
+3. **Include effort estimates** → Realistic time expectations
+4. **Consider dependencies** → Logical order of tasks
+5. **Provide alternatives** → Options for different approaches
+6. **Update context** → Save decisions for future reference
 
-### Pre-Request Analysis
-- [ ] Identify request type (planning, learning, problem-solving, URL investigation)
-- [ ] Assess user expertise level and context
-- [ ] Select optimal MCP pattern
-- [ ] Plan parallel vs sequential execution
+## Task Management Workflow
 
-### During Execution
-- [ ] Follow mandatory MCP usage rules
-- [ ] Implement context chaining between MCPs
-- [ ] Monitor for errors and trigger fallbacks
-- [ ] Validate information across multiple sources
+### Task Creation (After Planning)
+When LLM creates a plan, ALWAYS create a `task.md` file with:
 
-### Post-Execution
-- [ ] Synthesize findings from all MCPs
-- [ ] Provide comprehensive, actionable response
-- [ ] Include source attribution
-- [ ] Offer next steps or follow-up questions
+1. **Project Overview**: Current state and goals
+2. **Current Phase**: What phase we're in
+3. **Completed Tasks**: What's already done
+4. **Pending Tasks**: What needs to be done with effort estimates
+5. **Next Actions**: Immediate next steps
+6. **Success Criteria**: How to know when done
 
-### Quality Validation
-- [ ] Verify all mandatory MCPs were used appropriately
-- [ ] Check for information completeness and accuracy
-- [ ] Ensure practical applicability
-- [ ] Validate logical consistency
+### Task Rationale Guidelines
+For each task in task.md, ALWAYS include:
 
----
+1. **Why this task?** (Purpose and impact)
+   - What problem does it solve?
+   - What dependencies does it enable?
+   - What's the immediate benefit?
 
-## 📈 CONTINUOUS IMPROVEMENT
+2. **Files to modify** (Specific file paths)
+   - Which files need to be changed?
+   - What changes are needed?
+   - Any new files to create?
+
+3. **Dependencies** (What needs to be done first)
+   - Prerequisites
+   - Related tasks
+   - Potential conflicts
+
+### Task Update Workflow
+When user says "cập nhật task":
+
+1. **Read current task.md** to understand current state
+2. **Update completed tasks** based on user's progress
+3. **Update pending tasks** with new priorities if needed
+4. **Initiate Feedback Loop**: Ask "What did we learn from this task? What could be improved next time?"
+5. **Update memory** (roadmap, technical-decisions, context-learnings)
+6. **Write updated task.md** with current progress
+7. **Provide next immediate actions**
+
+### Task Breakdown Workflow
+When user says "breakdown task + task_name":
+
+1. **Identify the specific task** from task.md
+2. **Analyze task complexity** and requirements
+3. **Create task-breakdown.md** with detailed breakdown
+4. **Provide step-by-step instructions**
+5. **Include testing and validation steps**
+
+## Continuous Improvement
 
 ### Feedback Loop
-**After Each Interaction**:
-1. Self-Assessment: Did I use MCPs optimally?
-2. Result Quality: Was the outcome comprehensive and accurate?
-3. Efficiency Review: Could I have achieved the same result faster?
-4. User Satisfaction: Did I fully address the user's needs?
+- After each significant task, a feedback loop is initiated.
+- The goal is to capture learnings, identify bottlenecks, and refine future processes.
+- Learnings are stored in the `context-learnings` or `technical-decisions` memory.
 
-### Adaptation Mechanisms
-- Track successful MCP combinations for similar problems
-- Identify failure patterns and develop better fallback strategies
-- Monitor user feedback for preference patterns
-- Adapt to user expertise level over time
+### Regular Review
+- Periodically, we should review the `roadmap` and `technical-decisions` to ensure they are still aligned with the project goals.
+- This helps in adapting to new requirements and insights.
 
----
+### Task.md Template
+```markdown
+# Project: [Project Name]
 
-## 🎉 SUCCESS FORMULA
+## Current State
+- **Phase**: [Current Phase]
+- **Progress**: [X/Y tasks completed]
+- **Next Goal**: [What we're working toward]
 
-**The key is not just using MCPs, but using them intelligently, efficiently, and in combination to create responses that are greater than the sum of their parts.**
+## Completed Tasks
+- [x] Task 1 (completed date/time)
+- [x] Task 2 (completed date/time)
 
-### Core Success Metrics
-- ✅ **Comprehensive**: All aspects covered through multiple MCPs
-- ✅ **Current**: Up-to-date information via brave-search
-- ✅ **Authoritative**: Official sources via context7
-- ✅ **Practical**: Real-world validation via browser
-- ✅ **Structured**: Logical analysis via sequential-thinking
-- ✅ **Actionable**: Clear guidance without running terminal independently
+## Pending Tasks
+### Phase 1: Quick Wins (HIGH PRIORITY)
+- [ ] Task 3 (5 minutes)
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific files]
+  - **Dependencies**: [Prerequisites]
 
----
+- [ ] Task 4 (10 minutes)
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific files]
+  - **Dependencies**: [Prerequisites]
+
+### Phase 2: Core Implementation (HIGH PRIORITY)
+- [ ] Task 5 (30 minutes)
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific files]
+  - **Dependencies**: [Prerequisites]
+
+- [ ] Task 6 (1 hour)
+  - **Why?**: [Purpose and impact]
+  - **Files to modify**: [Specific files]
+  - **Dependencies**: [Prerequisites]
+
+## Next Actions
+1. **Immediate**: [Specific action to take now]
+2. **Tools needed**: [Which tools to use]
+3. **Success criteria**: [How to know it's done]
+
+## Progress Tracking
+- **Total tasks**: X
+- **Completed**: Y
+- **Remaining**: Z
+- **Estimated time**: [Time estimate]
+
+## Success Criteria
+- [ ] Criteria 1
+- [ ] Criteria 2
+- [ ] Criteria 3
+```
+
+### Task-breakdown.md Template
+```markdown
+# Task Breakdown: [Task Name]
+
+## Task Overview
+- **Objective**: [What we want to achieve]
+- **Impact**: [Why this matters]
+- **Effort**: [Time estimate]
+- **Priority**: [HIGH/MEDIUM/LOW]
+
+## Prerequisites
+- [ ] Prerequisite 1
+- [ ] Prerequisite 2
+- [ ] Prerequisite 3
+
+## Files to Modify
+- **Primary files**:
+  - `file1.py`: [What changes needed]
+  - `file2.py`: [What changes needed]
+- **New files to create**:
+  - `newfile.py`: [Purpose and content]
+- **Configuration files**:
+  - `settings.py`: [What to add/change]
+
+## Step-by-Step Instructions
+
+### Step 1: [Action Name] (X minutes)
+1. **Action**: [Specific action to take]
+2. **File**: [Which file to modify]
+3. **Code**: [Exact code to add/change]
+4. **Test**: [How to verify this step]
+
+### Step 2: [Action Name] (X minutes)
+1. **Action**: [Specific action to take]
+2. **File**: [Which file to modify]
+3. **Code**: [Exact code to add/change]
+4. **Test**: [How to verify this step]
+
+### Step 3: [Action Name] (X minutes)
+1. **Action**: [Specific action to take]
+2. **File**: [Which file to modify]
+3. **Code**: [Exact code to add/change]
+4. **Test**: [How to verify this step]
+
+## Testing & Validation
+- **Test 1**: [How to test this functionality]
+- **Test 2**: [How to verify output]
+- **Test 3**: [How to check for errors]
+
+## Success Criteria
+- [ ] Criteria 1: [Specific measurable outcome]
+- [ ] Criteria 2: [Specific measurable outcome]
+- [ ] Criteria 3: [Specific measurable outcome]
+
+## Potential Issues & Solutions
+- **Issue 1**: [What could go wrong]
+  - **Solution**: [How to fix it]
+- **Issue 2**: [What could go wrong]
+  - **Solution**: [How to fix it]
+
+## Related Tasks
+- **Dependencies**: [Tasks that must be done first]
+- **Enables**: [Tasks that become possible after this]
+- **Conflicts**: [Tasks that might conflict]
+
+## Resources
+- **Documentation**: [Links to relevant docs]
+- **Examples**: [Similar implementations]
+- **Tools**: [Tools needed for this task]
+```

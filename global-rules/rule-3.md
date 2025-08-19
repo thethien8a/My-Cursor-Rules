@@ -1,464 +1,386 @@
-## 📋 Task Management Workflow
+## PROJECT MEMORY MANAGEMENT RULES
 
-### NOTE 1: Always use "sequential-thinking mcp" to plan task 
-### NOTE 2: For every task, if i ask you "Tell me what should i do ?" or something like wanting you to plan for doing something. You ALWAYS need to create Task.md first before doing anything after.
+### Core Philosophy: Intelligent Project Context Capture
 
-### Task.md Template
+**MANDATORY TRIGGER CONDITIONS:**
+- User enters a new project workspace
+- User says "cập nhật memory dự án" or "update project memory"
+- User asks "hiểu dự án này" or "understand this project"
+- First time working with a project after activation
 
-```markdown
-# Project: [Project Name]
+**GOAL:** Create comprehensive, intelligent memory system that automatically understands and updates project context.
 
-## 🎯 Current State
-- **Phase**: [Current Phase]
-- **Progress**: [X/Y tasks completed]
-- **Next Goal**: [What we're working toward]
+---
 
-## ✅ Completed Tasks
-- [x] Task 1 (completed date/time)
-- [x] Task 2 (completed date/time)
+## PROJECT INITIALIZATION WORKFLOW
 
-## 🔄 Pending Tasks
-### Phase 1: Quick Wins (HIGH PRIORITY)
-- [ ] Task Name (X minutes)
-  - **Objective**: [Brief description of what to achieve]
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific file paths]
-  - **Dependencies**: [Prerequisites]
-  - **Inputs & Outputs**: [Data inputs and expected outputs]
-  - **Acceptance Criteria**: [Conditions that must be met for completion]
-  - **Definition of Done**: [Explicit checklist for done]
-  - **Test Cases**: [How to verify correctness]
+### Phase 1: Project Activation & Discovery (MANDATORY)
 
-### Phase 2: Core Implementation (HIGH PRIORITY)
-- [ ] Task Name (X minutes)
-  - **Objective**: [Brief description]
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific file paths]
-  - **Dependencies**: [Prerequisites]
-  - **Inputs & Outputs**: [Data inputs and expected outputs]
-  - **Acceptance Criteria**: [Conditions that must be met for completion]
-  - **Definition of Done**: [Explicit checklist for done]
-  - **Test Cases**: [How to verify correctness]
-
-### Phase 3: Optimization (MEDIUM PRIORITY)
-- [ ] Task Name (X minutes)
-  - **Objective**: [Brief description]
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific file paths]
-  - **Dependencies**: [Prerequisites]
-  - **Inputs & Outputs**: [Data inputs and expected outputs]
-  - **Acceptance Criteria**: [Conditions that must be met for completion]
-  - **Definition of Done**: [Explicit checklist for done]
-  - **Test Cases**: [How to verify correctness]
-
-### Phase 4: Advanced Features (LOW PRIORITY)
-- [ ] Task Name (X minutes)
-  - **Objective**: [Brief description]
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific file paths]
-  - **Dependencies**: [Prerequisites]
-  - **Inputs & Outputs**: [Data inputs and expected outputs]
-  - **Acceptance Criteria**: [Conditions that must be met for completion]
-  - **Definition of Done**: [Explicit checklist for done]
-  - **Test Cases**: [How to verify correctness]
-
-## 📊 Workflow Visualization
-```mermaid
-graph TD
-    subgraph "Phase 1: Quick Wins"
-        A[Task Name 1] --> B[Task Name 2];
-    end
-    subgraph "Phase 2: Core Implementation"
-        B --> C[Task Name 3];
-        C --> D[Task Name 4];
-    end
-    subgraph "Phase 3: Optimization"
-        D --> E[Task Name 5];
-    end
-```
-```
-# Planning Guide for LLMs
-
-## 🎯 Core Philosophy: Systematic Planning Approach
-
-When a user asks for planning help or says "I don't know what to do next", follow this systematic approach:
-
-### Phase 1: Understand Current State
-1. **Activate Project Context**
-   - Use `mcp_serena_activate_project` to load project context
-   - Read existing memories: `project-overview`, `roadmap`, `technical-decisions`
-
-2. **Analyze Codebase Structure**
-   - Use `get_symbols_overview()` to understand current architecture
-   - Use `find_symbol()` to locate relevant components
-   - Use `search_for_pattern()` to identify incomplete implementations
-
-3. **Identify Gaps & Issues**
-   - Look for `pass` statements in critical methods
-   - Check for commented-out configurations
-   - Find missing implementations or broken dependencies
-
-### Phase 2: Systematic Problem Analysis
-1. **Use Sequential Thinking**
-   - Break down complex problems into logical steps
-   - Identify dependencies between tasks
-   - Prioritize based on impact and effort
-
-2. **Research Best Practices**
-   - Use `mcp_brave-search_brave_web_search` for external research
-   - Use `mcp_context7_*` for library-specific documentation
-   - Combine with codebase analysis for context-aware solutions
-
-### Phase 3: Create Actionable Plan
-1. **Structure the Plan**
-   - Break into phases with clear priorities
-   - Estimate effort for each task
-   - Identify potential risks and dependencies
-
-2. **Provide Multiple Options**
-   - Give user choice between different approaches
-   - Explain pros/cons of each option
-   - Suggest starting points based on user's experience level
-
-## 📋 Standard Planning Workflow
-
-### Step 1: Context Loading
+#### Step 1: Project Activation
 ```python
-# Always start with project context
-mcp_serena_activate_project(project_name)
+# ALWAYS start with project activation
+mcp_serena_activate_project(project_name_or_path)
+mcp_serena_check_onboarding_performed()
+```
+
+#### Step 2: Structure Discovery
+```python
+# Get comprehensive project overview
+mcp_serena_get_symbols_overview(relative_path="{file_path}")
+mcp_serena_list_dir(relative_path=".", recursive=True)
+```
+
+#### Step 3: Technology Stack Identification
+```python
+# Identify key technologies and frameworks
+mcp_serena_search_for_pattern("requirements\\.txt|package\\.json|pom\\.xml|build\\.gradle|Cargo\\.toml|go\\.mod")
+mcp_serena_search_for_pattern("Dockerfile|docker-compose|dockerfile")
+mcp_serena_search_for_pattern("\\.env|config\\.|settings\\.|application\\.properties")
+```
+
+#### Step 4: Architecture Analysis
+```python
+# Understand project structure and patterns
+mcp_serena_find_symbol("main|app|index|startup")  # functions
+mcp_serena_find_symbol("class|interface|struct")  # classes/interfaces
+mcp_serena_search_for_pattern("import|from|require|using")
+```
+
+### Phase 2: Deep Context Analysis
+
+#### Step 5: Key Files Analysis
+```python
+# Analyze critical project files
+critical_files = [
+    "README.md", "README.txt", "CHANGELOG.md", "LICENSE",
+    "requirements.txt", "package.json", "pom.xml", "build.gradle",
+    "Dockerfile", "docker-compose.yml", ".env.example",
+    "config/", "src/", "app/", "main/"
+]
+
+for file_pattern in critical_files:
+    mcp_serena_search_for_pattern(file_pattern)
+```
+
+#### Step 6: Code Patterns Discovery
+```python
+# Find architectural patterns and conventions
+mcp_serena_search_for_pattern("def main|if __name__|public static void main|func main")
+mcp_serena_search_for_pattern("class.*Controller|class.*Service|class.*Repository|class.*Model")
+mcp_serena_search_for_pattern("router\\.|app\\.|express\\.|flask\\.|django\\.|spring\\.|fastapi\\.")
+```
+
+#### Step 7: Database & Configuration Analysis
+```python
+# Database and configuration patterns
+mcp_serena_search_for_pattern("database|db|sql|mongo|redis|postgres|mysql")
+mcp_serena_search_for_pattern("config|settings|environment|env|properties")
+mcp_serena_search_for_pattern("migration|schema|model|entity")
+```
+
+### Phase 3: Memory Creation & Organization
+
+#### Step 8: Create Core Memory Files
+```python
+# Create comprehensive project memory
+mcp_serena_write_memory("project-overview", comprehensive_project_summary)
+mcp_serena_write_memory("technical-stack", technology_analysis)
+mcp_serena_write_memory("architecture-patterns", architectural_insights)
+mcp_serena_write_memory("development-conventions", coding_patterns)
+mcp_serena_write_memory("project-structure", file_organization)
+```
+
+#### Step 9: Create Specialized Memory Files
+```python
+# Create specialized context memories
+mcp_serena_write_memory("api-endpoints", api_analysis)
+mcp_serena_write_memory("database-schema", database_structure)
+mcp_serena_write_memory("deployment-config", deployment_info)
+mcp_serena_write_memory("development-workflow", workflow_patterns)
+```
+
+---
+
+## PROJECT MEMORY UPDATE WORKFLOW
+
+### Trigger: "cập nhật memory dự án"
+
+#### Step 1: Current State Assessment
+```python
+# Read existing memories to understand current context
 mcp_serena_read_memory("project-overview")
-mcp_serena_read_memory("roadmap")
+mcp_serena_read_memory("technical-stack")
+mcp_serena_read_memory("architecture-patterns")
 ```
 
-### Step 2: Current State Analysis
+#### Step 2: Change Detection
 ```python
-# Understand what exists
-mcp_serena_get_symbols_overview(target_directory)
-mcp_serena_find_symbol("CriticalComponent")
-mcp_serena_search_for_pattern("def parse.*pass")
+# Detect what has changed since last update
+mcp_serena_get_symbols_overview(relative_path=".")
+mcp_serena_search_for_pattern("TODO|FIXME|HACK|NOTE|CHANGED|UPDATED")
+mcp_serena_search_for_pattern("def.*new|class.*new|function.*new")
 ```
 
-### Step 3: Problem Decomposition
+#### Step 3: Incremental Analysis
 ```python
-# Use systematic thinking for complex problems
-mcp_sequential-thinking_sequentialthinking(
-    thought="Break down the user's request into logical steps",
-    # ... systematic analysis
-)
+# Focus on new or modified components
+mcp_serena_find_symbol("recently_added|new_feature|updated")
+mcp_serena_search_for_pattern("recently|newly|updated|modified|changed")
 ```
 
-### Step 4: Research & Validation
+#### Step 4: Memory Update Strategy
 ```python
-# Get external knowledge if needed
-mcp_brave-search_brave_web_search("best practices for [specific task]")
-mcp_context7_get_library_docs("library_name", "relevant_topic")
+# Update memories with new information
+mcp_serena_write_memory("project-overview", updated_summary)
+mcp_serena_write_memory("recent-changes", change_log)
+mcp_serena_write_memory("current-state", current_analysis)
 ```
 
-### Step 5: Plan Creation
-```python
-# Create structured plan with priorities
-# Phase 1: Quick wins (HIGH PRIORITY)
-# Phase 2: Core implementation (HIGH PRIORITY)  
-# Phase 3: Optimization (MEDIUM PRIORITY)
-# Phase 4: Advanced features (LOW PRIORITY)
-```
+---
 
-### Step 6: Review & Confirm Plan
-- **Action**: Explicitly ask the user for confirmation.
-- **Example Prompt**: "Here is the proposed plan. Does this look good to you? Are there any adjustments you'd like to make before we proceed?"
-- **Goal**: Ensure alignment before creating tasks.
+## MEMORY TEMPLATES & STRUCTURE
 
-## 🎪 Planning Patterns for Common Scenarios
-
-### Scenario 1: "I don't know what to do next"
-1. **Analyze current state** → Find incomplete implementations
-2. **Identify quick wins** → Tasks that can be completed quickly
-3. **Prioritize by impact** → What will move the project forward most
-4. **Provide clear next steps** → Specific, actionable tasks
-
-### Scenario 2: "Help me plan this feature"
-1. **Understand requirements** → What does the user want to achieve?
-2. **Analyze existing patterns** → How is similar functionality implemented?
-3. **Research best practices** → What are the recommended approaches?
-4. **Create implementation plan** → Step-by-step with dependencies
-
-### Scenario 3: "Debug this issue"
-1. **Reproduce the problem** → Understand what's broken
-2. **Analyze error context** → Find related code and dependencies
-3. **Research solutions** → Look for similar issues and fixes
-4. **Plan fix strategy** → Systematic approach to resolution
-
-### Scenario 4: "Refactor this code"
-1. **Analyze current structure** → Understand what exists
-2. **Identify improvement areas** → Find code smells and issues
-3. **Research refactoring patterns** → Best practices for the specific case
-4. **Plan incremental changes** → Safe, step-by-step refactoring
-
-### Scenario 5: "I'm facing a completely new problem"
-1. **Deconstruct & Research (The "What")**:
-   - Use web search to find high-level tutorials and core concepts for the new domain.
-   - Break the problem down into fundamental principles.
-2. **Explain the Rationale (The "Why")**:
-   - Clearly articulate *why* a specific technology or approach is the right tool for this job.
-   - Explain the benefits and trade-offs compared to alternatives.
-3. **Provide a Learning Path (The "How")**:
-   - Propose a simple "first step" or a "Hello, World!" equivalent to build initial confidence.
-   - Structure the plan as a learning journey, from basic setup to a simple, working implementation.
-   - Provide links to key documentation and code examples.
-
-## 📊 Planning Output Format
-
-### Standard Response Structure
-```
-## 🎯 Understanding (Current State)
-- What I found in the codebase
-- Key components and their status
-- Identified gaps and issues
-
-## 💡 Insights (Analysis)
-- What this means for the project
-- Dependencies and relationships
-- Potential risks or considerations
-
-## ⚠️ Risks & Mitigation
-- **Risk 1**: [Potential issue]
-  - **Mitigation**: [How to prevent or handle it]
-- **Risk 2**: [Potential issue]
-  - **Mitigation**: [How to prevent or handle it]
-
-## 🚀 Plan (Actionable Steps)
-### Phase 1: Quick Wins (HIGH PRIORITY)
-- [ ] Task 1 (5 minutes)
-- [ ] Task 2 (10 minutes)
-
-### Phase 2: Core Implementation (HIGH PRIORITY)  
-- [ ] Task 3 (30 minutes)
-- [ ] Task 4 (1 hour)
-
-### Phase 3: Optimization (MEDIUM PRIORITY)
-- [ ] Task 5 (2 hours)
-
-## 🎯 Next Steps
-- Specific actions to take immediately
-- Tools to use for each step
-- Success criteria for completion
-```
-
-## 🔧 Planning Best Practices
-
-### Do's
-- ✅ Always start with project context
-- ✅ Break complex problems into smaller steps
-- ✅ Provide multiple options when appropriate
-- ✅ Estimate effort and prioritize tasks
-- ✅ Consider dependencies between tasks
-- ✅ Update memory with decisions and progress
-
-### Don'ts
-- ❌ Don't assume user knows the codebase
-- ❌ Don't skip context loading
-- ❌ Don't give vague, high-level advice
-- ❌ Don't ignore existing patterns in the codebase
-- ❌ Don't forget to consider user's experience level
-
-### Communication Guidelines
-- **Be specific**: Give exact commands and file paths
-- **Be actionable**: Every step should be doable immediately
-- **Be educational**: Explain why each step matters
-- **Be flexible**: Provide options when appropriate
-- **Be thorough**: Consider edge cases and potential issues
-
-## 🎯 Success Criteria for Planning
-
-A good plan should:
-1. **Be immediately actionable** → User can start right away
-2. **Have clear priorities** → Know what to do first
-3. **Include effort estimates** → Realistic time expectations
-4. **Consider dependencies** → Logical order of tasks
-5. **Provide alternatives** → Options for different approaches
-6. **Update context** → Save decisions for future reference
-
-## 📋 Task Management Workflow
-
-### Task Creation (After Planning)
-When LLM creates a plan, ALWAYS create a `task.md` file with:
-
-1. **Project Overview**: Current state and goals
-2. **Current Phase**: What phase we're in
-3. **Completed Tasks**: What's already done
-4. **Pending Tasks**: What needs to be done with effort estimates
-5. **Next Actions**: Immediate next steps
-6. **Success Criteria**: How to know when done
-
-### Task Rationale Guidelines
-For each task in task.md, ALWAYS include:
-
-1. **Why this task?** (Purpose and impact)
-   - What problem does it solve?
-   - What dependencies does it enable?
-   - What's the immediate benefit?
-
-2. **Files to modify** (Specific file paths)
-   - Which files need to be changed?
-   - What changes are needed?
-   - Any new files to create?
-
-3. **Dependencies** (What needs to be done first)
-   - Prerequisites
-   - Related tasks
-   - Potential conflicts
-
-### Task Update Workflow
-When user says "cập nhật task":
-
-1. **Read current task.md** to understand current state
-2. **Update completed tasks** based on user's progress
-3. **Update pending tasks** with new priorities if needed
-4. **Initiate Feedback Loop**: Ask "What did we learn from this task? What could be improved next time?"
-5. **Update memory** (roadmap, technical-decisions, context-learnings)
-6. **Write updated task.md** with current progress
-7. **Provide next immediate actions**
-
-### Task Breakdown Workflow
-When user says "breakdown task + task_name":
-
-1. **Identify the specific task** from task.md
-2. **Analyze task complexity** and requirements
-3. **Create task-breakdown.md** with detailed breakdown
-4. **Provide step-by-step instructions**
-5. **Include testing and validation steps**
-
-## 🌱 Continuous Improvement
-
-### Feedback Loop
-- After each significant task, a feedback loop is initiated.
-- The goal is to capture learnings, identify bottlenecks, and refine future processes.
-- Learnings are stored in the `context-learnings` or `technical-decisions` memory.
-
-### Regular Review
-- Periodically, we should review the `roadmap` and `technical-decisions` to ensure they are still aligned with the project goals.
-- This helps in adapting to new requirements and insights.
-
-### Task.md Template
+### Project Overview Template
 ```markdown
 # Project: [Project Name]
 
-## 🎯 Current State
-- **Phase**: [Current Phase]
-- **Progress**: [X/Y tasks completed]
-- **Next Goal**: [What we're working toward]
+## Project Purpose
+- **Primary Goal**: [Main objective]
+- **Target Users**: [Who uses this]
+- **Key Features**: [Core functionality]
 
-## ✅ Completed Tasks
-- [x] Task 1 (completed date/time)
-- [x] Task 2 (completed date/time)
+## Architecture Overview
+- **Technology Stack**: [Languages, frameworks, databases]
+- **Architecture Pattern**: [MVC, Microservices, etc.]
+- **Deployment**: [How it's deployed]
 
-## 🔄 Pending Tasks
-### Phase 1: Quick Wins (HIGH PRIORITY)
-- [ ] Task 3 (5 minutes)
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific files]
-  - **Dependencies**: [Prerequisites]
+## Project Structure
+- **Root Directories**: [Key folders and their purposes]
+- **Entry Points**: [Main files that start the application]
+- **Configuration**: [Where settings are stored]
 
-- [ ] Task 4 (10 minutes)
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific files]
-  - **Dependencies**: [Prerequisites]
+## Development Setup
+- **Dependencies**: [How to install requirements]
+- **Environment**: [Required environment variables]
+- **Build Process**: [How to build/run the project]
 
-### Phase 2: Core Implementation (HIGH PRIORITY)
-- [ ] Task 5 (30 minutes)
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific files]
-  - **Dependencies**: [Prerequisites]
+## Key Components
+- **Frontend**: [UI framework and structure]
+- **Backend**: [Server-side components]
+- **Database**: [Data storage and models]
+- **API**: [External interfaces]
 
-- [ ] Task 6 (1 hour)
-  - **Why?**: [Purpose and impact]
-  - **Files to modify**: [Specific files]
-  - **Dependencies**: [Prerequisites]
-
-## 🎯 Next Actions
-1. **Immediate**: [Specific action to take now]
-2. **Tools needed**: [Which tools to use]
-3. **Success criteria**: [How to know it's done]
-
-## 📊 Progress Tracking
-- **Total tasks**: X
-- **Completed**: Y
-- **Remaining**: Z
-- **Estimated time**: [Time estimate]
-
-## 🎯 Success Criteria
-- [ ] Criteria 1
-- [ ] Criteria 2
-- [ ] Criteria 3
+## Current Status
+- **Development Phase**: [Current stage]
+- **Known Issues**: [Any problems or limitations]
+- **Next Steps**: [Immediate priorities]
 ```
 
-### Task-breakdown.md Template
+### Technical Stack Template
 ```markdown
-# Task Breakdown: [Task Name]
+# Technical Stack Analysis
 
-## 🎯 Task Overview
-- **Objective**: [What we want to achieve]
-- **Impact**: [Why this matters]
-- **Effort**: [Time estimate]
-- **Priority**: [HIGH/MEDIUM/LOW]
+## Core Technologies
+- **Language**: [Primary programming language]
+- **Framework**: [Main framework used]
+- **Database**: [Data storage solution]
+- **Frontend**: [UI technologies]
 
-## 📋 Prerequisites
-- [ ] Prerequisite 1
-- [ ] Prerequisite 2
-- [ ] Prerequisite 3
+## Dependencies
+- **Production Dependencies**: [Key packages]
+- **Development Dependencies**: [Dev tools]
+- **Version Constraints**: [Important versions]
 
-## 🛠️ Files to Modify
-- **Primary files**:
-  - `file1.py`: [What changes needed]
-  - `file2.py`: [What changes needed]
-- **New files to create**:
-  - `newfile.py`: [Purpose and content]
-- **Configuration files**:
-  - `settings.py`: [What to add/change]
+## Build Tools
+- **Package Manager**: [npm, pip, maven, etc.]
+- **Build System**: [How code is compiled/bundled]
+- **Testing Framework**: [Testing tools used]
 
-## 📝 Step-by-Step Instructions
-
-### Step 1: [Action Name] (X minutes)
-1. **Action**: [Specific action to take]
-2. **File**: [Which file to modify]
-3. **Code**: [Exact code to add/change]
-4. **Test**: [How to verify this step]
-
-### Step 2: [Action Name] (X minutes)
-1. **Action**: [Specific action to take]
-2. **File**: [Which file to modify]
-3. **Code**: [Exact code to add/change]
-4. **Test**: [How to verify this step]
-
-### Step 3: [Action Name] (X minutes)
-1. **Action**: [Specific action to take]
-2. **File**: [Which file to modify]
-3. **Code**: [Exact code to add/change]
-4. **Test**: [How to verify this step]
-
-## 🧪 Testing & Validation
-- **Test 1**: [How to test this functionality]
-- **Test 2**: [How to verify output]
-- **Test 3**: [How to check for errors]
-
-## ✅ Success Criteria
-- [ ] Criteria 1: [Specific measurable outcome]
-- [ ] Criteria 2: [Specific measurable outcome]
-- [ ] Criteria 3: [Specific measurable outcome]
-
-## ⚠️ Potential Issues & Solutions
-- **Issue 1**: [What could go wrong]
-  - **Solution**: [How to fix it]
-- **Issue 2**: [What could go wrong]
-  - **Solution**: [How to fix it]
-
-## 🔗 Related Tasks
-- **Dependencies**: [Tasks that must be done first]
-- **Enables**: [Tasks that become possible after this]
-- **Conflicts**: [Tasks that might conflict]
-
-## 📚 Resources
-- **Documentation**: [Links to relevant docs]
-- **Examples**: [Similar implementations]
-- **Tools**: [Tools needed for this task]
+## Deployment
+- **Containerization**: [Docker, etc.]
+- **CI/CD**: [Automation tools]
+- **Hosting**: [Where it's deployed]
 ```
+
+### Architecture Patterns Template
+```markdown
+# Architecture Patterns
+
+## Design Patterns
+- **MVC/MVT**: [Model-View-Controller usage]
+- **Repository Pattern**: [Data access patterns]
+- **Service Layer**: [Business logic organization]
+- **Dependency Injection**: [How dependencies are managed]
+
+## File Organization
+- **Module Structure**: [How code is organized]
+- **Naming Conventions**: [File/class naming rules]
+- **Import Patterns**: [How modules are imported]
+
+## Data Flow
+- **Request Processing**: [How requests are handled]
+- **Database Operations**: [Data access patterns]
+- **Error Handling**: [Exception management]
+
+## Testing Strategy
+- **Unit Tests**: [Component testing approach]
+- **Integration Tests**: [System testing]
+- **Test Organization**: [How tests are structured]
+```
+
+---
+
+## INTELLIGENT MEMORY UPDATE RULES
+
+### Rule #1: Context-Aware Updates
+```
+WHEN UPDATING MEMORY:
+- Focus on structural changes (new files, deleted files, moved components)
+- Identify new patterns or conventions
+- Update technology stack if new dependencies added
+- Track architectural evolution
+- Note breaking changes or migrations
+
+DON'T UPDATE:
+- Temporary files or build artifacts
+- Minor code changes without architectural impact
+- Personal development notes
+- Debugging information
+```
+
+### Rule #2: Memory Hierarchy
+```
+PRIORITY ORDER FOR MEMORY UPDATES:
+1. project-overview (always update first)
+2. technical-stack (if dependencies changed)
+3. architecture-patterns (if structure evolved)
+4. recent-changes (for incremental updates)
+5. current-state (for immediate context)
+6. specialized memories (api-endpoints, database-schema, etc.)
+```
+
+### Rule #3: Change Detection Strategy
+```
+DETECT CHANGES BY:
+- Comparing current symbols with previous memory
+- Looking for new file patterns
+- Identifying modified entry points
+- Checking for new dependencies
+- Analyzing updated configuration files
+- Reviewing recent commit patterns (if available)
+```
+
+### Rule #4: Memory Validation
+```
+BEFORE WRITING MEMORY:
+- Verify information is accurate and current
+- Ensure consistency across related memories
+- Check that patterns are actually used (not just declared)
+- Validate that file paths and references are correct
+- Confirm that architectural decisions are reflected in code
+```
+
+---
+
+## AUTOMATED MEMORY UPDATE WORKFLOW
+
+### Trigger: "cập nhật memory dự án"
+
+#### Automated Process:
+```python
+def update_project_memory():
+    # 1. Load existing context
+    existing_memories = load_all_memories()
+    
+    # 2. Analyze current state
+    current_structure = analyze_project_structure()
+    current_patterns = identify_architectural_patterns()
+    current_technologies = detect_technology_stack()
+    
+    # 3. Compare with previous state
+    changes = detect_significant_changes(existing_memories, current_structure)
+    
+    # 4. Update memories intelligently
+    if changes.detected:
+        update_project_overview(changes)
+        update_technical_stack(changes)
+        update_architecture_patterns(changes)
+        create_recent_changes_memory(changes)
+    
+    # 5. Validate updates
+    validate_memory_consistency()
+    
+    return "Memory updated successfully with X changes detected"
+```
+
+---
+
+## MEMORY QUALITY ASSURANCE
+
+### Validation Checklist
+- [ ] **Accuracy**: All file paths and references are correct
+- [ ] **Completeness**: Key components and patterns are documented
+- [ ] **Consistency**: Information across memories is coherent
+- [ ] **Relevance**: Only important, lasting information is stored
+- [ ] **Clarity**: Information is well-organized and understandable
+- [ ] **Actionability**: Memory helps with future development tasks
+
+### Memory Health Metrics
+```
+MEMORY QUALITY INDICATORS:
+- Comprehensive project overview exists
+- Technical stack is accurately documented
+- Architecture patterns are clearly described
+- Recent changes are tracked
+- File structure is well-mapped
+- Key components are identified
+- Development workflow is documented
+```
+
+---
+
+## SUCCESS CRITERIA
+
+### For Project Initialization:
+- [ ] Project is activated and accessible
+- [ ] Core memories are created (project-overview, technical-stack, architecture-patterns)
+- [ ] Key files and patterns are identified
+- [ ] Technology stack is accurately documented
+- [ ] Development workflow is understood
+- [ ] Entry points and main components are mapped
+
+### For Memory Updates:
+- [ ] Changes are detected and documented
+- [ ] Memories are updated with new information
+- [ ] Consistency is maintained across memories
+- [ ] Recent changes are tracked
+- [ ] Current state is accurately reflected
+- [ ] No outdated information remains
+
+---
+
+## IMPLEMENTATION COMMANDS
+
+### For New Project:
+```python
+# User says: "hiểu dự án này" or enters new project
+mcp_serena_activate_project("{project path}")
+mcp_serena_check_onboarding_performed()
+# Follow Phase 1-3 workflow above
+```
+
+### For Memory Update:
+```python
+# User says: "cập nhật memory dự án"
+# Follow Project Memory Update Workflow above
+```
+
+### For Quick Context Check:
+```python
+# User asks about project understanding
+mcp_serena_read_memory("project-overview")
+mcp_serena_read_memory("current-state")
+# Provide summary based on memories
+```
+
+---
