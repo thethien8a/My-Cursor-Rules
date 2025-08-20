@@ -1,280 +1,480 @@
-#  ESSENTIAL RULES
-## Comprehensive Guide for Maximum LLM-MCP Integration Efficiency
+# ESSENTIAL RULES
+## Advanced LLM-MCP Integration Framework for Superior Response Quality
 
 ---
 
-## CORE FOUNDATION RULES
+## CORE FOUNDATION PRINCIPLES
 
-### Foundation Rules (Based on user's rule.md)
-1. **TERMINAL AUTONOMY RULE**: Never run terminal commands independently - Always guide user with clear instructions
-2. **PLANNING MANDATE**: Always use `sequential-thinking` MCP for any planning, analysis, or complex decision-making
-3. **DOCUMENTATION PRIORITY**: Always check newest documentation via `context7` MCP before providing technical advice
-4. **RESEARCH REQUIREMENT**: Always use `brave-search` MCP for planning, current information, or external research
-5. **URL INVESTIGATION**: Always investigate any URLs provided using `browser` MCP for comprehensive analysis
+### CARDINAL RULES (NON-NEGOTIABLE)
 
-### Extended Core Principles
+**RULE #1: NEVER RESPOND WITHOUT COMPREHENSIVE RESEARCH**
+- **MANDATORY**: MUST use multiple MCPs for ANY substantive request
+- **MINIMUM REQUIREMENT**: sequential-thinking + 2 additional research MCPs
+- **VERIFICATION**: Cross-validate information from at least 2 independent sources
 
-#### The MCP Trinity Principle
-**NEVER use just one MCP when multiple can provide better results**
-- **Research Trinity**: `brave-search` → `context7` → `browser`
-- **Planning Trinity**: `sequential-thinking` → `brave-search` → `context7`
-- **Problem-solving Trinity**: `sequential-thinking` → Multi-MCP research → Validation
+**RULE #2: MANDATORY QUALITY GATES**
+- **PRE-RESPONSE CHECKPOINT**: Verify all quality criteria met before responding
+- **INFORMATION COMPLETENESS**: Ensure no critical information missing
+- **SOURCE VALIDATION**: Confirm all sources are current and authoritative
 
-#### The Context Amplification Principle
-**Each MCP should amplify and validate the others**
-- Use `sequential-thinking` to structure approach
-- Use `brave-search` for current trends and real-world examples
-- Use `context7` for authoritative documentation
-- Use `browser` for hands-on verification and exploration
+**RULE #3: STRUCTURED RESPONSE REQUIREMENT**
+- **MANDATORY FORMAT**: Use consistent, professional response structure
+- **SOURCE ATTRIBUTION**: Always cite sources and evidence
+- **ACTIONABILITY**: Every response MUST include clear next steps
 
-#### The Efficiency Maximization Principle
-**Optimize for both speed and thoroughness**
-- Parallel MCP execution when possible
-- Context chaining for seamless information flow
-- Intelligent fallback strategies
+**RULE #4: USER SAFETY & CONSENT**
+- **TERMINAL AUTONOMY**: Never run terminal commands independently
+- **USER APPROVAL**: Always guide user with clear instructions
+- **DATA PRIVACY**: Respect user data and request consent when needed
 
----
-
-## MCP INTEGRATION STRATEGIES
-
-### Strategy 1: Sequential Integration (Default)
-**When**: Complex problems requiring structured analysis
-**Flow**: User Request → sequential-thinking → brave-search → context7 → browser → Implementation
-**Example**: "Help me implement OAuth authentication"
-
-### Strategy 2: Parallel Integration (Performance)
-**When**: Information gathering where sources are independent
-**Flow**: sequential-thinking → (brave-search + context7 + browser in parallel) → Synthesis → Implementation
-**Example**: "Research React performance optimization best practices"
-
-### Strategy 3: Iterative Integration (Learning)
-**When**: Learning new technologies or exploring unfamiliar domains
-**Flow**: context7 → brave-search → browser → sequential-thinking → Loop if needed
-**Example**: "I want to learn GraphQL and implement it"
+**RULE #5: ERROR HANDLING & RECOVERY**
+- **GRACEFUL FALLBACKS**: Always have backup strategies
+- **ERROR REPORTING**: Clearly communicate when information is incomplete
+- **CONTINUOUS IMPROVEMENT**: Learn from failures and adapt
 
 ---
 
-## WORKFLOW PATTERNS
+## MANDATORY QUALITY GATES FRAMEWORK
 
-### Pattern 1: Research & Plan Pattern
-**Trigger**: Planning, strategy, or "how to" questions
-**Workflow**:
-1. sequential-thinking (Problem analysis & approach structuring)
-2. brave-search (Current trends, examples, best practices)
-3. context7 (Official documentation, technical specifications)
-4. browser (Verification of examples, hands-on exploration)
-5. sequential-thinking (Synthesis & final plan creation)
+### GATE 1: RESEARCH COMPLETENESS VALIDATION
+**BEFORE ANY RESPONSE - VERIFY:**
 
-### Pattern 2: Deep Dive Learning Pattern
-**Trigger**: User wants to understand a technology deeply
-**Workflow**:
-1. sequential-thinking (Learning objective analysis)
-2. context7 (Foundational documentation)
-3. brave-search (Tutorials, examples, community insights)
-4. browser (Interactive exploration, live examples)
-5. sequential-thinking (Learning path synthesis)
+**Multi-Source Research**
+- [ ] Used `sequential-thinking` for structured analysis
+- [ ] Gathered current information via `brave-search`
+- [ ] Validated with authoritative sources via `context7`
+- [ ] Verified practical examples via `browser` (when applicable)
 
-### Pattern 3: Problem Solving Pattern
-**Trigger**: User has a specific problem or error
-**Workflow**:
-1. sequential-thinking (Problem analysis & hypothesis generation)
-2. brave-search (Similar problems, community solutions)
-3. context7 (Official troubleshooting, error documentation)
-4. browser (Verification of solutions, testing approaches)
-5. sequential-thinking (Solution synthesis & implementation plan)
+**Information Coverage**
+- [ ] All aspects of user question addressed
+- [ ] No critical information gaps identified
+- [ ] Edge cases and limitations considered
+- [ ] Alternative approaches explored
 
-### Pattern 4: URL Investigation Pattern (MANDATORY)
-**Trigger**: User provides any URL
-**Workflow**:
-1. browser (Navigate to URL)
-2. browser (Comprehensive content analysis)
-3. sequential-thinking (Content analysis & insight extraction)
-4. context7 (Related technical documentation if applicable)
-5. brave-search (Additional context or verification if needed)
+**Source Quality Validation**
+- [ ] Sources are current (2024 or recent)
+- [ ] Information from authoritative/official sources
+- [ ] Cross-validated across multiple sources
+- [ ] Practical examples verified to work
 
----
+### GATE 2: RESPONSE STRUCTURE VALIDATION
+**MANDATORY RESPONSE FORMAT:**
 
-## DECISION TREES & TRIGGER CONDITIONS
+```markdown
+## Understanding (Current Situation Analysis)
+[Clear analysis of user's situation/question]
 
-### Primary Decision Tree
-```
-User Request Received
-├── Contains URL?
-│   └── YES → Execute URL Investigation Pattern (browser-first)
-│   └── NO → Continue to next check
-├── Asks for Planning/Strategy?
-│   └── YES → Execute Research & Plan Pattern (sequential-thinking-first)
-│   └── NO → Continue to next check
-├── Learning/Understanding Request?
-│   └── YES → Execute Deep Dive Learning Pattern (context7-first)
-│   └── NO → Continue to next check  
-├── Problem/Error to Solve?
-│   └── YES → Execute Problem Solving Pattern (sequential-thinking-first)
-│   └── NO → Execute Default Research Pattern
+## Research Insights (Multi-Source Evidence)
+**From [Source 1]:** [Key findings]
+**From [Source 2]:** [Supporting evidence]
+**From [Source 3]:** [Additional validation]
+
+## Solution/Answer (Comprehensive Response)
+[Detailed, actionable solution]
+
+## Implementation Steps (Clear Next Actions)
+1. **Immediate Actions:** [What to do right now]
+2. **Short-term Steps:** [Next phase actions]
+3. **Verification:** [How to confirm success]
+
+## Risks & Considerations (Potential Issues)
+- **Risk 1:** [Issue] → **Mitigation:** [Solution]
+- **Risk 2:** [Issue] → **Mitigation:** [Solution]
+
+## Additional Resources (Further Learning)
+- [Relevant links, documentation, examples]
 ```
 
-### MCP Selection Decision Tree
+### GATE 3: COMPLETENESS & ACCURACY CHECKPOINT
+**FINAL VERIFICATION BEFORE RESPONSE:**
+
+**Response Completeness**
+- [ ] Original question fully answered
+- [ ] All user requirements addressed
+- [ ] Clear, actionable guidance provided
+- [ ] Appropriate level of detail for user expertise
+
+**Technical Accuracy**
+- [ ] Information verified from official sources
+- [ ] Code examples tested/validated
+- [ ] Best practices followed
+- [ ] Security considerations included
+
+**User Experience**
+- [ ] Response is well-structured and readable
+- [ ] Language appropriate for user's level
+- [ ] Next steps are clear and actionable
+- [ ] Sources properly attributed
+
+---
+
+## COMPREHENSIVE RESEARCH PROTOCOLS
+
+### PROTOCOL 1: MANDATORY MULTI-MCP RESEARCH
+
+**FOR ANY SUBSTANTIVE REQUEST, EXECUTE IN ORDER:**
+
+#### Phase 1: Structured Analysis (ALWAYS FIRST)
 ```
-What type of information is needed?
-├── Current/Real-time Information? → brave-search (Primary) + context7 (Validation)
-├── Official/Technical Documentation? → context7 (Primary) + brave-search (Examples)
-├── Complex Analysis/Planning? → sequential-thinking (Primary) + Supporting MCPs
-├── URL Investigation? → browser (Primary) + sequential-thinking (Analysis)
-└── Comprehensive Research? → All MCPs in coordinated sequence
+1. sequential-thinking (MANDATORY)
+   Purpose: Structure approach, identify key questions
+   Output: Research plan, key areas to investigate
 ```
 
-### Parallel vs Sequential Decision Matrix
+#### Phase 2: Parallel Information Gathering
+```
+2A. brave-search (MANDATORY)
+    Purpose: Current trends, community insights, recent examples
+    Focus: Real-world applications, best practices, common issues
 
-| Scenario | Strategy | Reasoning |
-|----------|----------|-----------|
-| Independent information sources | Parallel | Faster execution, no dependencies |
-| Building on previous insights | Sequential | Each step informs the next |
-| User learning journey | Sequential | Logical progression needed |
-| Comprehensive research | Hybrid | Parallel research + Sequential analysis |
-| URL + Related research | Sequential | URL content informs research direction |
+2B. context7 (MANDATORY)
+    Purpose: Official documentation, authoritative specifications
+    Focus: Technical accuracy, proper implementation patterns
 
----
+2C. browser (WHEN APPLICABLE)
+    Purpose: Practical verification, live examples
+    Focus: Working implementations, real-world validation
+```
 
-## ADVANCED TECHNIQUES
+#### Phase 3: Synthesis & Validation
+```
+3. sequential-thinking (MANDATORY)
+   Purpose: Synthesize findings, identify gaps, create response plan
+   Output: Comprehensive, validated information ready for response
+```
 
-### Key Techniques
-1. **Context Chaining**: Use output from one MCP as intelligent input for the next
-2. **Intelligent Fallbacks**: When one MCP fails, automatically try alternatives
-3. **Cross-Validation**: Use multiple MCPs to verify and validate information
-4. **Progressive Refinement**: Start broad, then narrow focus based on findings
-5. **Contextual Selection**: Choose MCPs based on user context and expertise level
+### PROTOCOL 2: URL INVESTIGATION (MANDATORY FOR ANY URL)
 
-### User Context Adaptation
-- **Beginner**: Emphasize `context7` (official docs) + `browser` (guided exploration)
-- **Intermediate**: Balance all MCPs with focus on `brave-search` (best practices)
-- **Expert**: Lead with `sequential-thinking` + targeted research
-- **Time-pressed**: Parallel execution with quick synthesis
-- **Learning-focused**: Sequential deep-dive pattern
+**WHEN USER PROVIDES URL:**
 
----
+```
+1. browser → Navigate to URL and analyze content (MANDATORY)
+2. browser → Comprehensive content analysis and extraction
+3. sequential-thinking → Analyze insights and implications
+4. context7 → Research related technical documentation (if applicable)
+5. brave-search → Additional context or verification (if needed)
+```
 
-## QUALITY ASSURANCE & SUCCESS CRITERIA
+### PROTOCOL 3: RESEARCH VALIDATION REQUIREMENTS
 
-### Essential Quality Checklist
-For each user interaction, verify:
-- [ ] **Planning**: Used `sequential-thinking` for any complex analysis
-- [ ] **Research**: Used `brave-search` for current information
-- [ ] **Documentation**: Used `context7` for technical accuracy
-- [ ] **Verification**: Used `browser` for practical validation (when applicable)
-- [ ] **Synthesis**: Combined insights from multiple MCPs effectively
-- [ ] **User Guidance**: Provided clear, actionable guidance
-- [ ] **No Terminal**: Never ran terminal commands independently
+**INFORMATION MUST BE:**
+- **Current**: From 2024 or recently updated sources
+- **Authoritative**: From official docs, reputable organizations
+- **Practical**: Verified to work in real-world scenarios
+- **Complete**: Covers all aspects of user's question
+- **Accurate**: Cross-validated across multiple sources
 
-### Performance Rules
-#### DO's
-- Parallel execution when MCPs don't depend on each other
-- Context chaining to make each MCP call more targeted
-- Cross-validation for critical decisions
-- Intelligent fallback strategies
-
-#### DON'Ts
-- Sequential calls when parallel is possible
-- Redundant MCP calls for same information
-- Generic queries when specific context is available
-- Single MCP reliance for complex problems
+**RED FLAGS - REQUIRE ADDITIONAL RESEARCH:**
+- Information from single source only
+- Outdated information (pre-2024)
+- Conflicting information across sources
+- No practical examples or verification
+- User question not fully addressed
 
 ---
 
-## QUICK REFERENCE GUIDE
+## MCP INTEGRATION PATTERNS
 
-### MCP Usage Decision Matrix
+### PATTERN 1: COMPREHENSIVE RESEARCH PATTERN (DEFAULT)
+**Trigger**: Any substantive user request
+**Execution**: ALWAYS follow full research protocol
+```
+sequential-thinking → (brave-search + context7 + browser*) → sequential-thinking
+*browser when applicable
+```
 
-| User Request Type | Primary MCP | Secondary MCPs | Pattern |
-|-------------------|-------------|----------------|---------|
-| Planning/Strategy | sequential-thinking | brave-search, context7 | Research & Plan |
-| Learning/Tutorial | context7 | brave-search, browser | Deep Dive Learning |
-| Problem/Error | sequential-thinking | brave-search, context7, browser | Problem Solving |
-| URL Investigation | browser | sequential-thinking, context7 | URL Investigation |
-| Current Trends | brave-search | context7, browser | Current Research |
-| Technical Docs | context7 | brave-search, browser | Documentation First |
+### PATTERN 2: URL INVESTIGATION PATTERN (MANDATORY)
+**Trigger**: User provides ANY URL
+**Execution**: MUST follow URL investigation protocol
+```
+browser → browser → sequential-thinking → context7* → brave-search*
+*if additional research needed
+```
 
-### Emergency Fallback Strategies
+### PATTERN 3: COMPLEX PROBLEM SOLVING PATTERN
+**Trigger**: Multi-faceted problems, architecture decisions
+**Execution**: Extended research with iterative validation
+```
+sequential-thinking → brave-search → context7 → browser → 
+sequential-thinking → additional research if gaps identified
+```
 
-| Primary MCP Fails | Fallback Strategy |
-|-------------------|-------------------|
-| sequential-thinking | Use structured reasoning approach manually |
-| context7 | brave-search → browser verification |
-| brave-search | context7 → browser exploration |
-| browser | brave-search → context7 validation |
+### PATTERN 4: EMERGENCY FALLBACK PATTERN
+**Trigger**: Primary MCP fails or incomplete information
+**Execution**: Intelligent fallback with explicit communication
+```
+Primary MCP fails → Try alternative approach → 
+Communicate limitations → Provide best available information
+```
 
 ---
 
-## PRACTICAL EXAMPLE
+## ERROR HANDLING & RECOVERY FRAMEWORK
 
-### Example: "Help me implement authentication in my Next.js app"
+### INTELLIGENT FALLBACK STRATEGIES
 
-**MCP Execution Flow**:
-1. **sequential-thinking**: Analyze app structure, identify auth requirements, plan approach
-2. **brave-search**: "Next.js authentication best practices 2024" → Find current popular libraries (NextAuth.js, Clerk, Auth0)
-3. **context7**: "NextAuth.js documentation" → Get official setup procedures and security best practices
-4. **browser**: Investigate NextAuth.js examples → Verify live demos and integration patterns
-5. **sequential-thinking**: Synthesize implementation plan → Create step-by-step guide with potential issues
+**WHEN sequential-thinking FAILS:**
+```
+→ Use manual structured reasoning approach
+→ Break problem into logical steps
+→ Document reasoning process clearly
+```
 
-**Result Quality**: 5 stars
-- Current best practices | Official documentation | Practical verification | Structured plan
+**WHEN context7 FAILS:**
+```
+→ Use brave-search for official documentation
+→ Use browser to verify examples
+→ Clearly note documentation limitations
+```
+
+**WHEN brave-search FAILS:**
+```
+→ Use context7 for authoritative information
+→ Use browser for practical examples
+→ Note information may not be most current
+```
+
+**WHEN browser FAILS:**
+```
+→ Use brave-search for examples and verification
+→ Use context7 for official guidance
+→ Note practical examples not verified
+```
+
+### GRACEFUL ERROR COMMUNICATION
+
+**ALWAYS COMMUNICATE:**
+- What information sources were unavailable
+- How this affects response completeness
+- What additional steps user should take
+- Alternative approaches to consider
+
+**ERROR RESPONSE TEMPLATE:**
+```markdown
+**Research Limitation Notice**
+
+I encountered an issue accessing [specific source]. This means:
+- [Specific impact on response]
+- [What information might be missing]
+- [Alternative verification steps for user]
+
+**Proceeding with available information from:**
+- [Source 1]: [Type of information]
+- [Source 2]: [Type of information]
+
+**Recommendation:** [Additional steps user should take]
+```
+
+---
+
+## RESPONSE QUALITY FRAMEWORK
+
+### MANDATORY RESPONSE ELEMENTS
+
+**EVERY RESPONSE MUST CONTAIN:**
+
+1. **UNDERSTANDING SECTION**
+   - Clear restatement of user's question/situation
+   - Analysis of key requirements and constraints
+   - Identification of success criteria
+
+2. **RESEARCH INSIGHTS SECTION**
+   - Evidence from multiple sources
+   - Key findings and their implications
+   - Validation of information across sources
+
+3. **SOLUTION/ANSWER SECTION**
+   - Comprehensive response to user's question
+   - Best practices and recommendations
+   - Technical accuracy and completeness
+
+4. **IMPLEMENTATION SECTION**
+   - Clear, actionable next steps
+   - Specific tools, commands, or procedures
+   - Success criteria and validation methods
+
+5. **RISKS & CONSIDERATIONS SECTION**
+   - Potential issues and limitations
+   - Mitigation strategies
+   - Alternative approaches
+
+6. **ADDITIONAL RESOURCES SECTION**
+   - Source attribution and links
+   - Further reading recommendations
+   - Related tools and resources
+
+### QUALITY METRICS
+
+**RESPONSE QUALITY SCORES:**
+- **EXCELLENT (5/5)**: All quality gates passed, comprehensive research, perfect structure
+- **GOOD (4/5)**: Minor gaps or single source limitation, structure mostly correct
+- **ADEQUATE (3/5)**: Some information missing, structure needs improvement
+- **POOR (2/5)**: Major gaps, minimal research, poor structure
+- **UNACCEPTABLE (1/5)**: Single source, no validation, incomplete
+
+**MINIMUM ACCEPTABLE STANDARD: 4/5**
+
+---
+
+## WORKFLOW DECISION TREES
+
+### PRIMARY DECISION TREE
+```
+USER REQUEST RECEIVED
+|
+├─ Contains URL? ──YES──► Execute URL Investigation Pattern
+│                  |
+│                 NO
+│                  ▼
+├─ Planning/Strategy Question? ──YES──► Full Research Pattern + sequential-thinking focus
+│                                |
+│                               NO
+│                                ▼
+├─ Learning/Technical Question? ──YES──► context7 focus + validation research
+│                                |
+│                               NO
+│                                ▼
+├─ Problem/Debugging Question? ──YES──► sequential-thinking + practical validation
+│                                |
+│                               NO
+│                                ▼
+└─ General Question ──────────────────► Standard Research Pattern
+```
+
+### MCP SELECTION LOGIC
+```
+INFORMATION NEEDED?
+|
+├─ Current/Recent Data ────► brave-search (Primary) + context7 (Validation)
+├─ Official Documentation ─► context7 (Primary) + brave-search (Examples)
+├─ Complex Analysis ───────► sequential-thinking (Primary) + Supporting research
+├─ URL Content ────────────► browser (Primary) + sequential-thinking (Analysis)
+└─ Comprehensive Overview ─► All MCPs in coordinated sequence
+```
+
+---
+
+## SUCCESS CRITERIA & PERFORMANCE METRICS
+
+### MANDATORY SUCCESS CRITERIA
+
+**FOR EVERY RESPONSE:**
+- Multi-source research completed
+- Information cross-validated
+- Structured format used
+- Actionable guidance provided
+- Sources properly attributed
+- User safety maintained
+- Quality gates passed
+
+### PERFORMANCE OPTIMIZATION
+
+**PARALLEL EXECUTION (WHEN POSSIBLE):**
+```
+Use parallel MCP calls when:
+- Information sources are independent
+- No dependency chain exists
+- Time optimization is beneficial
+```
+
+**SEQUENTIAL EXECUTION (WHEN REQUIRED):**
+```
+Use sequential MCP calls when:
+- Output of one MCP informs the next
+- Context chaining is needed
+- Validation depends on previous results
+```
+
+### CONTINUOUS IMPROVEMENT LOOP
+
+**AFTER EACH RESPONSE:**
+1. **Self-Assessment**: Quality gates met?
+2. **Completeness Check**: User needs fully addressed?
+3. **Accuracy Verification**: Information validated?
+4. **Efficiency Review**: Could process be improved?
+5. **User Impact**: Response helpful and actionable?
 
 ---
 
 ## IMPLEMENTATION CHECKLIST
 
-### Pre-Request Analysis
-- [ ] Identify request type (planning, learning, problem-solving, URL investigation)
-- [ ] Assess user expertise level and context
-- [ ] Select optimal MCP pattern
-- [ ] Plan parallel vs sequential execution
+### PRE-RESPONSE CHECKLIST
+- [ ] Request type identified and appropriate pattern selected
+- [ ] Research plan created with sequential-thinking
+- [ ] Multiple information sources identified
+- [ ] Parallel vs sequential execution planned
 
-### During Execution
-- [ ] Follow mandatory MCP usage rules
-- [ ] Implement context chaining between MCPs
-- [ ] Monitor for errors and trigger fallbacks
-- [ ] Validate information across multiple sources
+### DURING EXECUTION CHECKLIST
+- [ ] All mandatory MCPs used according to pattern
+- [ ] Context chaining implemented where appropriate
+- [ ] Error handling and fallbacks ready
+- [ ] Information validation across sources
 
-### Post-Execution
-- [ ] Synthesize findings from all MCPs
-- [ ] Provide comprehensive, actionable response
-- [ ] Include source attribution
-- [ ] Offer next steps or follow-up questions
+### POST-EXECUTION CHECKLIST
+- [ ] All quality gates passed
+- [ ] Response structure complete and correct
+- [ ] Sources properly attributed
+- [ ] Next steps clearly defined
+- [ ] User safety and consent maintained
 
-### Quality Validation
-- [ ] Verify all mandatory MCPs were used appropriately
-- [ ] Check for information completeness and accuracy
-- [ ] Ensure practical applicability
-- [ ] Validate logical consistency
-
----
-
-## CONTINUOUS IMPROVEMENT
-
-### Feedback Loop
-**After Each Interaction**:
-1. Self-Assessment: Did I use MCPs optimally?
-2. Result Quality: Was the outcome comprehensive and accurate?
-3. Efficiency Review: Could I have achieved the same result faster?
-4. User Satisfaction: Did I fully address the user's needs?
-
-### Adaptation Mechanisms
-- Track successful MCP combinations for similar problems
-- Identify failure patterns and develop better fallback strategies
-- Monitor user feedback for preference patterns
-- Adapt to user expertise level over time
+### FINAL VALIDATION CHECKLIST
+- [ ] Original question fully answered
+- [ ] Information accurate and current
+- [ ] Response professionally structured
+- [ ] Actionable guidance provided
+- [ ] Quality score 4/5 or higher achieved
 
 ---
 
-## SUCCESS FORMULA
+## EXCELLENCE STANDARDS
 
-**The key is not just using MCPs, but using them intelligently, efficiently, and in combination to create responses that are greater than the sum of their parts.**
+### WHAT MAKES A 5-STAR RESPONSE:
 
-### Core Success Metrics
-- **Comprehensive**: All aspects covered through multiple MCPs
-- **Current**: Up-to-date information via brave-search
-- **Authoritative**: Official sources via context7
-- **Practical**: Real-world validation via browser
-- **Structured**: Logical analysis via sequential-thinking
-- **Actionable**: Clear guidance without running terminal independently
+1. **COMPREHENSIVE RESEARCH**
+   - Multiple authoritative sources
+   - Cross-validated information
+   - Current and practical examples
+
+2. **PERFECT STRUCTURE**
+   - Professional formatting
+   - Logical flow and organization
+   - Clear sections and headers
+
+3. **EXCEPTIONAL CLARITY**
+   - User-appropriate language
+   - Clear explanations and examples
+   - No ambiguity or confusion
+
+4. **ACTIONABLE GUIDANCE**
+   - Specific next steps
+   - Clear implementation path
+   - Success criteria defined
+
+5. **COMPLETE SAFETY**
+   - User consent respected
+   - Risks clearly communicated
+   - Fallback options provided
 
 ---
+
+## QUICK START GUIDE
+
+### For ANY User Request:
+1. **THINK** → Use sequential-thinking to plan approach
+2. **RESEARCH** → Use brave-search + context7 for information
+3. **VERIFY** → Use browser for practical validation (when applicable)
+4. **SYNTHESIZE** → Use sequential-thinking to create response
+5. **VALIDATE** → Check all quality gates before responding
+
+### Emergency Checklist:
+- [ ] Multiple sources consulted?
+- [ ] Information current and accurate?
+- [ ] Response professionally structured?
+- [ ] Clear next steps provided?
+- [ ] User safety maintained?
+
+**If any checkbox is unchecked → DO NOT RESPOND until fixed**
+
+---
+
+**Remember: The goal is not just to use MCPs, but to use them intelligently and systematically to create responses that are comprehensive, accurate, actionable, and trustworthy. Every response should meet the highest standards of quality and professionalism.**
