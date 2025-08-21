@@ -1,25 +1,31 @@
 # MANDATORY RULES FOR CURSOR AI EDITOR WORKFLOW
 
-## File Reading Priority
-**RULE #1: Check Serena project initialization before reading**
-- **Initialization check (MANDATORY)**: Verify Serena project is initialized.
-  - Preferred: `mcp_serena_check_onboarding_performed()`; if it errors or reports no active project, treat as not initialized.
-- **If NOT initialized**: Use Cursor `read_file` only.
-- **If initialized**: Use BOTH in order: first `mcp_serena_read_file`, then Cursor `read_file`.
-- **Why**: Ensures Serena’s semantic context is used when available; maintains IDE visibility and consistent behavior.
+## CRITICAL FILE READING RULE - NO EXCEPTIONS
+**ALWAYS USE SERENA FIRST FOR ALL FILE READING**
 
-- **Example**:
+### SIMPLE RULE: 
+**Try mcp_serena_read_file FIRST. Only use read_file if Serena returns no content.**
+
+### Step-by-Step (MANDATORY):
+1. **FIRST**: Try `mcp_serena_read_file(relative_path="filename")`
+2. **CHECK**: If Serena returns content → DONE, do not use Cursor read_file
+3. **FALLBACK**: If Serena returns empty/no content → Then use `read_file(target_file="filename")`
+
+### Why This Rule Exists:
+- Serena provides semantic context and project understanding
+- Only use Cursor as fallback when Serena fails
+- Avoid duplicate reads when Serena works
+
+### Example (FOLLOW THIS EXACTLY):
 ```python
-# Step 0: Check Serena project initialization
-init_ok = mcp_serena_check_onboarding_performed()
+# STEP 1: ALWAYS try Serena first
+result = mcp_serena_read_file(relative_path="file.py")
 
-if not init_ok:
-    # Project NOT initialized → use Cursor only
+# STEP 2: Only use Cursor if Serena failed or returned empty
+if not result or result.empty:
     read_file(target_file="file.py")
-else:
-    # Project initialized → use both Serena + Cursor
-    mcp_serena_read_file(relative_path="file.py")
-    read_file(target_file="file.py")
+
+# RULE: Serena first, Cursor only as fallback
 ```
 
 ## File Creation/Editing Priority  
@@ -35,17 +41,18 @@ else:
   mcp_serena_create_text_file(relative_path="new_file.py", content="content")
   ```
 
-## Workflow Decision Tree
+## WORKFLOW DECISION TREE
 
-### For File Reading:
+### For File Reading (SIMPLIFIED):
 ```
-0. Check Serena project initialization
+EVERY TIME YOU NEED TO READ A FILE:
    ↓
-1. If NOT initialized → use Cursor read_file() and stop
+1. FIRST: mcp_serena_read_file(relative_path="filename")
    ↓
-2. If initialized → run mcp_serena_read_file() then read_file() (both)
+2. CHECK: Did Serena return content?
    ↓
-3. If any step fails unexpectedly → Report error to user
+3a. YES → DONE (do not use Cursor read_file)
+3b. NO → Use read_file(target_file="filename") as fallback
 ```
 
 ### For File Creation/Editing:
@@ -59,19 +66,18 @@ else:
 4. If both fail → Report error to user
 ```
 
-## Quick Reference Commands
+## QUICK REFERENCE - COPY THIS EXACTLY
 
-### Reading Files:
+### Reading Files (USE THIS TEMPLATE):
 ```python
-# Initialization check
-mcp_serena_check_onboarding_performed()
+# STEP 1: ALWAYS try Serena first (MANDATORY)
+result = mcp_serena_read_file(relative_path="filename.extension")
 
-# If NOT initialized → Cursor only
-read_file(target_file="file.py")
+# STEP 2: Only use Cursor if Serena failed or returned empty
+if not result or len(result) == 0:
+    read_file(target_file="filename.extension")
 
-# If initialized → Both Serena then Cursor
-mcp_serena_read_file(relative_path="file.py")
-read_file(target_file="file.py")
+# RULE: Serena first, Cursor only as fallback when needed
 ```
 
 ### Creating Files:
@@ -105,9 +111,14 @@ mcp_serena_replace_regex(relative_path="existing_file.py", regex="old_pattern", 
 4. **Maintain consistency across the project**
 5. **Update project memory with successful operations**
 
-## Error Handling
-- Before reading: If Serena project is not initialized → skip Serena read_file and use Cursor read_file only
-- If Serena MCP read_file fails → Immediately try Cursor read_file
-- If Cursor edit_file fails → Immediately try Serena MCP tools
-- If both fail → Provide clear error message to user
-- Always log which method was successful for future reference
+## ERROR HANDLING - SIMPLIFIED
+- **If Serena returns content**: DONE, do not use Cursor read_file
+- **If Serena fails or returns empty**: Use Cursor read_file as fallback
+- **If both fail**: Report error to user
+- **NEVER skip Serena**: Always try mcp_serena_read_file first, no exceptions
+
+## SUMMARY FOR LLM
+**EVERY TIME YOU READ A FILE:**
+1. `mcp_serena_read_file(relative_path="filename")` ← ALWAYS TRY FIRST
+2. `read_file(target_file="filename")` ← ONLY if Serena failed/empty
+3. Priority: Serena first, Cursor only as fallback when needed
