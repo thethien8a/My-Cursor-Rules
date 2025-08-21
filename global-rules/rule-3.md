@@ -1,386 +1,263 @@
-## PROJECT MEMORY MANAGEMENT RULES
+# PROJECT MEMORY & CACHE MANAGEMENT RULES
 
-### Core Philosophy: Intelligent Project Context Capture
+## Core Philosophy: Complete LLM Understanding
 
-**MANDATORY TRIGGER CONDITIONS:**
-- User enters a new project workspace
-- User says "cập nhật memory dự án" or "update project memory"
-- User asks "hiểu dự án này" or "understand this project"
-- First time working with a project after activation
+**MANDATORY TRIGGERS:**
+- New project: "hiểu dự án này" or "understand this project"
+- Memory update: "cập nhật memory dự án" or "update project memory"
+- Cache issues: Response time > 10s, errors > 5%, cache age > 30 days
+- Major changes: >20% files modified
 
-**GOAL:** Create comprehensive, intelligent memory system that automatically understands and updates project context.
+**GOAL:** Create comprehensive memory system for complete LLM project understanding with optimized cache performance.
 
 ---
 
-## PROJECT INITIALIZATION WORKFLOW
+## QUICK START WORKFLOW
 
-### Phase 1: Project Activation & Discovery (MANDATORY)
-
-#### Step 1: Project Activation
+### 1. Project Initialization
 ```python
-# ALWAYS start with project activation
-mcp_serena_activate_project(project_name_or_path)
+# ALWAYS start here
+mcp_serena_activate_project(project_path)
 mcp_serena_check_onboarding_performed()
+
+# Check and reset cache if needed
+if check_cache_health().needs_reset:
+    reset_llm_cache()
+    warm_cache_after_reset()
+
+# Create comprehensive memories
+create_complete_project_context()
 ```
 
-#### Step 2: Structure Discovery
+### 2. Memory Update Process
 ```python
-# Get comprehensive project overview
-mcp_serena_get_symbols_overview(relative_path="{file_path}")
-mcp_serena_list_dir(relative_path=".", recursive=True)
-```
-
-#### Step 3: Technology Stack Identification
-```python
-# Identify key technologies and frameworks
-mcp_serena_search_for_pattern("requirements\\.txt|package\\.json|pom\\.xml|build\\.gradle|Cargo\\.toml|go\\.mod")
-mcp_serena_search_for_pattern("Dockerfile|docker-compose|dockerfile")
-mcp_serena_search_for_pattern("\\.env|config\\.|settings\\.|application\\.properties")
-```
-
-#### Step 4: Architecture Analysis
-```python
-# Understand project structure and patterns
-mcp_serena_find_symbol("main|app|index|startup")  # functions
-mcp_serena_find_symbol("class|interface|struct")  # classes/interfaces
-mcp_serena_search_for_pattern("import|from|require|using")
-```
-
-### Phase 2: Deep Context Analysis
-
-#### Step 5: Key Files Analysis
-```python
-# Analyze critical project files
-critical_files = [
-    "README.md", "README.txt", "CHANGELOG.md", "LICENSE",
-    "requirements.txt", "package.json", "pom.xml", "build.gradle",
-    "Dockerfile", "docker-compose.yml", ".env.example",
-    "config/", "src/", "app/", "main/"
-]
-
-for file_pattern in critical_files:
-    mcp_serena_search_for_pattern(file_pattern)
-```
-
-#### Step 6: Code Patterns Discovery
-```python
-# Find architectural patterns and conventions
-mcp_serena_search_for_pattern("def main|if __name__|public static void main|func main")
-mcp_serena_search_for_pattern("class.*Controller|class.*Service|class.*Repository|class.*Model")
-mcp_serena_search_for_pattern("router\\.|app\\.|express\\.|flask\\.|django\\.|spring\\.|fastapi\\.")
-```
-
-#### Step 7: Database & Configuration Analysis
-```python
-# Database and configuration patterns
-mcp_serena_search_for_pattern("database|db|sql|mongo|redis|postgres|mysql")
-mcp_serena_search_for_pattern("config|settings|environment|env|properties")
-mcp_serena_search_for_pattern("migration|schema|model|entity")
-```
-
-### Phase 3: Memory Creation & Organization
-
-#### Step 8: Create Core Memory Files
-```python
-# Create comprehensive project memory
-mcp_serena_write_memory("project-overview", comprehensive_project_summary)
-mcp_serena_write_memory("technical-stack", technology_analysis)
-mcp_serena_write_memory("architecture-patterns", architectural_insights)
-mcp_serena_write_memory("development-conventions", coding_patterns)
-mcp_serena_write_memory("project-structure", file_organization)
-```
-
-#### Step 9: Create Specialized Memory Files
-```python
-# Create specialized context memories
-mcp_serena_write_memory("api-endpoints", api_analysis)
-mcp_serena_write_memory("database-schema", database_structure)
-mcp_serena_write_memory("deployment-config", deployment_info)
-mcp_serena_write_memory("development-workflow", workflow_patterns)
-```
-
----
-
-## PROJECT MEMORY UPDATE WORKFLOW
-
-### Trigger: "cập nhật memory dự án"
-
-#### Step 1: Current State Assessment
-```python
-# Read existing memories to understand current context
-mcp_serena_read_memory("project-overview")
-mcp_serena_read_memory("technical-stack")
-mcp_serena_read_memory("architecture-patterns")
-```
-
-#### Step 2: Change Detection
-```python
-# Detect what has changed since last update
-mcp_serena_get_symbols_overview(relative_path=".")
-mcp_serena_search_for_pattern("TODO|FIXME|HACK|NOTE|CHANGED|UPDATED")
-mcp_serena_search_for_pattern("def.*new|class.*new|function.*new")
-```
-
-#### Step 3: Incremental Analysis
-```python
-# Focus on new or modified components
-mcp_serena_find_symbol("recently_added|new_feature|updated")
-mcp_serena_search_for_pattern("recently|newly|updated|modified|changed")
-```
-
-#### Step 4: Memory Update Strategy
-```python
-# Update memories with new information
-mcp_serena_write_memory("project-overview", updated_summary)
-mcp_serena_write_memory("recent-changes", change_log)
-mcp_serena_write_memory("current-state", current_analysis)
-```
-
----
-
-## MEMORY TEMPLATES & STRUCTURE
-
-### Project Overview Template
-```markdown
-# Project: [Project Name]
-
-## Project Purpose
-- **Primary Goal**: [Main objective]
-- **Target Users**: [Who uses this]
-- **Key Features**: [Core functionality]
-
-## Architecture Overview
-- **Technology Stack**: [Languages, frameworks, databases]
-- **Architecture Pattern**: [MVC, Microservices, etc.]
-- **Deployment**: [How it's deployed]
-
-## Project Structure
-- **Root Directories**: [Key folders and their purposes]
-- **Entry Points**: [Main files that start the application]
-- **Configuration**: [Where settings are stored]
-
-## Development Setup
-- **Dependencies**: [How to install requirements]
-- **Environment**: [Required environment variables]
-- **Build Process**: [How to build/run the project]
-
-## Key Components
-- **Frontend**: [UI framework and structure]
-- **Backend**: [Server-side components]
-- **Database**: [Data storage and models]
-- **API**: [External interfaces]
-
-## Current Status
-- **Development Phase**: [Current stage]
-- **Known Issues**: [Any problems or limitations]
-- **Next Steps**: [Immediate priorities]
-```
-
-### Technical Stack Template
-```markdown
-# Technical Stack Analysis
-
-## Core Technologies
-- **Language**: [Primary programming language]
-- **Framework**: [Main framework used]
-- **Database**: [Data storage solution]
-- **Frontend**: [UI technologies]
-
-## Dependencies
-- **Production Dependencies**: [Key packages]
-- **Development Dependencies**: [Dev tools]
-- **Version Constraints**: [Important versions]
-
-## Build Tools
-- **Package Manager**: [npm, pip, maven, etc.]
-- **Build System**: [How code is compiled/bundled]
-- **Testing Framework**: [Testing tools used]
-
-## Deployment
-- **Containerization**: [Docker, etc.]
-- **CI/CD**: [Automation tools]
-- **Hosting**: [Where it's deployed]
-```
-
-### Architecture Patterns Template
-```markdown
-# Architecture Patterns
-
-## Design Patterns
-- **MVC/MVT**: [Model-View-Controller usage]
-- **Repository Pattern**: [Data access patterns]
-- **Service Layer**: [Business logic organization]
-- **Dependency Injection**: [How dependencies are managed]
-
-## File Organization
-- **Module Structure**: [How code is organized]
-- **Naming Conventions**: [File/class naming rules]
-- **Import Patterns**: [How modules are imported]
-
-## Data Flow
-- **Request Processing**: [How requests are handled]
-- **Database Operations**: [Data access patterns]
-- **Error Handling**: [Exception management]
-
-## Testing Strategy
-- **Unit Tests**: [Component testing approach]
-- **Integration Tests**: [System testing]
-- **Test Organization**: [How tests are structured]
-```
-
----
-
-## INTELLIGENT MEMORY UPDATE RULES
-
-### Rule #1: Context-Aware Updates
-```
-WHEN UPDATING MEMORY:
-- Focus on structural changes (new files, deleted files, moved components)
-- Identify new patterns or conventions
-- Update technology stack if new dependencies added
-- Track architectural evolution
-- Note breaking changes or migrations
-
-DON'T UPDATE:
-- Temporary files or build artifacts
-- Minor code changes without architectural impact
-- Personal development notes
-- Debugging information
-```
-
-### Rule #2: Memory Hierarchy
-```
-PRIORITY ORDER FOR MEMORY UPDATES:
-1. project-overview (always update first)
-2. technical-stack (if dependencies changed)
-3. architecture-patterns (if structure evolved)
-4. recent-changes (for incremental updates)
-5. current-state (for immediate context)
-6. specialized memories (api-endpoints, database-schema, etc.)
-```
-
-### Rule #3: Change Detection Strategy
-```
-DETECT CHANGES BY:
-- Comparing current symbols with previous memory
-- Looking for new file patterns
-- Identifying modified entry points
-- Checking for new dependencies
-- Analyzing updated configuration files
-- Reviewing recent commit patterns (if available)
-```
-
-### Rule #4: Memory Validation
-```
-BEFORE WRITING MEMORY:
-- Verify information is accurate and current
-- Ensure consistency across related memories
-- Check that patterns are actually used (not just declared)
-- Validate that file paths and references are correct
-- Confirm that architectural decisions are reflected in code
-```
-
----
-
-## AUTOMATED MEMORY UPDATE WORKFLOW
-
-### Trigger: "cập nhật memory dự án"
-
-#### Automated Process:
-```python
-def update_project_memory():
-    # 1. Load existing context
-    existing_memories = load_all_memories()
+def update_project_memory_and_cache():
+    # 1. Health check & cache reset if needed
+    cache_health = check_cache_health()
+    if cache_health.needs_reset:
+        reset_llm_cache()
+        warm_cache_after_reset()
     
     # 2. Analyze current state
-    current_structure = analyze_project_structure()
-    current_patterns = identify_architectural_patterns()
-    current_technologies = detect_technology_stack()
+    current_state = analyze_complete_project()
     
-    # 3. Compare with previous state
-    changes = detect_significant_changes(existing_memories, current_structure)
+    # 3. Update all memories
+    update_all_memories(current_state)
     
-    # 4. Update memories intelligently
-    if changes.detected:
-        update_project_overview(changes)
-        update_technical_stack(changes)
-        update_architecture_patterns(changes)
-        create_recent_changes_memory(changes)
-    
-    # 5. Validate updates
+    # 4. Validate and optimize
     validate_memory_consistency()
+    optimize_for_llm_consumption()
     
-    return "Memory updated successfully with X changes detected"
+    return "Memory and cache updated successfully"
 ```
 
 ---
 
-## MEMORY QUALITY ASSURANCE
+## MEMORY STRUCTURE FOR COMPLETE LLM UNDERSTANDING
 
-### Validation Checklist
-- [ ] **Accuracy**: All file paths and references are correct
-- [ ] **Completeness**: Key components and patterns are documented
-- [ ] **Consistency**: Information across memories is coherent
-- [ ] **Relevance**: Only important, lasting information is stored
-- [ ] **Clarity**: Information is well-organized and understandable
-- [ ] **Actionability**: Memory helps with future development tasks
+### Essential Memories (MUST CREATE)
+1. **project-overview**: Purpose, architecture, current status
+2. **technical-stack**: Languages, frameworks, dependencies
+3. **architecture-patterns**: Design patterns, data flow, integrations
+4. **llm-understanding-guide**: Complete context for LLM comprehension
+5. **quick-reference**: Instant access to key information
+6. **business-context**: Core workflows, rules, data models
+7. **development-workflows**: Patterns, conventions, procedures
 
-### Memory Health Metrics
-```
-MEMORY QUALITY INDICATORS:
-- Comprehensive project overview exists
-- Technical stack is accurately documented
-- Architecture patterns are clearly described
-- Recent changes are tracked
-- File structure is well-mapped
-- Key components are identified
-- Development workflow is documented
+### Enhanced Project Overview Template
+```markdown
+# Project: [Name] - Complete LLM Context
+
+## Project Identity
+- **Purpose**: [What problem solved?]
+- **Domain**: [Business/technical area]
+- **Scale**: [Small/Medium/Large]
+- **Maturity**: [Prototype/Development/Production]
+
+## Architecture Overview
+- **Pattern**: [MVC, Microservices, etc.]
+- **Data Flow**: [How data moves]
+- **Integrations**: [External services, APIs]
+- **Technology Stack**: [Languages, frameworks]
+
+## Code Organization
+- **Structure**: [How code is organized]
+- **Conventions**: [Naming, patterns]
+- **Entry Points**: [Main files]
+- **Configuration**: [Settings, environment]
+
+## Business Logic
+- **Core Workflows**: [Main processes]
+- **Data Models**: [Key entities]
+- **Business Rules**: [Constraints, validations]
+- **User Journeys**: [How users interact]
+
+## Development Context
+- **Setup**: [How to install/run]
+- **Testing**: [Test strategy]
+- **Deployment**: [How deployed]
+- **Troubleshooting**: [Common issues]
 ```
 
 ---
 
-## SUCCESS CRITERIA
+## CACHE MANAGEMENT SYSTEM
 
-### For Project Initialization:
-- [ ] Project is activated and accessible
-- [ ] Core memories are created (project-overview, technical-stack, architecture-patterns)
-- [ ] Key files and patterns are identified
-- [ ] Technology stack is accurately documented
-- [ ] Development workflow is understood
-- [ ] Entry points and main components are mapped
+### Cache Types
+- **Serena Cache** (.serena/cache/): Symbol analysis, code structure
+- **LLM Memory** (.serena/memories/): Project understanding, patterns
 
-### For Memory Updates:
-- [ ] Changes are detected and documented
-- [ ] Memories are updated with new information
-- [ ] Consistency is maintained across memories
-- [ ] Recent changes are tracked
-- [ ] Current state is accurately reflected
-- [ ] No outdated information remains
+### Health Monitoring
+```python
+def check_cache_health():
+    return CacheStatus(
+        response_time=measure_llm_response(),
+        cache_age=get_cache_age_days(),
+        error_rate=get_error_rate(),
+        needs_reset=(response_time > 10 or age > 30 or errors > 0.05)
+    )
+```
+
+### Reset Triggers
+- Performance: Response time > 10 seconds
+- Age: Cache older than 30 days  
+- Errors: Error rate > 5%
+- Changes: >20% files modified
+- Manual: User requests reset
+
+### Cache Optimization
+```python
+def warm_cache_after_reset():
+    # Pre-load critical files
+    critical_files = ["README.md", "requirements.txt", "main.py", "settings.py"]
+    for file in critical_files:
+        if exists(file): mcp_serena_read_file(file)
+    
+    # Pre-generate common queries
+    common_queries = ["structure", "entry points", "config", "models", "APIs"]
+    for query in common_queries:
+        mcp_serena_search_for_pattern(query)
+```
 
 ---
 
 ## IMPLEMENTATION COMMANDS
 
-### For New Project:
+### New Project Setup
 ```python
-# User says: "hiểu dự án này" or enters new project
-mcp_serena_activate_project("{project path}")
-mcp_serena_check_onboarding_performed()
-# Follow Phase 1-3 workflow above
+# User: "hiểu dự án này"
+mcp_serena_activate_project(project_path)
+reset_llm_cache()
+create_comprehensive_memories()
 ```
 
-### For Memory Update:
+### Memory & Cache Update  
 ```python
-# User says: "cập nhật memory dự án"
-# Follow Project Memory Update Workflow above
+# User: "cập nhật memory dự án"
+update_project_memory_and_cache()
 ```
 
-### For Quick Context Check:
+### Performance Issues
 ```python
-# User asks about project understanding
-mcp_serena_read_memory("project-overview")
-mcp_serena_read_memory("current-state")
-# Provide summary based on memories
+# When LLM slow/inaccurate
+reset_llm_cache()
+warm_cache_after_reset()
+validate_cache_consistency()
+```
+
+### Complete Context Loading
+```python
+def load_complete_context():
+    essential_memories = [
+        "project-overview", "technical-stack", "architecture-patterns",
+        "llm-understanding-guide", "business-context", "quick-reference"
+    ]
+    return {mem: mcp_serena_read_memory(mem) for mem in essential_memories}
 ```
 
 ---
+
+## QUALITY ASSURANCE
+
+### Memory Validation Checklist
+- [ ] **Accuracy**: All paths and references correct
+- [ ] **Completeness**: Key components documented
+- [ ] **Consistency**: Cross-memory coherence
+- [ ] **Relevance**: Important information only
+- [ ] **Clarity**: Well-organized and understandable
+- [ ] **Actionability**: Helps future development
+
+### Success Criteria
+- **Project Understanding**: LLM knows purpose, architecture, patterns
+- **Code Navigation**: LLM can find and understand any component  
+- **Business Logic**: LLM understands workflows and rules
+- **Development Help**: LLM can assist with coding, debugging, deployment
+- **Performance**: Response time < 10s, error rate < 5%
+
+---
+
+## ADVANCED STRATEGIES
+
+### Comprehensive Memory Creation
+```python
+def create_comprehensive_llm_context():
+    memories = {
+        # Core understanding
+        "project-overview": create_enhanced_overview(),
+        "technical-stack": analyze_tech_stack(),
+        "architecture-patterns": document_architecture(),
+        
+        # LLM-specific guides
+        "llm-understanding-guide": create_comprehension_guide(),
+        "quick-reference": create_instant_reference(),
+        "troubleshooting-guide": create_problem_reference(),
+        
+        # Business & operational
+        "business-context": extract_business_logic(),
+        "development-workflows": analyze_dev_patterns(),
+        "deployment-procedures": document_deployment()
+    }
+    
+    for name, content in memories.items():
+        mcp_serena_write_memory(name, content)
+```
+
+### Cache Performance Optimization
+```python
+def optimize_memory_for_llm():
+    # Structure hierarchically
+    hierarchy = {
+        'essential': ['project-overview', 'quick-reference'],
+        'architectural': ['technical-stack', 'architecture-patterns'], 
+        'operational': ['development-workflows', 'troubleshooting-guide']
+    }
+    
+    # Create cross-references and optimize for common queries
+    create_memory_cross_references(hierarchy)
+    create_query_optimization_cache()
+```
+
+---
+
+## MAINTENANCE
+
+### Daily Health Check
+```python
+def daily_maintenance():
+    health = check_cache_health()
+    if health.needs_reset:
+        reset_llm_cache()
+        warm_cache_after_reset()
+    else:
+        optimize_existing_cache()
+```
+
+### Manual Operations
+```python
+# Force reset: reset_llm_cache()
+# Selective update: selective_cache_update(changed_files)  
+# Validation: validate_cache_consistency()
+# Optimization: optimize_memory_for_llm_consumption()
+```
+
+**REMEMBER**: The goal is complete LLM understanding - after reading memories, any LLM should fully comprehend the project's purpose, architecture, business logic, and be able to assist with development tasks effectively.
