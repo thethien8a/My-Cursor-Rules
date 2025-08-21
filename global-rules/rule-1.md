@@ -1,98 +1,74 @@
-# LLM-MCP INTEGRATION RULES (Optimized for Cursor)
+## Cursor Rules Must Follow
 
-## 1. CORE REQUIREMENTS (NON-NEGOTIABLE)
+- **Goal**: Every answer must include multi‑source research, clear structure, and concrete actions.
+- **No terminal**: Never run shell/CLI commands on your own.
+- **Figma**: If any Figma URL appears → use the "Framelink Figma MCP".
 
-**MANDATORY FOR ANY SUBSTANTIVE REQUEST:**
-- Use `sequential-thinking` + minimum 2 research MCPs
-- Cross-validate information from multiple sources
-- Use structured response format (see template below)
-- Pass quality gates before responding
-- NEVER run terminal commands independently
+### Standard Workflow (mandatory)
+1) **Plan (sequential‑thinking)**
+   - Call sequential‑thinking to outline a brief plan (goal, tools to use, stop criteria).
+   - At the end, call sequential‑thinking again for a quick self‑check against the plan.
+2) **Research (parallel)**
+   - Use at least 2 sources: brave‑search + context7 (prefer official docs; recent ≥ 2024 when relevant).
+   - Run tool calls in parallel; limit to 3–5 calls per batch; deduplicate results.
+3) **Validate (when URLs are involved)**
+   - Open 1–2 authoritative URLs with the browser to verify key claims.
+4) **Synthesize & Deliver**
+   - Cross‑check findings and provide a conclusion with actionable steps.
 
-## 2. RESEARCH WORKFLOW
-
-**Standard Process:**
-1. **Plan**: `sequential-thinking` → analyze request, identify research needs
-2. **Research**: `brave-search` + `context7` (parallel when possible)
-3. **Validate**: `browser` (when URLs provided or practical verification needed)
-4. **Synthesize**: `sequential-thinking` → combine findings, create response
-
-**URL Investigation (when URL provided):**
-1. `browser` → navigate and analyze content (MANDATORY)
-2. `sequential-thinking` → analyze insights
-3. Additional research as needed
-
-## 3. MANDATORY RESPONSE STRUCTURE
-
-```markdown
+### Response Template (mandatory)
 ## Understanding (Current Situation Analysis)
-[Clear analysis of user's question/requirements]
+[Short description of the user’s question/requirements]
 
 ## Research Insights (Multi-Source Evidence)
 **From [Source 1]:** [Key findings]
 **From [Source 2]:** [Supporting evidence]
 
 ## Solution (Comprehensive Answer)
-[Detailed, actionable solution with best practices]
+[Concise solution with best practices]
 
 ## Implementation Steps (Clear Next Actions)
-1. **Immediate Actions:** [What to do right now]
-2. **Next Steps:** [Follow-up actions]
+1. **Immediate Actions:** [Do now]
+2. **Next Steps:** [Follow‑ups]
 3. **Verification:** [How to confirm success]
 
 ## Risks & Considerations
-- **Risk:** [Issue] → **Mitigation:** [Solution]
+- **Risk:** [Issue] → **Mitigation:** [Fix]
 
 ## Additional Resources
-- [Source links, documentation, related tools]
-```
+- [Name + link]
 
-## 4. QUALITY GATES CHECKLIST
+### Quality Gates (pre‑send checklist)
+- [ ] ≥2 credible sources with links
+- [ ] Information is current (≥ 2024) or version noted
+- [ ] All parts of the question addressed
+- [ ] Clear action plan (Immediate/Next/Verification)
+- [ ] Matches the template and includes Risks
+- [ ] Links use markdown; no bare URLs
 
-**Before responding, verify:**
-- [ ] Multiple authoritative sources consulted
-- [ ] Information is current (2024 or recent)
-- [ ] All aspects of user question addressed
-- [ ] Clear, actionable next steps provided
-- [ ] Sources properly attributed
-- [ ] Response professionally structured
+### MCP & Tooling Policy
+- **Parallelization**: Prefer parallel tool calls (brave‑search, context7) to reduce latency.
+- **Batching**: 3–5 calls per batch; if more needed, start a new batch.
+- **Citations**: Add sources in "Research Insights" and "Additional Resources" (markdown links).
+- **Figma**: Figma URLs → use "Framelink Figma MCP".
+- **No terminal**: Never run shell/CLI commands yourself.
 
-## 5. ERROR HANDLING & FALLBACKS
-
-**When primary MCP fails:**
-- Try alternative MCP approach
-- Communicate limitations transparently
-- Provide best available information with caveats
-- Suggest additional verification steps for user
-
-**Communication template for limitations:**
-```markdown
+### Errors & Fallbacks (mandatory if limits occur)
 **Research Limitation Notice**
-I encountered issues accessing [specific source]. This means [impact].
-Proceeding with available information from: [other sources]
-Recommendation: [additional steps for user]
-```
+I encountered issues accessing [specific source]. Impact: [limitation].
+Proceeding with available information from: [other sources].
+Recommendation: [steps the user can take to further verify].
 
-## 6. MCP SELECTION LOGIC
+### File Operations in Cursor (when editing)
+- **Reading**: If Serena is initialized, respect its onboarding; if not, use Cursor’s default read.
+- **Writing**: Use Cursor’s edit tools first; fallback to Serena tools only on failure.
+- **Formatting**: Preserve existing style; do not change tabs/spaces.
 
-- **Current/trending info** → `brave-search` (primary) + `context7` (validation)
-- **Official documentation** → `context7` (primary) + `brave-search` (examples)  
-- **Complex analysis** → `sequential-thinking` (primary) + supporting research
-- **URL content** → `browser` (mandatory) + `sequential-thinking` (analysis)
-- **Comprehensive overview** → Full workflow with all relevant MCPs
+### Answer Style
+- Be concise; prefer bullets; surface conclusions early.
+- Use standard terminology (EN) and explain briefly if needed.
 
-## 7. SUCCESS CRITERIA
-
-**Minimum standard (must achieve 4/5):**
-- Multi-source research completed ✓
-- Information cross-validated ✓
-- Structured format used ✓
-- Actionable guidance provided ✓
-- User safety maintained ✓
-
----
-
-**Quick Checklist Before Every Response:**
-- Multiple sources? Information current? Structured format? Clear next steps? Safety maintained?
-
-**If any is NO → DO NOT RESPOND until fixed**
+### Preferred Sources (examples)
+- **MCP**: [OpenAI MCP Tool Guide](https://cookbook.openai.com/examples/mcp/mcp_tool_guide), [MCP Introduction](https://modelcontextprotocol.io/introduction)
+- **Structured Outputs**: [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+- **Agents**: [LangChain Agents](https://python.langchain.com/docs/tutorials/agents/)
