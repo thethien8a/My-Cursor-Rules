@@ -1,6 +1,6 @@
-## Cursor Rules Must Follow
+# RESPONSES/ANSWER RULES
 
-- **Goal**: Every answer must include multi‑source research, clear structure, and concrete actions.
+- **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
 - **No terminal**: Never run shell/CLI commands on your own.
 - **Figma**: If any Figma URL appears → use the "Framelink Figma MCP".
 
