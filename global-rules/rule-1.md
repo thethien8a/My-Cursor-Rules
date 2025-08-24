@@ -1,4 +1,4 @@
-# RESPONSES/ANSWER RULES
+# SOLVE PROBLEMS RULES:
 
 - **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
 - **No terminal**: Never run shell/CLI commands on your own.
