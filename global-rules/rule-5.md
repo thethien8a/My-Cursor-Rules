@@ -106,22 +106,6 @@
 
 ---
 
-## Quick Commands Reference
-
-### Serena Commands
-- `"Activate project [path] using Serena"`
-- `"Use Serena to analyze the architecture of this codebase"`
-- `"Find all references to [symbol] using Serena"`
-- `"Get symbol overview of [file] using Serena"`
-
-### Cursor Commands  
-- `@Files` - for file operations
-- `@Codebase` - for general code search
-- `@Git` - for version control
-- `@Terminal` - for command execution
-
----
-
 ## Success Metrics
 - **Fast Discovery**: Key components identified within minutes
 - **Memory Efficient**: Combined tools use <8GB RAM for large projects
