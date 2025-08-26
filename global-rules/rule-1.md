@@ -1,4 +1,4 @@
-# EVERYTHING I ASK YOU THEN YOU MUST DO ALL BELOW:
+# BEFORE GIVING ME THE ANSWER OR DOING SOMETHING FOR ME, FOLLOW THE INSTRUCTIONS BELOW:
 
 - **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
 - **No terminal**: Never run shell/CLI commands on your own.
