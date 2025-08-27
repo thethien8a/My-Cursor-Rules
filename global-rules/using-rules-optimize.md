@@ -1,276 +1,176 @@
-# MANDATORY OPERATING INSTRUCTIONS FOR CURSOR AI AGENT
-*CRITICAL: Follow these rules strictly for efficient coding assistance*
-*Hybrid Approach: Serena Efficiency + Cursor Built-in Tools*
+# MANDATORY RULES FOR EFFECTIVE CODING:
 
-## YOU MUST FOLLOW THESE RULES
-These are not suggestions - they are MANDATORY instructions for how you operate as a Cursor AI coding agent. Violating these rules leads to inefficient performance and poor user experience.
+*Strategic tool selection for fast code exploration → precise editing → efficient maintenance*
 
-## CORE PRINCIPLES
+## CORE PHILOSOPHY: INTELLIGENT TOOL SELECTION
 
-### Resource Efficiency (From Serena)
-- Understand first, code second: Use semantic search to understand before making changes
-- Minimal file reading: Only read what's necessary for the task at hand
-- Intelligent exploration: Use codebase_search for meaning, grep for exact matches
-- Step-by-step information gathering: Don't read entire files unless absolutely necessary
-
-CRITICAL RULE: NEVER read entire large files without exploring first!
-
+**GOAL:** Maximize code understanding speed + precision while minimizing token usage through smart tool selection.
 
 ---
 
-## CURSOR BUILT-IN TOOLS (Your Available Arsenal)
+## TOOL SELECTION MATRIX
 
-### 1. Code Exploration & Understanding
+### CODE EXPLORATION & UNDERSTANDING
 
-#### codebase_search (PRIMARY for Understanding)
-Purpose: Semantic search to understand code meaning and architecture
+**CURSOR FIRST for Fast Discovery:**
 ```
-Use for: "How does authentication work?", "Where is error handling?"
-Don't use for: Exact symbol names, simple text matching
-Best practice: Start broad, then narrow with target_directories
-```
-
-#### grep (PRIMARY for Exact Matches)
-Purpose: Find exact text, symbols, patterns
-```
-Use for: Finding function names, imports, specific strings
-Don't use for: Understanding complex logic flows
-Best practice: Use with -C for context, combine with codebase_search
+- codebase_search: High-level architecture understanding, concept exploration
+- list_dir: Project structure overview
+- file_search: Find files by name/pattern
+- grep_search: Quick text/pattern matching across codebase
 ```
 
-#### read_file (SELECTIVE Reading)
-Purpose: Read file contents strategically
+**SERENA for Symbol-Level Precision:**
 ```
-Use for: Small files, specific sections (offset/limit)
-NEVER: Read massive files entirely without exploring first
-Best practice: Use limit/offset for large files, read_lints for errors
-```
-
-### 2. File System Navigation
-
-#### list_dir + glob_file_search
-Purpose: Explore project structure and find files
-```
-Use for: Understanding project layout, finding config files
-Pattern: list_dir for structure → glob_file_search for specifics
+- find_symbol: Locate specific functions/classes with LSP accuracy
+- get_symbols_overview: Understand file's symbol structure
+- find_referencing_symbols: Trace dependencies and relationships
+- search_for_pattern: Flexible pattern search when needed
 ```
 
-### 3. Code Editing (Precision Tools)
+### CODE EDITING & MODIFICATION
 
-#### search_replace (Single Edits)
-Purpose: Make focused changes in files
+**SERENA for Surgical Precision:**
 ```
-Use for: Simple find/replace, small modifications
-Don't use for: Multiple complex changes in one file
-Best practice: Make old_string unique with context
-```
-
-#### MultiEdit (Batch Edits)
-Purpose: Multiple changes in one file atomically
-```
-Use for: Refactoring, multiple related changes
-Best practice: Plan all edits upfront, sequential application
+- replace_symbol_body: Replace entire functions/classes
+- insert_after_symbol / insert_before_symbol: Precise code insertion
+- Preferred for: Symbol-level changes, language-aware edits
 ```
 
-#### write (File Creation)
-Purpose: Create new files or completely overwrite
+**CURSOR for Bulk Operations:**
 ```
-CAUTION: Always read existing files first before overwriting
-Use for: New files, complete rewrites only
+- search_replace: Simple find/replace operations
+- MultiEdit: Multiple changes in one file
+- Preferred for: Text-based changes, bulk modifications
+```
+
+### KNOWLEDGE MANAGEMENT
+
+**SERENA Memory System:**
+```
+- write_memory: Store project insights for future sessions
+- read_memory: Recall previous learnings
+- list_memories: Check available knowledge
 ```
 
 ---
 
 ## INTELLIGENT WORKFLOWS
 
-### Understanding Unknown Codebase (START HERE)
+### WORKFLOW 1: New Codebase Understanding
 ```
-1. codebase_search: "project architecture" or "main entry points" 
-2. list_dir: Get project structure overview
-3. codebase_search: Specific questions about components
-4. grep: Find exact symbols/imports when needed
-5. read_file: Only targeted sections with limit/offset
-```
-
-### **Finding & Understanding Code**
-```
-FOR CONCEPTS: codebase_search → "How does X work?"
-FOR SYMBOLS: grep → Find exact function/class names  
-FOR FILES: glob_file_search → Find by pattern
-FOR READING: read_file with limit/offset for large files
+1. codebase_search("project architecture") // Fast high-level grasp
+2. list_dir(".") // Structure overview  
+3. codebase_search("main entry points") // Find starting points
+4. mcp_serena_get_symbols_overview(key_files) // Symbol-level understanding
+5. mcp_serena_write_memory("project-overview", insights) // Persist learning
 ```
 
-### **Code Modification Strategy**
+### WORKFLOW 2: Feature Implementation
 ```
-SMALL CHANGES: search_replace
-MULTIPLE CHANGES: MultiEdit for same file
-NEW CODE: write for new files
-ALWAYS: read_lints after changes
-```
-
----
-
-## EFFICIENCY PATTERNS
-
-### Information Gathering (Use Parallel Tools)
-```python
-# GOOD: Parallel exploration
-codebase_search("authentication flow") + 
-grep("auth|login|session") +
-list_dir("src/")
-
-# BAD: Sequential without purpose
-read_file(massive_file.py) → then search same content
+1. codebase_search("similar feature implementation") // Learn patterns
+2. mcp_serena_find_symbol(target_class/function) // Locate exact symbols
+3. mcp_serena_find_referencing_symbols() // Understand dependencies  
+4. mcp_serena_replace_symbol_body() OR search_replace() // Make changes
+5. read_lints() // Validate changes
 ```
 
-### **File Reading Strategy**
-```python
-# LARGE FILES: Explore first
-codebase_search("specific functionality", ["large_file.py"])
-# Then: read_file with offset/limit for relevant sections
-
-# SMALL FILES: Read directly  
-read_file("config.py")  # OK for small files
+### WORKFLOW 3: Bug Investigation
 ```
-
-### **Editing Workflow**
-```python
-# SINGLE EDIT
-search_replace(file, unique_old_string, new_string)
-
-# MULTIPLE EDITS (Same file)
-MultiEdit(file, [edit1, edit2, edit3])  # Atomic
-
-# POST-EDIT
-read_lints([edited_file])  # Check for errors
+1. grep_search(error_message) // Quick error location
+2. mcp_serena_find_symbol(problematic_function) // Get symbol details
+3. mcp_serena_find_referencing_symbols() // Trace call sites
+4. codebase_search("similar bug patterns") // Learn from codebase
+5. Precise editing with Serena tools
 ```
 
 ---
 
-## TOOL SELECTION MATRIX
+## EFFICIENCY RULES
 
-| Task | Primary Tool | Secondary Tool | Context Strategy |
-|------|--------------|----------------|------------------|
-| Understand codebase | codebase_search | list_dir | Start broad, narrow down |
-| Find function/class | grep | codebase_search | Exact match first |
-| Read large file | codebase_search + read_file(limit) | grep for specifics | Never read entirely |
-| Small modifications | search_replace | grep for context | Make changes unique |
-| Multiple edits | MultiEdit | read_lints after | Plan all changes |
-| New functionality | write new files | search_replace existing | Integrate properly |
-
----
-
-## ANTI-PATTERNS (Avoid These!)
+### DO:
+- **Parallel Execution:** Run multiple read-only tools simultaneously
+- **Strategic Reading:** Use read_file with offset/limit for large files
+- **Memory First:** Check mcp_serena_read_memory() before re-discovery
+- **Symbol-First:** Prefer symbol-based operations over line-based when possible
+- **Context Validation:** Confirm understanding before making changes
 
 ### DON'T:
 - Read entire large files without exploring first
-- Use codebase_search for exact symbol names
-- Use grep for understanding complex logic
-- Make multiple search_replace calls when MultiEdit is better
-- Write files without reading existing content first
-- Ignore read_lints after making changes
-
-### DO:
-- Start with semantic search for understanding
-- Use grep for precise symbol finding
-- Read files strategically with offset/limit
-- Plan edits before executing
-- Use parallel tool calls when possible
-- Always validate changes with linting
-
-
+- Use codebase_search for exact symbol names (use mcp_serena_find_symbol)
+- Use Serena for simple text replacements (use Cursor search_replace)
+- Ignore Serena memory system for knowledge persistence
+- Make assumptions without validation
 
 ---
 
-## INTERACTION MODES
+## DECISION LOGIC
 
-### Interactive Mode (Default)
-- Engage actively: Ask clarifying questions when unclear
-- Break down tasks: Explain your approach step-by-step
-- High-level communication: Focus on strategy, not low-level details
-- Use diagrams: Create mermaid diagrams for complex relationships
-- Parallel execution: Use multiple tools simultaneously when possible
+### **When to use CURSOR:**
+- Initial codebase exploration
+- Fast text/pattern searching  
+- Bulk text operations
+- File management operations
+- Quick validation checks
 
-### Editing Mode
-- Plan before acting: Use codebase_search to understand before editing
-- Maintain patterns: Follow existing code style and architecture
-- Validate changes: Always run read_lints after modifications
-- Update references: Find and fix related code when refactoring
+### **When to use SERENA MCP:**
+- Symbol-level understanding needed
+- Precise code modifications
+- Cross-reference analysis
+- Language-specific operations
+- Knowledge persistence required
 
----
-
-## PRACTICAL EXAMPLES
-
-### Explore Unknown Codebase
-  ```python
-# STEP 1: High-level understanding
-codebase_search("main application entry point", [])
-list_dir(".")
-
-# STEP 2: Architecture understanding  
-codebase_search("database connections", [])
-codebase_search("API routes", [])
-
-# STEP 3: Specific component deep-dive
-grep("class|function", path="src/", -C=3)
-codebase_search("user authentication flow", ["src/auth/"])
-```
-
-### **Find and Modify Function**
-```python
-# STEP 1: Find the function
-grep("def calculate_price", path="src/", output_mode="files_with_matches")
-
-# STEP 2: Understand its context
-codebase_search("price calculation logic", ["src/billing.py"])
-
-# STEP 3: Read relevant section
-read_file("src/billing.py", offset=45, limit=20)
-
-# STEP 4: Make targeted change
-search_replace("src/billing.py", 
-    old_string="price * tax_rate", 
-    new_string="price * (tax_rate + discount_rate)")
-```
-
-### **Refactor Multiple Files**
-```python
-# STEP 1: Find all usages
-grep("old_function_name", output_mode="files_with_matches")
-
-# STEP 2: Understand impact
-codebase_search("how old_function_name is used", [])
-
-# STEP 3: Plan changes (use todo_write)
-todo_write(tasks_for_refactor)
-
-# STEP 4: Execute changes file by file
-for each_file:
-    search_replace(file, "old_function_name", "new_function_name")
-
-# STEP 5: Validate
-read_lints(changed_files)
-```
+### **When to use BOTH:**
+- Complex feature implementation
+- Comprehensive refactoring
+- Bug investigation across multiple files
+- Learning new codebase patterns
 
 ---
 
-## SUCCESS CRITERIA
+## QUALITY GATES
 
-### You are successful when:
-- You understand code meaning before making changes
-- You use the right tool for each task type
-- You read only necessary code sections
-- You make precise, targeted edits
-- You validate changes with linting
-- You maintain existing code patterns
+### **Before Any Code Changes:**
+- [ ] Full context understanding achieved
+- [ ] Dependencies and references mapped
+- [ ] Impact scope assessed
+- [ ] Appropriate tool selected for precision level needed
 
-### You are failing when:
-- Reading entire large files without exploring first
-- Using wrong tools for the task
-- Making assumptions without understanding context
-- Breaking existing functionality
-- Ignoring linting errors after changes
+### **After Code Changes:**
+- [ ] read_lints() validation completed
+- [ ] Changes tested if possible
+- [ ] Knowledge updated in Serena memory
+- [ ] Documentation updated if needed
 
 ---
 
-*Remember: You are a Cursor AI with powerful built-in tools. Use semantic search for understanding, grep for finding, and strategic reading for efficiency. Always validate your changes!*
+## SUCCESS METRICS
+
+**You're succeeding when:**
+- Understanding codebase faster than reading everything
+- Making precise changes without breaking dependencies
+- Maintaining context across work sessions
+- Minimizing redundant operations and token usage
+- Leveraging both tool ecosystems optimally
+
+**You're failing when:**
+- Reading entire large files without targeted exploration
+- Using wrong tool for the task (precision vs speed)
+- Ignoring available memory/knowledge
+- Making changes without understanding impact
+- Redundant operations across different tools
+
+---
+
+## QUICK REFERENCE
+
+| Task Type | Primary Tool | Secondary Tool | Key Principle |
+|-----------|--------------|----------------|---------------|
+| **Explore Unknown Code** | Cursor codebase_search | Serena symbols | Fast → Precise |
+| **Find Specific Symbol** | Serena find_symbol | Cursor grep | Precision first |
+| **Understand Dependencies** | Serena find_referencing | Cursor codebase_search | Symbol-level accuracy |
+| **Bulk Text Changes** | Cursor MultiEdit | Serena regex | Efficiency for scale |
+| **Surgical Code Edits** | Serena symbol tools | - | Language-aware precision |
+| **Knowledge Management** | Serena memory | - | Persistence across sessions |
+
+**REMEMBER:** Choose the RIGHT tool for the RIGHT precision level for the RIGHT task. Fast exploration → Precise understanding → Accurate modification.
