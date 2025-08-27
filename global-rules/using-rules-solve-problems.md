@@ -1,4 +1,4 @@
-# BEFORE GIVING ME THE ANSWER OR DOING SOMETHING FOR ME, FOLLOW THE INSTRUCTIONS BELOW:
+# SOLVING PROBLEMS RULES:
 
 - **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
 - **No terminal**: Never run shell/CLI commands on your own.
