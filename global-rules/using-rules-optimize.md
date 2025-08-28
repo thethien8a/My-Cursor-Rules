@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # MANDATORY RULES FOR EFFECTIVE CODING:
 
 *Strategic tool selection for fast code exploration → precise editing → efficient maintenance*
