@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # SOLVING PROBLEMS RULES:
 
 - **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
