@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # PROJECT MEMORY & CACHE MANAGEMENT RULES
 
 ## Core Philosophy: Complete LLM Understanding
