@@ -1,8 +1,4 @@
----
-alwaysApply: true
----
-
-# PROJECT MEMORY & CACHE MANAGEMENT RULES
+# RULE 3: PROJECT MEMORY & CACHE MANAGEMENT RULES
 
 ## Core Philosophy: Complete LLM Understanding
 
@@ -11,6 +7,9 @@ alwaysApply: true
 - Memory update: "cập nhật memory dự án" or "update project memory"
 - Cache issues: Response time > 10s, errors > 5%, cache age > 30 days
 - Major changes: >20% files modified
+- **Analysis Completion**: After Rule 1 analysis completion (mandatory)
+- **Pre-Implementation**: Before Rule 2 implementation begins (mandatory)
+- **Post-Analysis Memory**: Rule 1 analysis results must be stored via Rule 3 procedures
 
 **GOAL:** Create comprehensive memory system for complete LLM project understanding with optimized cache performance.
 
