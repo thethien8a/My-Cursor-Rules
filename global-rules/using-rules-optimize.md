@@ -1,14 +1,16 @@
----
-alwaysApply: true
----
-
-# MANDATORY RULES FOR EFFECTIVE CODING:
+# RULE 2: MANDATORY RULES FOR EFFECTIVE CODING:
 
 *Strategic tool selection for fast code exploration → precise editing → efficient maintenance*
 
 ## CORE PHILOSOPHY: INTELLIGENT TOOL SELECTION
 
 **GOAL:** Maximize code understanding speed + precision while minimizing token usage through smart tool selection.
+
+**INTEGRATION WITH OTHER RULES:**
+- Rule 1 takes precedence for analysis phase (research planning)
+- Rule 3 takes precedence for memory operations
+- Sequential-thinking is primarily for Rule 1 research planning
+- Use regular thinking patterns for coding workflows
 
 ---
 
