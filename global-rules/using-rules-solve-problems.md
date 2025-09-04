@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# SOLVING PROBLEMS RULES:
+# SOLVING PROBLEMS RULES MUST FOLLOW:
 
 - **Goal**: Before doing anything, you must do multi‑source research, know clear structure, and concrete actions.
 - **No terminal**: Never run shell/CLI commands on your own.
@@ -15,7 +15,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 
 #### **Phase 1: Deep Understanding** (REQUIRED)
 1. **Multi-Source Research**
-   - Use at least 2 sources: brave-search + context7 (prefer official docs; recent ≥ 2024)
+   - Use at least 3 tools MCP to research/search: brave-search + bright-data-mcp + context7 (prefer official docs; recent ≥ 2024)
    - Call sequential-thinking to plan research approach
    - Run tool calls in parallel; limit to 3–5 calls per batch
 
@@ -130,7 +130,8 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 ```
 
 **VALIDATION CHECKPOINTS:**
-- [ ] Problem fully understood with multi-source research
+- [ ] Problem fully understood with multi-source research (brave-search + context7 + bright-data-mcp)
+- [ ] Bright Data MCP used appropriately for web content analysis
 - [ ] At least 2-3 distinct alternatives identified and analyzed
 - [ ] Clear pros/cons for each option documented
 - [ ] Evidence-based recommendation with reasoning
@@ -147,9 +148,9 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 ### **Standard Workflow Integration**
 The above PRE-CODING WORKFLOW integrates with the existing standard workflow:
 
-1) **Plan (sequential‑thinking)** - Now includes problem analysis planning
-2) **Research (parallel)** - Enhanced with systematic alternative discovery
-3) **Validate** - Expanded to include solution validation and user confirmation
+1) **Plan (sequential‑thinking mcp)** - Now includes problem analysis planning
+2) **Research (MCP search tool like: bright data mcp)** - Enhanced with systematic alternative discovery
+3) **Validate (sequential-thinking mcp)** - Expanded to include solution validation and user confirmation
 4) **Synthesize & Deliver** - Now uses structured response template
 
 **REMEMBER: NO CODE CHANGES, FILE EDITS, OR IMPLEMENTATIONS until completing the full analysis above and receiving user confirmation of the approach.**
