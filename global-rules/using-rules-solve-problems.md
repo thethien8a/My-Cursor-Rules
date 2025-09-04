@@ -1,8 +1,4 @@
----
-alwaysApply: true
----
-
-# MANDATORY PRE-CODING ANALYSIS WORKFLOW RULES:
+# RULE 1: MANDATORY PRE-CODING ANALYSIS WORKFLOW RULES:
 
 - **Goal**: Before solving problems, you must do multi‑source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
 - **No terminal**: Never run shell/CLI commands on your own.
@@ -75,6 +71,11 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
     - Identify potential challenges and solutions
     - Estimate effort and timeline
     - Define success criteria and testing approach
+
+11. **Memory Integration**
+    - Follow Rule 3 (PROJECT MEMORY & CACHE MANAGEMENT RULES) for all memory updates
+    - Use Rule 3 procedures for creating/updating project context
+    - Reference Rule 3 memory structure requirements
 
 ### **Quality Gates & Response Template**
 
