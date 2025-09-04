@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# SOLVING PROBLEMS RULES MUST FOLLOW:
+# MANDATORY PRE-CODING ANALYSIS WORKFLOW RULES:
 
 - **Goal**: Before solving problems, you must do multi‑source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
 - **No terminal**: Never run shell/CLI commands on your own.
