@@ -15,9 +15,11 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 
 #### **Phase 1: Deep Understanding** (REQUIRED)
 1. **Multi-Source Research**
-   - Use at least 3 tools MCP to research/search: brave-search + bright-data-mcp + context7 (prefer official docs; recent ≥ 2024)
-   - Call sequential-thinking to plan research approach
-   - Run tool calls in parallel; limit to 3–5 calls per batch
+   - **External Research:** Use at least 3 MCP tools to research on internet: brave-search + bright-data-mcp + context7 (prefer official docs; recent ≥ 2024)
+   - **Internal Knowledge Integration:** Combine external research with your existing knowledge and expertise
+   - **Synthesis:** Synthesize information from both external sources and internal knowledge to provide comprehensive analysis
+   - **Planning:** Call sequential-thinking to plan research approach
+   - **Execution:** Run tool calls in parallel; limit to 3–5 calls per batch
 
 2. **Problem Decomposition** 
    - Use sequential-thinking mcp to break down the problem
@@ -76,8 +78,11 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 
 ### **Quality Gates & Response Template**
 
-**MANDATORY RESPONSE FORMAT:**
+**COMPREHENSIVE PROBLEM ANALYSIS FORMAT:**
 ```
+## Executive Summary
+[Brief overview of the problem and recommended solution with key insights]
+
 ## Understanding (Current Situation Analysis)
 [Comprehensive problem analysis and context]
 
@@ -91,6 +96,8 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 - **Pros:** [Specific advantages]
 - **Cons:** [Specific limitations]
 - **Complexity:** [Assessment]
+- **Timeline:** [Estimated time to implement]
+- **Dependencies:** [What needs to be in place]
 - **Best for:** [Use cases]
 
 ### Option 2: [Name]
@@ -116,9 +123,18 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 **CONFIDENCE LEVEL:** [High/Medium/Low with justification]
 
 ## Implementation Plan (Clear Next Actions)
-1. **Immediate Actions:** [What to do first]
-2. **Step-by-step Process:** [Detailed implementation steps]
-3. **Verification:** [How to confirm success]
+**Total Timeline:** [Estimated total time]
+**Key Dependencies:** [What needs to be in place before starting]
+
+1. **Immediate Actions (Next 24h):** [What to do first]
+2. **Short-term (1-7 days):** [Detailed implementation steps]
+3. **Medium-term (1-4 weeks):** [Ongoing tasks and milestones]
+4. **Verification:** [How to confirm success]
+
+## Success Metrics
+- **Primary Success Indicator:** [Main metric to measure success]
+- **Secondary Metrics:** [Additional metrics to track]
+- **Measurement Timeline:** [When to measure and review]
 
 ## Risks & Considerations
 - **Risk:** [Potential issue] → **Mitigation:** [How to address]
@@ -127,6 +143,16 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 ## Additional Resources
 - [Relevant documentation links]
 - [Useful tools or libraries]
+
+## Validation Checklist
+- [ ] Problem fully understood with multi-source research
+- [ ] At least 2-3 distinct alternatives identified and analyzed
+- [ ] Clear pros/cons for each option documented
+- [ ] Evidence-based recommendation with reasoning
+- [ ] Implementation plan with clear timeline provided
+- [ ] Success metrics defined and measurable
+- [ ] Risks identified and mitigation strategies planned
+- [ ] Dependencies clearly identified
 ```
 
 **VALIDATION CHECKPOINTS:**
