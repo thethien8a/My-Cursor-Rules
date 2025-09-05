@@ -1,6 +1,6 @@
-# RULE 4: UNIFIED WORKFLOW ORCHESTRATION FOR RULES
+# RULE 4: ORCHESTRATION FOR ALL RULES
 
-## Core Philosophy: Conflict-Free Rule Integration
+## Core Philosophy: Summarize of all rules. The purpose is helping you use right rule (RULE 1, RULE 2, RULE 3) for right task
 
 **GOAL:** Orchestrate all rules in a unified, sequential workflow to eliminate conflicts and ensure optimal AI assistance.
 
