@@ -1,4 +1,4 @@
-# RULE 1: MANDATORY PRE-CODING ANALYSIS WORKFLOW RULES:
+# RULE 1: MANDATORY ANALYSIS WORKFLOW RULES:
 
 - **Goal**: Before solving problems, you must do multi‑source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
 - **No terminal**: Never run shell/CLI commands on your own.
@@ -11,7 +11,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 
 #### **Phase 1: Deep Understanding** (REQUIRED)
 1. **Multi-Source Research**
-   - **External Research:** Use at least 3 MCP tools to research on internet: brave-search + bright-data-mcp + context7 (prefer official docs; recent ≥ 2024)
+   - **External Research:** Use at least 3 MCP tools to research on internet: brave-search + Bright Data mcp (search-engine-batch and scrape-batch) + context7 (prefer official docs; recent ≥ 2024)
    - **Internal Knowledge Integration:** Combine external research with your existing knowledge and expertise
    - **Synthesis:** Synthesize information from both external sources and internal knowledge to provide comprehensive analysis
    - **Planning:** Call sequential-thinking to plan research approach
@@ -157,7 +157,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 ```
 
 **VALIDATION CHECKPOINTS:**
-- [ ] Problem fully understood with multi-source research (brave-search + context7 + bright-data-mcp)
+- [ ] Problem fully understood with multi-source research (context7 for search web + bright data mcp for scrape web)
 - [ ] Bright Data MCP used appropriately for web content analysis
 - [ ] At least 2-3 distinct alternatives identified and analyzed
 - [ ] Clear pros/cons for each option documented
@@ -176,7 +176,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 The above PRE-CODING WORKFLOW integrates with the existing standard workflow:
 
 1) **Plan (sequential‑thinking mcp)** - Now includes problem analysis planning
-2) **Research (MCP search tool like: bright data mcp)** - Enhanced with systematic alternative discovery
+2) **Research (MCP search tool like: context7 for search web + bright data mcp for scrape web)** - Enhanced with systematic alternative discovery
 3) **Validate (sequential-thinking mcp)** - Expanded to include solution validation and user confirmation
 4) **Synthesize & Deliver** - Now uses structured response template
 
