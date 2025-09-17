@@ -3,13 +3,9 @@ _(PHASE 1 of 3: ANALYSIS & PLANNING)_
 
 **GOAL:** Before solving problems, you must do multi-source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
 
-**NO TERMINAL:** Never run shell/CLI commands on your own.
-
-**FIGMA:** If any Figma URL appears, use the "Framelink Figma MCP".
-
 ---
 
-## CRITICAL RULE: PROBLEM ANALYSIS BEFORE ANY CODE/FILE CHANGES
+## CRITICAL RULE: PROBLEM ANALYSIS BEFORE ANY CODE/FILE CHANGES/ANSWER THE QUESTIONS FROM USER
 
 ### MANDATORY PRE-CODING WORKFLOW
 
@@ -18,14 +14,24 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 ### PHASE 1: DEEP UNDERSTANDING (REQUIRED)
 
 #### 1. MULTI-SOURCE RESEARCH
-*   **EXTERNAL RESEARCH:** Use at least 3 MCP tools to research on internet: brave-search + Bright Data mcp (scrape-batch) + context7 (prefer official docs; recent ≥ 2024)
+*   **EXTERNAL RESEARCH:** Use at least 3 MCP tools to research on internet: brave-search + Bright Data mcp (scrape-batch tool) + context7 (prefer official docs; recent ≥ 2024)
     *   First: using brave-search to search to find the most relevant information on internet
-    *   Second: using Bright Data mcp: scrape-batch tool to fetch all urls after you search by brave-search on internet
+    *   Second: using Bright Data mcp: scrape-batch tool to fetch all urls after you search by brave-search on internet (scrape 4-5 urls) (for more details)
     *   Third: using context7 to fetch the library/docs for coding task
+    *   Fourth: using OctoCode MCP for GitHub code research (implementation-first evidence)
+        *   When to use: whenever the task requires real code patterns, examples, or cross-repo comparisons. Prefer OctoCode over general web search for code-level answers.
+        *   Core tools:
+            - `githubSearchCode` (progressive queries; multiple angles in parallel)
+            - `githubViewRepoStructure` (understand layout; `path` + `depth`)
+            - `githubGetFileContent` (targeted sections via `startLine`/`endLine` or `matchString` with context)
+            - `githubSearchRepositories` (discover high-quality repos; filter by `language`, `stars`, `updated`)
+        *   Recommended usage:
+            - Start broad with 2-4 progressive `githubSearchCode` queries (semantic term, exact API/class, file pattern, topic+language) and run them in parallel.
+            - Narrow down with `githubViewRepoStructure`, then fetch exact files/sections using `githubGetFileContent` with `matchStringContextLines`.
+            - Cite evidence with owner/repo/path and relevant lines. Prefer popular/maintained repos (`stars`, `updated`).
 *   **INTERNAL KNOWLEDGE INTEGRATION:** Combine external research with your existing knowledge and expertise
 *   **SYNTHESIS:** Synthesize information from both external sources and internal knowledge to provide comprehensive analysis
 *   **PLANNING:** Call sequential-thinking to plan research approach
-*   **EXECUTION:** Run tool calls in parallel; limit to 3-5 calls per batch
 
 #### 2. PROBLEM DECOMPOSITION
 *   Use sequential-thinking mcp to break down the problem
@@ -38,6 +44,20 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 *   Understand project structure and existing patterns
 *   Identify relevant files, frameworks, and conventions
 *   Assess impact scope (local vs system-wide changes)
+
+#### OctoCode MCP Integration (GitHub code research)
+*   Purpose: bring code-true evidence into analysis and design with minimal tokens and maximum precision.
+*   Tool mappings & patterns:
+    - Discovery → `githubSearchRepositories` (filters: `topic`, `language`, `stars`, `updated`)
+    - Code search → `githubSearchCode` (use several narrowly focused queries in parallel; set `limit` 5–10)
+    - Repo overview → `githubViewRepoStructure` (use `depth` 1–2; drill into `path` as needed)
+    - Targeted reading → `githubGetFileContent` (prefer `matchString` + `matchStringContextLines` 5–15; or `startLine`/`endLine` for large files; set `minified` true)
+*   Best practices:
+    - Run independent OctoCode queries in parallel to reduce latency.
+    - Prefer authoritative repos (high stars, recent `pushed/updated`).
+    - Always include precise citations: `owner/repo` + file path + relevant section.
+    - For private orgs, require explicit permission and ensure tokens are scoped least-privilege. Keep tokens in environment, never inline.
+    - Use OctoCode as primary source for implementation details; use Context7 for official docs and Brave/Bright Data for web context.
 
 ---
 
@@ -90,11 +110,6 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 *   Identify potential challenges and solutions
 *   Estimate effort and timeline
 *   Define success criteria and testing approach
-
-#### 11. MEMORY INTEGRATION
-*   Follow Rule 3 (PROJECT MEMORY & CACHE MANAGEMENT RULES) for all memory updates
-*   Use Rule 3 procedures for creating/updating project context
-*   Reference Rule 3 memory structure requirements
 
 ---
 
@@ -184,8 +199,8 @@ Option 2  [Score]        [Score]        [Score]        [Total]
 - [ ] Dependencies clearly identified
 
 ### VALIDATION CHECKPOINTS:
-- [ ] Problem fully understood with multi-source research (brave-search for search web + bright data mcp for scrape web + context7 for search docs)
-- [ ] Bright Data MCP used appropriately for web content analysis
+- [ ] Problem fully understood with multi-source research (brave-search for search web + bright data mcp for scrape multiple sites + context7 for search docs)
+- [] Using brave search mcp and scrape_batch_url by using Bright Data mcp to get the specific informations
 - [ ] At least 2-3 distinct alternatives identified and analyzed
 - [ ] Clear pros/cons for each option documented
 - [ ] Evidence-based recommendation with reasoning
@@ -206,14 +221,8 @@ Option 2  [Score]        [Score]        [Score]        [Total]
 The above PRE-CODING WORKFLOW integrates with the existing standard workflow:
 
 1.  **PLAN (SEQUENTIAL-THINKING MCP)** - Now includes problem analysis planning
-2.  **RESEARCH (MCP SEARCH TOOL LIKE: BRAVE-SEARCH FOR SEARCH WEB + BRIGHT DATA MCP FOR SCRAPE WEB + CONTEXT7 FOR SEARCH DOCS)**
+2.  **RESEARCH (MCP SEARCH TOOL LIKE: BRAVE-SEARCH FOR SEARCH WEB + BRIGHT DATA MCP FOR SCRAPE MULTIPLE SITES + CONTEXT7 FOR SEARCH DOCS)**
 3.  **VALIDATE (SEQUENTIAL-THINKING MCP)** - Expanded to include solution validation and user confirmation
 4.  **SYNTHESIZE & DELIVER** - Now uses structured response template
 
 **REMEMBER:** NO CODE CHANGES, FILE EDITS, OR IMPLEMENTATIONS until completing the full analysis above and receiving user confirmation of the approach.
-
----
-
-## NEXT STEPS:
-*   After this analysis is complete and approved, the findings MUST be stored in project memory according to Rule 3.
-*   Implementation will then proceed according to the tool selection and workflow guidelines in Rule 2.
