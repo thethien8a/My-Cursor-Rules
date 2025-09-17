@@ -12,9 +12,6 @@ _(SUPPORTING PROCESS for ALL PHASES)_
 - **Memory update:** "cập nhật memory dự án" or "update project memory"
 - **Cache issues:** Response time > 10s, errors > 5%, cache age > 30 days
 - **Major changes:** >20% files modified
-- **Analysis Completion:** After Rule 1 analysis completion (mandatory)
-- **Pre-Implementation:** Before Rule 2 implementation begins (mandatory)
-- **Post-Analysis Memory:** Rule 1 analysis results must be stored via Rule 3 procedures
 
 **GOAL:** Create comprehensive memory system for complete LLM project understanding with optimized cache performance.
 
@@ -65,14 +62,15 @@ def update_project_memory_and_cache():
 ```
 ---
 
-## MEMORY STRUCTURE STORING FOR COMPLETE LLM UNDERSTANDING
+## MEMORY STRUCTURE STORING 
 
-### Optimized Handoff Memory Set (MANDATORY - Complete Understanding in 5 Documents)
+### Optimized Memory Set (MANDATORY - Complete Understanding in 6 Documents)
 1.  `project-overview-and-status`: Complete project context, current work tracking, and decision log
 2.  `codebase-navigation-map`: Full code structure, patterns, and instant navigation guide
 3.  `technical-architecture-and-patterns`: Architecture, data flow, code conventions, and implementation patterns
 4.  `development-operations-guide`: Everything needed to develop, test, deploy, and maintain
 5.  `llm-quick-reference-index`: Instant lookup for symbols, APIs, common tasks, and gotchas
+6.  `project-history-and-evolution`: Project history, milestones, lessons learned, and future evolution plans
 *... and more memories if needed*
 
 ---
@@ -236,6 +234,21 @@ pytest
 - `User`: `src/models/user.py:12`
 - `create_connection()`: `src/db/connection.py:23`
 
+#### 6. `project-history-and-evolution`
+**PROJECT HISTORY AND EVOLUTION**
+
+**TIMELINE OF MAJOR MILESTONES**
+- [Date]: [Milestone 1] - [Description: What was added/changed, why, impact]
+- [Date]: [Milestone 2] - [Description: What was added/changed, why, impact]
+- [Ongoing]: [Current phase] - [Key evolutions or pivots]
+
+**LESSONS LEARNED FROM EVOLUTION**
+- [Lesson 1]: [What was learned, how it influenced future decisions]
+- [Lesson 2]: [What was learned, how it influenced future decisions]
+
+**FUTURE EVOLUTION PLANS**
+- [High-level roadmap]: [Anticipated changes based on current trajectory]
+
 ---
 
 ## CACHE MANAGEMENT SYSTEM
@@ -352,6 +365,11 @@ def create_comprehensive_llm_context():
         
         # Quick reference for efficiency
         "llm-quick-reference-index": create_quick_reference()
+
+        # Historical context for evolution understanding
+        "project-history-and-evolution": create_project_history()
+
+        # Additional memories as needed
     }
 
     for name, content in memories.items():
