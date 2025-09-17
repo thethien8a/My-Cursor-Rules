@@ -1,7 +1,7 @@
-# RULE 2: MANDATORY RULES FOR EFFECTIVE CODING
+# RULE 2: MANDATORY RULES FOR USING EXACT TOOL FOR EFFECTIVE CODE EDITING/CODE FIXING
 _(PHASE 2 of 3: IMPLEMENTATION)_
 
-**PREREQUISITE:** This rule applies ONLY AFTER the analysis and planning in Rule 1 are complete and approved by the user. And apply only for coding tasks.
+**When use this rule ?**:  when code, make sure follow all the instruction below
 
 Strategic tool selection for fast code exploration → precise editing → efficient maintenance
 
@@ -9,13 +9,9 @@ Strategic tool selection for fast code exploration → precise editing → effic
 
 ## CORE PHILOSOPHY: INTELLIGENT TOOL SELECTION
 
-**GOAL:** Maximize code understanding speed + precision while minimizing token usage through smart tool selection.
+**GUIDING PRINCIPLE:** Start broad, then go deep. Prioritize speed for exploration and precision for modification.
 
-**INTEGRATION WITH OTHER RULES:**
-- Rule 1 takes precedence for analysis phase (research planning)
-- Rule 3 takes precedence for memory operations
-- Sequential-thinking is primarily for Rule 1 research planning
-- Use regular thinking patterns for coding workflows
+**GOAL:** Maximize code understanding speed + precision while minimizing token usage through smart tool selection.
 
 ---
 
@@ -24,28 +20,28 @@ Strategic tool selection for fast code exploration → precise editing → effic
 ### CODE EXPLORATION & UNDERSTANDING
 
 **CURSOR FIRST for Fast Discovery:**
-- `codebase_search`: High-level architecture understanding, concept exploration
-- `list_dir`: Project structure overview
-- `file_search`: Find files by name/pattern
-- `grep_search`: Quick text/pattern matching across codebase
+- `codebase_search`: High-level architecture understanding, concept exploration.
+- `list_dir`: Project structure overview.
+- `file_search`: Find files by name/pattern.
+- `grep`: Quick literal text/pattern matching across the codebase.
 
 **SERENA for Symbol-Level Precision:**
-- `find_symbol`: Locate specific functions/classes with LSP accuracy
-- `get_symbols_overview`: Understand file's symbol structure
-- `find_referencing_symbols`: Trace dependencies and relationships
-- `search_for_pattern`: Flexible pattern search when needed
+- `find_symbol`: Locate specific functions/classes with LSP accuracy.
+- `get_symbols_overview`: Understand a file's symbol structure without reading its content.
+- `find_referencing_symbols`: Trace dependencies and usage across the codebase.
+- `search_for_pattern`: Flexible regex-based pattern search when `grep` is insufficient.
 
 ### CODE EDITING & MODIFICATION
 
 **SERENA for Surgical Precision:**
-- `replace_symbol_body`: Replace entire functions/classes
-- `insert_after_symbol` / `insert_before_symbol`: Precise code insertion
-- **Preferred for:** Symbol-level changes, language-aware edits
+- `replace_symbol_body`: Replace entire functions/classes. Language-aware and safe.
+- `insert_after_symbol` / `insert_before_symbol`: Precisely add new code blocks or symbols.
+- `replace_regex`: **For small, intra-symbol changes.** The most token-efficient method for minor edits within a function or block.
+- **Preferred for:** All symbol-level changes, language-aware edits, and token-efficient minor modifications.
 
-**CURSOR for Bulk Operations:**
-- `search_replace`: Simple find/replace operations
-- `MultiEdit`: Multiple changes in one file
-- **Preferred for:** Text-based changes, bulk modifications
+**CURSOR for Bulk/Multi-Location Operations:**
+- `edit_file`: Apply multiple, non-symbol-aware changes across a single file using `// ... existing code ...` syntax.
+- **Preferred for:** Refactoring tasks involving many small, scattered text changes within one file.
 
 ### KNOWLEDGE MANAGEMENT
 
@@ -56,28 +52,39 @@ Strategic tool selection for fast code exploration → precise editing → effic
 
 ---
 
-## INTELLIGENT WORKFLOWS
+## THE UNIVERSAL CODING WORKFLOW
+A 4-phase approach to any coding task, from new features to bug fixes.
 
-### WORKFLOW 1: New Codebase Understanding
-1.  `codebase_search("project architecture")` // Fast high-level grasp
-2.  `list_dir(".")` // Structure overview
-3.  `codebase_search("main entry points")` // Find starting points
-4.  `mcp_serena_get_symbols_overview(key_files)` // Symbol-level understanding
-5.  `mcp_serena_write_memory("project-overview", insights)` // Persist learning
+### PHASE 1: EXPLORATION & DISCOVERY (CURSOR-FIRST)
+**Goal:** Gain high-level context and locate relevant areas quickly.
+**Principle:** Speed over Precision.
+1.  **`list_dir` & `read_file` (on metadata files):** Understand project structure, dependencies (`package.json`, `requirements.txt`), and setup (`README.md`).
+2.  **`codebase_search` (Semantic Questions):** Ask high-level questions like `"How is user authentication handled?"` or `"Where are API routes defined?"` to find key files and modules.
+3.  **`grep` (Keyword Search):** Use for quick searches of specific variable names, error messages, or keywords if their exact location is unknown.
+4.  **Serena Think Checkpoint:** Call `mcp_serena_think_about_task_adherence` to verify the exploration path, and `mcp_serena_think_about_collected_information` to ensure gathered context is sufficient before deep analysis.
 
-### WORKFLOW 2: Feature Implementation
-1.  `codebase_search("similar feature implementation")` // Learn patterns
-2.  `mcp_serena_find_symbol(target_class/function)` // Locate exact symbols
-3.  `mcp_serena_find_referencing_symbols()` // Understand dependencies
-4.  `mcp_serena_replace_symbol_body()` OR `search_replace()` // Make changes
-5.  `read_lints()` // Validate changes
+### PHASE 2: DEEP ANALYSIS & PLANNING (SERENA-FIRST)
+**Goal:** Understand specific code paths, dependencies, and impact with perfect accuracy before making any changes.
+**Principle:** Precision over Speed.
+1.  **`get_symbols_overview`:** On key files identified in Phase 1, get a "table of contents" of all classes and functions without reading the code.
+2.  **`find_symbol`:** Pinpoint the exact location of the target class or function you need to analyze or modify.
+3.  **`find_referencing_symbols` (CRITICAL SAFETY CHECK):** Before planning any edit, find all usages of the target symbol. This is mandatory to understand the full impact of a change.
 
-### WORKFLOW 3: Bug Investigation
-1.  `grep_search(error_message)` // Quick error location
-2.  `mcp_serena_find_symbol(problematic_function)` // Get symbol details
-3.  `mcp_serena_find_referencing_symbols()` // Trace call sites
-4.  `codebase_search("similar bug patterns")` // Learn from codebase
-5.  Precise editing with Serena tools
+### PHASE 3: SURGICAL IMPLEMENTATION (RIGHT-TOOL-FOR-THE-JOB)
+**Goal:** Modify code with maximum efficiency, precision, and token-safety.
+**Method:** Choose the tool that best fits the scale of the change.
+-   **To Replace an Entire Function/Class:** Use `mcp_serena_replace_symbol_body`.
+-   **To Add a New Function/Class:** Use `mcp_serena_insert_after_symbol` or `insert_before_symbol`.
+-   **To Change 1-5 Lines Inside a Function:** Use `mcp_serena_replace_regex` with wildcards (`.*?`) for maximum token efficiency. This is the preferred method for small modifications.
+-   **To Make Multiple Small, Scattered Edits in One File:** Use Cursor's `edit_file`.
+ -   **Serena Think Gate (Before Edit):** Re-run `mcp_serena_think_about_task_adherence` to confirm scope, impacted symbols, and rollback plan.
+
+### PHASE 4: VALIDATION & KNOWLEDGE CAPTURE (POST-MODIFICATION GATE)
+**Goal:** Ensure code integrity and persist learnings for future tasks.
+**Principle:** Trust but Verify.
+1.  **`read_lints` (MANDATORY):** After every file modification, run this tool on the changed file to catch any introduced syntax or quality errors.
+2.  **`mcp_serena_write_memory`:** If you discovered important architectural patterns, business logic, or gotchas, save this knowledge to a memory file (e.g., `project-overview`, `architecture-patterns`).
+3.  **Serena Think Retrospective:** Use `mcp_serena_think_about_whether_you_are_done` to verify completion criteria and identify follow-ups.
 
 ---
 
@@ -91,29 +98,27 @@ Strategic tool selection for fast code exploration → precise editing → effic
 - **Context Validation:** Confirm understanding before making changes
 
 ### DON'T:
-- Read entire large files without exploring first
-- Use `codebase_search` for exact symbol names (use `mcp_serena_find_symbol`)
-- Use Serena for simple text replacements (use Cursor `search_replace`)
-- Ignore Serena memory system for knowledge persistence
-- Make assumptions without validation
+- Read entire large files without exploring first.
+- Use `codebase_search` for exact symbol names (use `mcp_serena_find_symbol`).
+- Use `mcp_serena_replace_symbol_body` for a single-line change inside a function (use `mcp_serena_replace_regex` instead).
+- Ignore Serena memory system for knowledge persistence.
+- Make assumptions without validation.
 
 ---
 
 ## DECISION LOGIC
 
 ### When to use CURSOR:
-- Initial codebase exploration
-- Fast text/pattern searching
-- Bulk text operations
-- File management operations
-- Quick validation checks
+- Primarily in **Phase 1** for initial codebase exploration and high-level understanding.
+- For fast text/pattern searching across the entire project (`grep`).
+- For applying multiple, non-symbol-aware edits within a single file (`edit_file`).
 
 ### When to use SERENA MCP:
-- Symbol-level understanding needed
-- Precise code modifications
-- Cross-reference analysis
-- Language-specific operations
-- Knowledge persistence required
+- Primarily in **Phase 2 & 3** for high-precision analysis and modification.
+- When you need to understand or edit code based on its structure (symbols), not just its text.
+- For all cross-file reference analysis.
+- For token-efficient, surgical code edits (`replace_regex`).
+- For knowledge persistence across sessions.
 
 ### When to use BOTH:
 - Complex feature implementation
@@ -190,5 +195,3 @@ Strategic tool selection for fast code exploration → precise editing → effic
 - **Primary Tool:** Serena memory
 - **Secondary Tool:** None
 - **Key Principle:** Persistence across sessions
-
-**REMEMBER:** Choose the RIGHT tool for the RIGHT precision level for the RIGHT task. Fast exploration → Precise understanding → Accurate modification.
