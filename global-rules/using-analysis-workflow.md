@@ -1,7 +1,19 @@
-# RULE 1: MANDATORY ANALYSIS WORKFLOW RULES
-_(PHASE 1 of 3: ANALYSIS & PLANNING)_
+# RULE 2: Mandatory Analysis Workflow
+
+- Always analyze before any code change.
+- External research: Brave search → Bright Data scrape → Context7 docs → OctoCode GitHub evidence.
+- Decompose problem; map dependencies and context.
+- Use Serena for symbol-aware discovery/edits; Cursor for exact search/diagnostics.
+- Propose alternatives; pick with clear criteria.
+- Make minimal, safe edits; verify with lints/tests; document in memories.
+
+---
 
 **GOAL:** Before solving problems, you must do multi-source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
+
+## WHEN IS THIS RULE APPLIED ?
+1. When fix errors/bug in code
+2. When you find any solutions for any problem user asks
 
 ---
 
@@ -46,7 +58,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
 *   Assess impact scope (local vs system-wide changes)
 
 #### OctoCode MCP Integration (GitHub code research)
-*   Purpose: bring code-true evidence into analysis and design with minimal tokens and maximum precision.
+*   Purpose: Supercharge analysis with real-world, production-grade code patterns from GitHub. Move beyond documentation and see how top projects implement solutions.
 *   Tool mappings & patterns:
     - Discovery → `githubSearchRepositories` (filters: `topic`, `language`, `stars`, `updated`)
     - Code search → `githubSearchCode` (use several narrowly focused queries in parallel; set `limit` 5–10)
@@ -56,6 +68,7 @@ Before ANY file editing, coding, or implementation work, you MUST complete this 
     - Run independent OctoCode queries in parallel to reduce latency.
     - Prefer authoritative repos (high stars, recent `pushed/updated`).
     - Always include precise citations: `owner/repo` + file path + relevant section.
+    - Compare multiple implementations to identify common patterns, trade-offs, and best practices.
     - For private orgs, require explicit permission and ensure tokens are scoped least-privilege. Keep tokens in environment, never inline.
     - Use OctoCode as primary source for implementation details; use Context7 for official docs and Brave/Bright Data for web context.
 
