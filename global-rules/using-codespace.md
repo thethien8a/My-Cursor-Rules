@@ -1,0 +1,88 @@
+# RULE 4: Codebase Investigation Playbook
+
+**OBJECTIVE:** To systematically understand any new codebase, regardless of size or complexity, using Serena MCP's symbol-level analysis tools. This is not a reading exercise; it is an investigation.
+
+---
+
+## Core Philosophy: Think Like a Detective, Not a Librarian
+
+- **Librarians** read everything from start to finish.
+- **Detectives** check existing case files, start with a high-level map, identify key locations, investigate connections, and only zoom in on the details when necessary.
+
+**This playbook follows the detective's method.**
+
+---
+
+## The Investigation Workflow (Mandatory)
+
+*Follow these phases in order. Do not skip steps.*
+
+### Prerequisite: Session Initialization
+**Activate the Project:** This is the first and most critical command. It tells Serena which codebase to analyze.
+    - `mcp_serena_activate_project("project_name")`
+    
+### Phase 0: The "Case File Review" - Check Existing Memory
+**Goal:** Leverage all existing knowledge before starting a new investigation. This is the most efficient way to get up to speed.
+
+**Procedure:**
+1.  **List Available Memories:**
+    - Run `mcp_serena_list_memories(random_string=".")` to see all available knowledge files.
+
+2.  **Ingest Core Memories:**
+    - Read the most critical memories first to build a foundational understanding (e.g., `project-overview-and-status`, `technical-architecture-and-patterns`).
+    - `mcp_serena_read_memory("memory_name")`
+
+3.  **Verify Freshness (Crucial Step):**
+    - For each key concept read from memory (e.g., a service class `AuthService` in `src/services/auth.py`), verify its timeliness.
+    - **Action:** Use a file system tool or `git log` to check the last modification date of the source file (`src/services/auth.py`).
+    - **Assessment:** If the file has been modified recently, the information in the memory might be outdated. Treat it as a high-level guide but not as absolute truth.
+
+**Decision Point:** After this phase, assess if the existing memory is sufficient and trustworthy.
+- **If YES (sufficient and fresh):** You may be able to answer the user's query directly or skip to Phase 4.
+- **If NO (outdated or incomplete):** Proceed to Phase 1 to investigate and update the knowledge base.
+
+### Phase 1: The "Bird's-Eye View" - Map the Territory
+**Goal:** Understand the high-level structure without reading any implementation code.
+
+**Procedure:**
+1.  **List the Filesystem:**
+    - Run `mcp_serena_list_dir(recursive=True)` to get a complete file tree.
+    - Identify key directories (`src`, `app`, `services`, `tests`, `config`).
+
+2.  **Create a "Symbol Table of Contents" for Key Files:**
+    - For the 3-5 most important-looking files (e.g., `main.py`, `app.py`, `server.js`), run `mcp_serena_get_symbols_overview`.
+    - This creates a high-level "Table of Contents" of what classes and functions exist.
+
+**Outcome of Phase 1:** You now have a mental map of the project's structure and know the names of the most important "characters" (symbols) without having read a single line of their code.
+
+### Phase 2: The "GPS Navigation" - Locate Key Symbols
+**Goal:** Pinpoint the exact location of the most critical symbols identified in Phase 1.
+
+**Procedure:**
+1.  **Identify the Core Logic:** Based on the overview, choose a central symbol that likely represents the core business logic (e.g., `UserService`, `OrderController`, `PaymentGateway`).
+2.  **Find its Exact Location:**
+    - Run `mcp_serena_find_symbol("SymbolName")`.
+    - This gives you the precise file path and line number.
+
+**Outcome of Phase 2:** You have now "teleported" directly to the heart of the application's logic, ignoring all irrelevant boilerplate and utility code.
+
+### Phase 3: The "Relationship Mapping" - Uncover the Connections
+**Goal:** Understand how the core logic interacts with the rest of the application. This is the most critical phase.
+
+**Procedure:**
+1.  **Find All Usages (Upstream):**
+    - Using the symbol and file path from Phase 2, run `mcp_serena_find_referencing_symbols("SymbolName", "path/to/file.ext")`.
+    - This answers the question: **"Who calls this code?"**
+
+2.  **Trace Dependencies (Downstream):**
+    - (Optional, for deeper analysis) Read the code of the target symbol using `mcp_serena_read_file` with line numbers.
+    - Identify other symbols it calls, and then use `find_symbol` on them to understand its dependencies. This answers: **"What other code does this code depend on?"**
+
+**Outcome of Phase 3:** You now have a clear data flow and dependency graph centered around the core logic. You understand the *impact* and *context* of the symbol, which is far more valuable than just knowing its implementation.
+
+### Phase 4: The "Microscopic View" - Read Code with Purpose
+**Goal:** Only now, after understanding the `what`, `where`, and `why`, do you inspect the `how`.
+
+**Procedure:**
+1.  **Targeted Reading:** Use the file paths and line numbers gathered from the previous phases to read **only the essential code blocks**.
+    - `mcp_serena_read_file("path/to/file.ext", start_line=X, end_line=Y)`
