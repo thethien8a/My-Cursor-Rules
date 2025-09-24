@@ -1,74 +1,72 @@
-# RULE 1: Code Editing Rules
+# Rule 1: Rules for Code Analysis and Editing with Serena MCP + Cursor Built-ins (Project-Agnostic)
 
-Goal: Always understand the current code context before editing. Combine Serena’s semantic, symbol-level tools with Cursor’s built-ins. Edit only after scope and impact are clear.
+## Core Mindset
+- Investigate first, edit second; prioritize understanding over speed.
+- Communicate concisely; surface uncertainties early; never guess silently.
+- Keep changes minimal and reversible; avoid unrelated refactors/formatting churn.
 
-- Understand before you edit
-  - Clarify intent: what to add/change, acceptance criteria, constraints.
-  - Load context fast:
-    - Cursor built-ins: project search (exact/regex), open key files, diagnostics/problems, Git diff/staging.
-    - Serena analysis:
-      - get_symbols_overview on relevant files (top-level symbols).
-      - find_symbol to locate exact functions/classes.
-      - find_referencing_symbols to map impact and call sites.
-      - search_for_pattern for non-symbol patterns (configs/strings).
-      - list_dir/read_file to inspect structure and source selectively.
-      - read_memory/list_memories to reuse knowledge; write_memory to save new insights.
-    - External Pattern Research (OctoCode):
-      - For complex or unfamiliar patterns, use OctoCode MCP to find real-world implementations on GitHub, providing broader context.
-  - Confirm understanding: current behavior, inputs/outputs, side effects, error paths, involved tests/configs.
+## Investigation Workflow
+1. **Session Prep**
+   - Serena: `activate_project`; `list_memories` → read relevant entries; note anything stale.
+2. **Bird’s‑Eye Map**
+   - Cursor: Explorer for fast tree; Codebase search for high-level topics/features.
+   - Serena: `list_dir` (recursive when needed) to capture a structured map programmatically.
+3. **Symbol Navigation**
+   - Serena: `get_symbols_overview` on key files to learn available classes/functions.
+   - Serena: `find_symbol` to locate exact definitions; record file paths.
+4. **Relationship Mapping**
+   - Serena: `find_referencing_symbols` to learn who calls/uses a symbol; note upstream/downstream.
+5. **Targeted Reading**
+   - Cursor: open files for quick skim and navigation.
+   - Serena: `read_file` with `start_line`/`end_line` (as strings) for precise, quotable slices.
+6. **Clarify Gaps**
+   - If requirements/architecture remain unclear, pause and ask before planning edits.
 
-- Plan minimal, safe changes
-  - Choose the right tool:
-    - Single, small line tweaks inside a symbol → Serena replace_regex.
-    - Replace an entire function/class → Serena replace_symbol_body.
-    - Add code adjacent to a symbol → Serena insert_after_symbol / insert_before_symbol.
-    - Many small scattered edits in one file → Cursor multi-location edit.
-    - Exact string lookups → Cursor search/grep; large semantic discovery → Serena tools.
-  - Prefer early returns, clear names, single-responsibility functions (<30 lines when possible).
+## Editing Guardrails
+- Confirm acceptance criteria and summarize your plan before modifying code.
+- Choose the smallest effective Serena editor:
+  - `replace_regex` for 1–5 line localized tweaks inside a symbol.
+  - `insert_before_symbol` / `insert_after_symbol` to add adjacent helpers or config.
+  - `replace_symbol_body` for full function/class rewrites.
+- Mirror existing style/patterns; do not reformat unrelated code.
+- Cursor: use Diff viewer to review and stage chunks cleanly before handing back.
 
-- Execute with guardrails
-  - Make small, verifiable edits; avoid unrelated changes.
-  - After each edit:
-    - Run lints (read_lints) and fix immediately.
-    - Run tests/build if available; inspect failures; iterate.
-  - Update memories (write_memory) with architecture/context you discovered.
+## Validation & Communication
+- After each edit: use Cursor Diagnostics/Problems to fix errors immediately.
+- Use terminal with non-interactive flags; append `| cat` to avoid pagers.
+- Summarize what changed, why it solves the request, risks, and next steps (tests/commits).
 
-- Impact verification (must-pass)
-  - All references accounted for (find_referencing_symbols shows no misses).
-  - Error handling and edge cases covered; types/interfaces consistent across boundaries.
-  - Tests and lints pass; no obvious performance regressions.
+## Task-to-Tool Matrix (Cursor ↔ Serena)
+- **Repository mapping**
+  - Cursor: Explorer for visual overview; Codebase search to orient by feature/topic.
+  - Serena: `list_dir` for recursive, filtered, reproducible maps.
+- **Search by text/symbol**
+  - Cursor: Search/Grep panel for exact strings, regex, filenames; fastest confirmation.
+  - Serena: `find_symbol` for declarations; `find_referencing_symbols` for callers across files.
+- **Semantic discovery**
+  - Cursor: Codebase search for concepts and feature names.
+  - Serena: `get_symbols_overview` → convert concepts to concrete symbols, then `read_file`.
+- **Reading code**
+  - Cursor: navigate broadly in-editor.
+  - Serena: `read_file` line ranges for minimal context window and precise citations.
+- **Planning changes**
+  - Cursor: draft plan in a scratch doc; preview with Diff.
+  - Serena: `think_about_collected_information` and `think_about_task_adherence` to gate edits.
+- **Applying edits**
+  - Serena: `replace_regex`, `insert_*`, `replace_symbol_body` for precise, auditable edits.
+  - Cursor: Diff viewer + Git staging to present and commit changes.
+- **Validation & linting**
+  - Cursor: Diagnostics/Problems; run tests/linters via terminal (non-interactive flags).
+  - Serena: optional verification reads (`read_file`) to confirm applied code in place.
+- **Documentation & references**
+  - Cursor: Web panel for docs/examples (prefer official sources); save links if needed.
+  - Serena: memories to persist architecture decisions and recurring patterns.
 
-- When uncertain
-  - Ask for clarification on ambiguous requirements or missing constraints before editing.
-  - If the codebase is tiny and symbol tools add overhead, prefer Cursor built-ins; otherwise default to Serena’s symbol flow.
-
-- Tool quick map (when to use)
-  - Serena (semantic/symbol): get_symbols_overview, find_symbol, find_referencing_symbols, search_for_pattern, insert_* / replace_symbol_body / replace_regex, read_memory/write_memory/list_memories, list_dir, read_file.
-  - Cursor (built-ins): project search (exact/regex), file navigation, diagnostics/quick-fixes, Git diff/stage/commit.
-  - OctoCode (external research): githubSearchCode, githubViewRepoStructure for finding real-world implementation patterns.
-
-- Editing tool policy
-  - It is OK to perform edits with Cursor built-ins (multi-location edits, quick exact changes).
-  - Use Serena's editing tools for symbol-scoped changes when precision/traceability matters (replace_symbol_body, insert_*, replace_regex).
-  - Regardless of tool choice, follow Change control & traceability and show diffs.
-
-- Success criteria
-  - You can explain current behavior and precisely what changes are needed before touching code.
-  - Edits are minimal, symbol-aware, and pass lints/tests.
-  - Memory updated so future tasks start faster.
-
-- Defaults & safety
-  - Do not edit before context is understood; keep changes scoped; use Git for reviewability.
-  - Prefer Serena for large/complex refactors; prefer Cursor for quick exact matches or tiny changes.
-- Change control & traceability (must-do)
-  - Before editing: state target symbols/files and intended operations (add/remove/modify) and why.
-  - Use symbol-scoped edits:
-    - insert_before_symbol / insert_after_symbol (add adjacent code)
-    - replace_symbol_body (full function/class replacement)
-    - replace_regex (1–5 line local tweak)
-  - Keep edits small and atomic; one logical change per edit.
-  - Always show exact diffs after each edit:
-    - Cite code with file path and lines (before → after) using Cursor’s Git diff.
-    - If multiple files, commit per-file or per-change-set with clear messages.
-  - After editing: summarize what changed and why; update memories with key decisions.
-  - If uncertainty remains, stop and request confirmation before proceeding further.
+## Tool Companion Sheet
+- **Serena Essentials**
+  - Discovery: `list_dir`, `get_symbols_overview`, `find_symbol`, `find_referencing_symbols`, `read_file`.
+  - Editing: `replace_regex`, `insert_before_symbol`, `insert_after_symbol`, `replace_symbol_body`.
+  - Meta-thinking: `think_about_collected_information`, `think_about_task_adherence`, `think_about_whether_you_are_done`.
+- **Cursor Built-ins**
+  - Explorer (list directory), Search/Grep panel, Codebase search, Diff viewer, Diagnostics/Problems, Terminal (append `| cat`), Web.
+- Default: use Serena for structured analysis/edits; use Cursor to navigate, visualize, validate, and present results efficiently.
