@@ -1,4 +1,8 @@
-# RULE 3: Memory Management Rule
+# RULE 5: Memory Management Rule
+
+**When use this rule**: 
+- When user ask "update memory" or "cập nhật memory"
+- When you think that "that changes in code have much impact on current project"
 
 **OBJECTIVE:** To define the structure and workflow for creating and maintaining the project's knowledge base using Serena's memory tools.
 
