@@ -1,19 +1,11 @@
-# RULE 2: Mandatory Analysis Workflow
+# RULE 4: Mandatory Pre-Implementation Analysis & Strategy Framework
 
-- Always analyze before any code change.
-- External research: Brave search → Bright Data scrape → Context7 docs → OctoCode GitHub evidence.
-- Decompose problem; map dependencies and context.
-- Use Serena for symbol-aware discovery/edits; Cursor for exact search/diagnostics.
-- Propose alternatives; pick with clear criteria.
-- Make minimal, safe edits; verify with lints/tests; document in memories.
-
----
-
-**GOAL:** Before solving problems, you must do multi-source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
+**GOAL:** To solve any problems i ask, you must do multi-source research, know clear structure and remember that before doing anything for me, making sure that you know what i really want to do by asking me questions till you understand my needs. And finally, give me all possible results/solutions based on your search/research on Internet and yourself.
 
 ## WHEN IS THIS RULE APPLIED ?
-1. When fix errors/bug in code
-2. When you find any solutions for any problem user asks
+1. When user ask you for fiding any solutions for any problem
+2. When user don't know what user should do next
+3. When user don't know something and want you to explore and find the best solution for them
 
 ---
 
