@@ -1,88 +1,238 @@
-# Rule 4: Rule for Code Analysis and Editing by using Serena MCP and Cursor's built in tools
+# RULE 5: Mandatory Analysis & Strategy Framework
 
-## Core Mindset
-- Investigate first, edit second; prioritize understanding over speed.
-- Communicate concisely; surface uncertainties early; never guess silently.
-- Keep changes minimal and reversible; avoid unrelated refactors/formatting churn.
+**GOAL:** To solve any problems user ask, you must do multi-source research, know clear structure and remember that before doing anything for user, making sure that you know what user really want to do by asking me questions till you understand user needs. And finally, give user all possible results/solutions based on your search/research on Internet and yourself.
 
-## Investigation Workflow
-1. **Session Prep**
-   - Serena: `activate_project`; `list_memories` → read relevant entries; note anything stale.
-2. **Bird’s‑Eye Map**
-   - Cursor: Explorer for fast tree; Codebase search for high-level topics/features.
-   - Serena: `list_dir` (recursive when needed) to capture a structured map programmatically.
-3. **Symbol Navigation**
-   - Serena: `get_symbols_overview` on key files to learn available classes/functions.
-   - Serena: `find_symbol` to locate exact definitions; record file paths.
-4. **Relationship Mapping**
-   - Serena: `find_referencing_symbols` to learn who calls/uses a symbol; note upstream/downstream.
-5. **Targeted Reading**
-   - Cursor: open files for quick skim and navigation.
-   - Serena: `read_file` with `start_line`/`end_line` (as strings) for precise, quotable slices.
-6. **Clarify Gaps**
-   - If requirements/architecture remain unclear, pause and ask before planning edits.
+## WHEN IS THIS RULE APPLIED ?
+1. When user ask you for fiding any solutions for any problem
+2. When user don't know what user should do next
+3. When user don't know something and want you to explore and find the best solution for them
 
-## Editing Guardrails
-- Confirm acceptance criteria and summarize your plan before modifying code.
-- Choose the smallest effective Serena editor:
-  - `replace_regex` for 1–5 line localized tweaks inside a symbol.
-  - `insert_before_symbol` / `insert_after_symbol` to add adjacent helpers or config.
-  - `replace_symbol_body` for full function/class rewrites.
-- Mirror existing style/patterns; do not reformat unrelated code.
-- Cursor: use Diff viewer to review and stage chunks cleanly before handing back.
+---
 
-## Validation & Communication
-- After each edit: use Cursor Diagnostics/Problems to fix errors immediately.
-- Use terminal with non-interactive flags; append `| cat` to avoid pagers.
-- Summarize what changed, why it solves the request, risks, and next steps (tests/commits).
+## CRITICAL RULE: PROBLEM ANALYSIS BEFORE ANY CODE/FILE CHANGES/ANSWER THE QUESTIONS FROM USER
 
-## Task-to-Tool Matrix (Cursor ↔ Serena)
-- **Repository mapping**
-  - Cursor: Explorer for visual overview; Codebase search to orient by feature/topic.
-  - Serena: `list_dir` for recursive, filtered, reproducible maps.
-- **Search by text/symbol**
-  - Cursor: Search/Grep panel for exact strings, regex, filenames; fastest confirmation.
-  - Serena: `find_symbol` for declarations; `find_referencing_symbols` for callers across files.
-- **Semantic discovery**
-  - Cursor: Codebase search for concepts and feature names.
-  - Serena: `get_symbols_overview` → convert concepts to concrete symbols, then `read_file`.
-- **Reading code**
-  - Cursor: navigate broadly in-editor.
-  - Serena: `read_file` line ranges for minimal context window and precise citations.
-- **Planning changes**
-  - Cursor: draft plan in a scratch doc; preview with Diff.
-  - Serena: `think_about_collected_information` and `think_about_task_adherence` to gate edits.
-- **Applying edits**
-  - Serena: `replace_regex`, `insert_*`, `replace_symbol_body` for precise, auditable edits.
-  - Cursor: Diff viewer + Git staging to present and commit changes.
-- **Validation & linting**
-  - Cursor: Diagnostics/Problems; run tests/linters via terminal (non-interactive flags).
-  - Serena: optional verification reads (`read_file`) to confirm applied code in place.
-- **Documentation & references**
-  - Cursor: Web panel for docs/examples (prefer official sources); save links if needed.
-  - Serena: memories to persist architecture decisions and recurring patterns.
+### MANDATORY PRE-CODING WORKFLOW
 
-## Octocode MCP — External code discovery and retrieval
-- Purpose: Retrieve high-quality, real-world code from GitHub to complement Exa patterns.
-- When to use:
-  - Need full files (not just snippets) for end-to-end understanding.
-  - Need to inspect repository structure to locate key modules.
-  - Need exemplars from reputable repositories (by stars/topics) before implementation.
-- Tools:
-  - `mcp_octocode_githubViewRepoStructure`: explore repository tree to find `src/`, `app/`, or entry points.
-  - `mcp_octocode_githubSearchCode`: search for code with ≤3 focused keywords; filter by `filename`, `path`, `language`, `stars` as needed.
-  - `mcp_octocode_githubGetFileContent`: fetch entire files or specific line ranges for precise context.
-  - `mcp_octocode_githubSearchRepositories`: discover high-quality repositories to source examples.
-- Practices:
-  - Start broad, then narrow with `filename`/`path` filters.
-  - Run multiple focused searches in parallel rather than a single broad query.
-  - Cite existing code using CODE REFERENCES format: `startLine:endLine:filepath`.
+Before ANY file editing, coding, or implementation work, you MUST complete this comprehensive analysis:
 
-## Tool Companion Sheet
-- **Serena Essentials**
-  - Discovery: `list_dir`, `get_symbols_overview`, `find_symbol`, `find_referencing_symbols`, `read_file`.
-  - Editing: `replace_regex`, `insert_before_symbol`, `insert_after_symbol`, `replace_symbol_body`.
-  - Meta-thinking: `think_about_collected_information`, `think_about_task_adherence`, `think_about_whether_you_are_done`.
-- **Cursor Built-ins**
-  - Explorer (list directory), Search/Grep panel, Codebase search, Diff viewer, Diagnostics/Problems, Terminal (append `| cat`), Web.
-- Default: use Serena for structured analysis/edits; use Cursor to navigate, visualize, validate, and present results efficiently.
+### PHASE 1: DEEP UNDERSTANDING (REQUIRED)
+
+#### 1. MULTI-SOURCE RESEARCH
+*   **EXTERNAL RESEARCH:** Use a combination of MCP tools for comprehensive research:
+    *   **Web Search:** Use `mcp_brave_search_brave_web_search` or `mcp_exa_web_search_exa` to gather general information, articles, and discussions.
+    *   **Content Scraping:** Use `mcp_Bright_Data_scrape_batch` to extract detailed information from the URLs found during web search.
+    *   **Code-Specific Research:**
+        - Use `mcp_exa_get_code_context_exa` to find patterns/snippets and practical examples from open-source projects.
+        - Use `Octocode MCP` when you need full-file context or repository navigation:
+          - `mcp_octocode_githubSearchCode`: focused keyword search (≤3 terms); filter by `filename`, `path`, `language`, `stars`.
+          - `mcp_octocode_githubViewRepoStructure`: quickly map repo folders to locate `src/`, `app/`, key modules.
+          - `mcp_octocode_githubGetFileContent`: fetch entire files or specific line ranges for precise context.
+          - `mcp_octocode_githubSearchRepositories`: discover exemplar repositories before deep-diving with the above tools.
+    *   **Documentation:** Use `mcp_context7_get_library_docs` for in-depth, official documentation on specific libraries.
+*   **INTERNAL KNOWLEDGE INTEGRATION:** Combine external research with your existing knowledge and expertise
+*   **SYNTHESIS:** Synthesize information from both external sources and internal knowledge to provide comprehensive analysis
+*   **PLANNING:** Call sequential-thinking to plan research approach
+
+#### 2. PROBLEM DECOMPOSITION
+*   Use sequential-thinking mcp to break down the problem
+*   Break down the request into core components
+*   Identify dependencies and relationships
+*   Map out the problem domain and constraints
+*   Document assumptions and unknowns
+
+#### 3. CONTEXT ANALYSIS
+*   Understand project structure and existing patterns
+*   Identify relevant files, frameworks, and conventions
+*   Assess impact scope (local vs system-wide changes)
+
+#### Exa MCP Integration (Code Context Research)
+*   Purpose: Supercharge analysis with real-world code patterns from open-source projects using Exa. This tool helps you move beyond documentation to see how libraries and frameworks are used in practice.
+*   Core Tool: `mcp_exa_get_code_context_exa`
+*   When to use:
+    - When you need to understand how to use a specific library, function, or API.
+    - When you're looking for implementation examples and best practices.
+    - When official documentation is unclear or lacks practical examples.
+*   Best practices:
+    - Be specific in your queries. Include the programming language, library name, and the concept you're looking for (e.g., 'Python pandas dataframe filtering example', 'React useEffect hook for data fetching').
+    - Use this tool as a primary source for implementation details, complementing official documentation from `Context7` and web context from `Brave` or `Exa Web Search`.
+
+#### Octocode MCP Integration (Full-file code evidence)
+*   Purpose: Validate patterns by inspecting original source files and repository structure.
+*   Core Tools: `mcp_octocode_githubSearchCode`, `mcp_octocode_githubViewRepoStructure`, `mcp_octocode_githubGetFileContent`, `mcp_octocode_githubSearchRepositories`.
+*   When to use:
+    - Need end-to-end examples, not just snippets.
+    - Need to confirm surrounding context, imports, and usage patterns.
+    - Need to compare multiple high-quality implementations before deciding.
+*   Best practices:
+    - Start broad; tighten with `filename`/`path` filters.
+    - Split different ideas into separate focused searches, run in parallel.
+    - Cite existing code with CODE REFERENCES format: `startLine:endLine:filepath`.
+
+---
+
+### PHASE 2: SOLUTION DISCOVERY (REQUIRED)
+
+#### 4. ALTERNATIVE IDENTIFICATION
+*   Research ALL feasible approaches to solve the problem
+*   Include both conventional and innovative solutions
+*   Consider different architectural patterns, libraries, or methodologies
+*   Document minimum 2-3 distinct approaches
+
+#### 5. FEASIBILITY ANALYSIS
+*   Technical feasibility (complexity, time, resources)
+*   Compatibility with existing system
+*   Performance implications
+*   Maintenance and scalability considerations
+
+---
+
+### PHASE 3: DECISION FRAMEWORK (REQUIRED)
+
+#### 6. MULTI-CRITERIA EVALUATION
+*   Define evaluation criteria (performance, maintainability, complexity, time-to-implement)
+*   Score each alternative against criteria
+*   Weight criteria based on project priorities
+
+#### 7. PROS & CONS ANALYSIS
+*   Detailed advantages of each approach
+*   Specific disadvantages and limitations
+*   Risk assessment and mitigation strategies
+*   Long-term implications
+
+#### 8. RECOMMENDATION WITH REASONING
+*   State clearly which approach is recommended
+*   Provide detailed reasoning based on evaluation
+*   Explain why this approach is optimal for the specific context
+*   Include confidence level and caveats
+
+---
+
+### PHASE 4: IMPLEMENTATION READINESS (REQUIRED)
+
+#### 9. UNDERSTANDING VALIDATION
+*   Confirm user's problem is fully understood
+*   Verify recommended approach aligns with user's goals
+*   Ask clarifying questions if any ambiguity remains
+
+#### 10. IMPLEMENTATION PLAN
+*   Break down implementation into clear steps
+*   Identify potential challenges and solutions
+*   Estimate effort and timeline
+*   Define success criteria and testing approach
+
+---
+
+## QUALITY GATES & RESPONSE TEMPLATE
+
+### COMPREHENSIVE PROBLEM ANALYSIS FORMAT:
+
+**EXECUTIVE SUMMARY**
+[Brief overview of the problem and recommended solution with key insights]
+
+**UNDERSTANDING (CURRENT SITUATION ANALYSIS)**
+[Comprehensive problem analysis and context]
+
+**RESEARCH INSIGHTS (MULTI-SOURCE EVIDENCE)**
+*   FROM [SOURCE 1]: [Key findings with citations]
+*   FROM [SOURCE 2]: [Supporting evidence with citations]
+
+**SOLUTION ALTERNATIVES (ALL FEASIBLE APPROACHES)**
+
+**OPTION 1: [NAME]**
+*   **DESCRIPTION:** [Detailed explanation]
+*   **PROS:** [Specific advantages]
+*   **CONS:** [Specific limitations]
+*   **COMPLEXITY:** [Assessment]
+*   **TIMELINE:** [Estimated time to implement]
+*   **DEPENDENCIES:** [What needs to be in place]
+*   **BEST FOR:** [Use cases]
+
+**OPTION 2: [NAME]**
+[Same structure as Option 1]
+
+**OPTION 3: [NAME]**
+[Same structure as Option 1]
+
+**DECISION FRAMEWORK (EVALUATION & RECOMMENDATION)**
+
+**EVALUATION CRITERIA:**
+*   [Criterion 1]: Weight [X%]
+*   [Criterion 2]: Weight [Y%]
+*   [Criterion 3]: Weight [Z%]
+
+**SCORING MATRIX:**
+```
+OPTION    CRITERION 1    CRITERION 2    CRITERION 3    TOTAL SCORE
+--------  -------------  -------------  -------------  -------------
+Option 1  [Score]        [Score]        [Score]        [Total]
+Option 2  [Score]        [Score]        [Score]        [Total]
+```
+
+**RECOMMENDATION:** [Chosen Option]
+**REASONING:** [Detailed explanation why this option is optimal]
+**CONFIDENCE LEVEL:** [High/Medium/Low with justification]
+
+**IMPLEMENTATION PLAN (CLEAR NEXT ACTIONS)**
+
+**TOTAL TIMELINE:** [Estimated total time]
+**KEY DEPENDENCIES:** [What needs to be in place before starting]
+
+1.  **IMMEDIATE ACTIONS (NEXT 24H):** [What to do first]
+2.  **SHORT-TERM (1-7 DAYS):** [Detailed implementation steps]
+3.  **MEDIUM-TERM (1-4 WEEKS):** [Ongoing tasks and milestones]
+4.  **VERIFICATION:** [How to confirm success]
+
+**SUCCESS METRICS**
+*   **PRIMARY SUCCESS INDICATOR:** [Main metric to measure success]
+*   **SECONDARY METRICS:** [Additional metrics to track]
+*   **MEASUREMENT TIMELINE:** [When to measure and review]
+
+**RISKS & CONSIDERATIONS**
+*   **RISK:** [Potential issue] -> **MITIGATION:** [How to address]
+*   **RISK:** [Potential issue] -> **MITIGATION:** [How to address]
+
+**ADDITIONAL RESOURCES**
+*   [Relevant documentation links]
+*   [Useful tools or libraries]
+
+---
+
+### VALIDATION CHECKLIST
+- [ ] Problem fully understood with multi-source research
+- [ ] At least 2-3 distinct alternatives identified and analyzed
+- [ ] Clear pros/cons for each option documented
+- [ ] Evidence-based recommendation with reasoning
+- [ ] Implementation plan with clear timeline provided
+- [ ] Success metrics defined and measurable
+- [ ] Risks identified and mitigation strategies planned
+- [ ] Dependencies clearly identified
+- [ ] Octocode used to fetch full-file evidence when snippets are insufficient
+ - [ ] Code citations provided using CODE REFERENCES format
+
+### VALIDATION CHECKPOINTS:
+- [ ] Problem fully understood with multi-source research (brave-search/exa for search web + bright data mcp for scrape multiple sites + context7 for search docs)
+- [ ] Using brave search mcp and scrape_batch_url by using Bright Data mcp to get the specific informations
+- [ ] At least 2-3 distinct alternatives identified and analyzed
+- [ ] Clear pros/cons for each option documented
+- [ ] Evidence-based recommendation with reasoning
+- [ ] User understanding confirmed before implementation
+- [ ] Implementation plan with clear steps provided
+- [ ] Octocode MCP used to retrieve repository code and full files when needed
+
+### QUALITY STANDARDS:
+*   **THOROUGHNESS:** Cover all aspects of the problem domain
+*   **EVIDENCE-BASED:** All claims supported by research and citations
+*   **CLARITY:** Technical concepts explained clearly
+*   **ACTIONABILITY:** Provide concrete, implementable solutions
+*   **RISK AWARENESS:** Identify and address potential issues
+
+---
+
+## STANDARD WORKFLOW INTEGRATION
+
+The above PRE-CODING WORKFLOW integrates with the existing standard workflow:
+
+1.  **PLAN (SEQUENTIAL-THINKING MCP)** - Now includes problem analysis planning
+2.  **RESEARCH (MCP SEARCH TOOL LIKE: BRAVE-SEARCH/EXA FOR SEARCH WEB + BRIGHT DATA MCP FOR SCRAPE MULTIPLE SITES + CONTEXT7 FOR SEARCH DOCS)**
+3.  **VALIDATE (SEQUENTIAL-THINKING MCP)** - Expanded to include solution validation and user confirmation
+4.  **SYNTHESIZE & DELIVER** - Now uses structured response template
