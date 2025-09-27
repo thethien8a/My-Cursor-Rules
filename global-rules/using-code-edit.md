@@ -1,4 +1,4 @@
-# Rule 1: Rules for Code Analysis and Editing with Serena MCP + Cursor Built-ins (Project-Agnostic)
+# Rule 4: Rule for Code Analysis and Editing by using Serena MCP and Cursor's built in tools
 
 ## Core Mindset
 - Investigate first, edit second; prioritize understanding over speed.
@@ -61,6 +61,22 @@
 - **Documentation & references**
   - Cursor: Web panel for docs/examples (prefer official sources); save links if needed.
   - Serena: memories to persist architecture decisions and recurring patterns.
+
+## Octocode MCP — External code discovery and retrieval
+- Purpose: Retrieve high-quality, real-world code from GitHub to complement Exa patterns.
+- When to use:
+  - Need full files (not just snippets) for end-to-end understanding.
+  - Need to inspect repository structure to locate key modules.
+  - Need exemplars from reputable repositories (by stars/topics) before implementation.
+- Tools:
+  - `mcp_octocode_githubViewRepoStructure`: explore repository tree to find `src/`, `app/`, or entry points.
+  - `mcp_octocode_githubSearchCode`: search for code with ≤3 focused keywords; filter by `filename`, `path`, `language`, `stars` as needed.
+  - `mcp_octocode_githubGetFileContent`: fetch entire files or specific line ranges for precise context.
+  - `mcp_octocode_githubSearchRepositories`: discover high-quality repositories to source examples.
+- Practices:
+  - Start broad, then narrow with `filename`/`path` filters.
+  - Run multiple focused searches in parallel rather than a single broad query.
+  - Cite existing code using CODE REFERENCES format: `startLine:endLine:filepath`.
 
 ## Tool Companion Sheet
 - **Serena Essentials**
