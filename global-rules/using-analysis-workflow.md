@@ -1,238 +1,151 @@
-# RULE 5: Mandatory Analysis & Strategy Framework
+# RULE 5: Problem Analysis & Solution Discovery Protocol
 
-**GOAL:** To solve any problems user ask, you must do multi-source research, know clear structure and remember that before doing anything for user, making sure that you know what user really want to do by asking me questions till you understand user needs. And finally, give user all possible results/solutions based on your search/research on Internet and yourself.
+**GOAL:** Research deeply, analyze thoroughly, provide evidence-based solutions for ANY problem (technical or non-technical).
 
-## WHEN IS THIS RULE APPLIED ?
-1. When user ask you for fiding any solutions for any problem
-2. When user don't know what user should do next
-3. When user don't know something and want you to explore and find the best solution for them
+**WHEN TO USE:**
+- User needs help finding solutions to a problem
+- User wants to explore options before deciding
+- User asks "what should I do?" or "how to solve X?"
+- Before implementing ANY significant code/file changes
 
----
-
-## CRITICAL RULE: PROBLEM ANALYSIS BEFORE ANY CODE/FILE CHANGES/ANSWER THE QUESTIONS FROM USER
-
-### MANDATORY PRE-CODING WORKFLOW
-
-Before ANY file editing, coding, or implementation work, you MUST complete this comprehensive analysis:
-
-### PHASE 1: DEEP UNDERSTANDING (REQUIRED)
-
-#### 1. MULTI-SOURCE RESEARCH
-*   **EXTERNAL RESEARCH:** Use a combination of MCP tools for comprehensive research:
-    *   **Web Search:** Use `mcp_brave_search_brave_web_search` or `mcp_exa_web_search_exa` to gather general information, articles, and discussions.
-    *   **Content Scraping:** Use `mcp_Bright_Data_scrape_batch` to extract detailed information from the URLs found during web search.
-    *   **Code-Specific Research:**
-        - Use `mcp_exa_get_code_context_exa` to find patterns/snippets and practical examples from open-source projects.
-        - Use `Octocode MCP` when you need full-file context or repository navigation:
-          - `mcp_octocode_githubSearchCode`: focused keyword search (≤3 terms); filter by `filename`, `path`, `language`, `stars`.
-          - `mcp_octocode_githubViewRepoStructure`: quickly map repo folders to locate `src/`, `app/`, key modules.
-          - `mcp_octocode_githubGetFileContent`: fetch entire files or specific line ranges for precise context.
-          - `mcp_octocode_githubSearchRepositories`: discover exemplar repositories before deep-diving with the above tools.
-    *   **Documentation:** Use `mcp_context7_get_library_docs` for in-depth, official documentation on specific libraries.
-*   **INTERNAL KNOWLEDGE INTEGRATION:** Combine external research with your existing knowledge and expertise
-*   **SYNTHESIS:** Synthesize information from both external sources and internal knowledge to provide comprehensive analysis
-*   **PLANNING:** Call sequential-thinking to plan research approach
-
-#### 2. PROBLEM DECOMPOSITION
-*   Use sequential-thinking mcp to break down the problem
-*   Break down the request into core components
-*   Identify dependencies and relationships
-*   Map out the problem domain and constraints
-*   Document assumptions and unknowns
-
-#### 3. CONTEXT ANALYSIS
-*   Understand project structure and existing patterns
-*   Identify relevant files, frameworks, and conventions
-*   Assess impact scope (local vs system-wide changes)
-
-#### Exa MCP Integration (Code Context Research)
-*   Purpose: Supercharge analysis with real-world code patterns from open-source projects using Exa. This tool helps you move beyond documentation to see how libraries and frameworks are used in practice.
-*   Core Tool: `mcp_exa_get_code_context_exa`
-*   When to use:
-    - When you need to understand how to use a specific library, function, or API.
-    - When you're looking for implementation examples and best practices.
-    - When official documentation is unclear or lacks practical examples.
-*   Best practices:
-    - Be specific in your queries. Include the programming language, library name, and the concept you're looking for (e.g., 'Python pandas dataframe filtering example', 'React useEffect hook for data fetching').
-    - Use this tool as a primary source for implementation details, complementing official documentation from `Context7` and web context from `Brave` or `Exa Web Search`.
-
-#### Octocode MCP Integration (Full-file code evidence)
-*   Purpose: Validate patterns by inspecting original source files and repository structure.
-*   Core Tools: `mcp_octocode_githubSearchCode`, `mcp_octocode_githubViewRepoStructure`, `mcp_octocode_githubGetFileContent`, `mcp_octocode_githubSearchRepositories`.
-*   When to use:
-    - Need end-to-end examples, not just snippets.
-    - Need to confirm surrounding context, imports, and usage patterns.
-    - Need to compare multiple high-quality implementations before deciding.
-*   Best practices:
-    - Start broad; tighten with `filename`/`path` filters.
-    - Split different ideas into separate focused searches, run in parallel.
-    - Cite existing code with CODE REFERENCES format: `startLine:endLine:filepath`.
+**CORE PRINCIPLE:** Never guess. Research depth should match problem complexity.
 
 ---
 
-### PHASE 2: SOLUTION DISCOVERY (REQUIRED)
+## STEP 0: ASSESS COMPLEXITY (First!)
 
-#### 4. ALTERNATIVE IDENTIFICATION
-*   Research ALL feasible approaches to solve the problem
-*   Include both conventional and innovative solutions
-*   Consider different architectural patterns, libraries, or methodologies
-*   Document minimum 2-3 distinct approaches
+**Quick Assessment:** Choose workflow based on:
 
-#### 5. FEASIBILITY ANALYSIS
-*   Technical feasibility (complexity, time, resources)
-*   Compatibility with existing system
-*   Performance implications
-*   Maintenance and scalability considerations
+| → 🟢 LIGHT Workflow | → 🔴 DEEP Workflow |
+|---------------------|-------------------|
+| Clear "how to" question | Architectural decision needed |
+| Well-known pattern | Novel/unclear solution |
+| Single component | Multi-component system |
+| Low risk/impact | High risk/critical |
+| Specific request | Vague/exploratory |
 
----
-
-### PHASE 3: DECISION FRAMEWORK (REQUIRED)
-
-#### 6. MULTI-CRITERIA EVALUATION
-*   Define evaluation criteria (performance, maintainability, complexity, time-to-implement)
-*   Score each alternative against criteria
-*   Weight criteria based on project priorities
-
-#### 7. PROS & CONS ANALYSIS
-*   Detailed advantages of each approach
-*   Specific disadvantages and limitations
-*   Risk assessment and mitigation strategies
-*   Long-term implications
-
-#### 8. RECOMMENDATION WITH REASONING
-*   State clearly which approach is recommended
-*   Provide detailed reasoning based on evaluation
-*   Explain why this approach is optimal for the specific context
-*   Include confidence level and caveats
+**When uncertain:** Start LIGHT, escalate to DEEP if needed (adaptive approach)
+**Context savings:** Light = ~80% saved vs Deep = justified usage
 
 ---
 
-### PHASE 4: IMPLEMENTATION READINESS (REQUIRED)
+## LIGHT WORKFLOW (Simple Problems) 🟢
 
-#### 9. UNDERSTANDING VALIDATION
-*   Confirm user's problem is fully understood
-*   Verify recommended approach aligns with user's goals
-*   Ask clarifying questions if any ambiguity remains
+**When:** Clear request, known patterns, low risk, single component
 
-#### 10. IMPLEMENTATION PLAN
-*   Break down implementation into clear steps
-*   Identify potential challenges and solutions
-*   Estimate effort and timeline
-*   Define success criteria and testing approach
+1. **Quick Check:** What's the core question? Known answer?
+2. **Minimal Research** (1-2 tools max):
+   - Library/framework → `context7_get_library_docs`
+   - Code pattern → `exa_get_code_context`
+   - General info → `brave_web_search`
+3. **Direct Solution:** 1 approach + brief explanation + steps
+4. **Validate:** Confirm with user if needed → Implement
 
----
-
-## QUALITY GATES & RESPONSE TEMPLATE
-
-### COMPREHENSIVE PROBLEM ANALYSIS FORMAT:
-
-**EXECUTIVE SUMMARY**
-[Brief overview of the problem and recommended solution with key insights]
-
-**UNDERSTANDING (CURRENT SITUATION ANALYSIS)**
-[Comprehensive problem analysis and context]
-
-**RESEARCH INSIGHTS (MULTI-SOURCE EVIDENCE)**
-*   FROM [SOURCE 1]: [Key findings with citations]
-*   FROM [SOURCE 2]: [Supporting evidence with citations]
-
-**SOLUTION ALTERNATIVES (ALL FEASIBLE APPROACHES)**
-
-**OPTION 1: [NAME]**
-*   **DESCRIPTION:** [Detailed explanation]
-*   **PROS:** [Specific advantages]
-*   **CONS:** [Specific limitations]
-*   **COMPLEXITY:** [Assessment]
-*   **TIMELINE:** [Estimated time to implement]
-*   **DEPENDENCIES:** [What needs to be in place]
-*   **BEST FOR:** [Use cases]
-
-**OPTION 2: [NAME]**
-[Same structure as Option 1]
-
-**OPTION 3: [NAME]**
-[Same structure as Option 1]
-
-**DECISION FRAMEWORK (EVALUATION & RECOMMENDATION)**
-
-**EVALUATION CRITERIA:**
-*   [Criterion 1]: Weight [X%]
-*   [Criterion 2]: Weight [Y%]
-*   [Criterion 3]: Weight [Z%]
-
-**SCORING MATRIX:**
-```
-OPTION    CRITERION 1    CRITERION 2    CRITERION 3    TOTAL SCORE
---------  -------------  -------------  -------------  -------------
-Option 1  [Score]        [Score]        [Score]        [Total]
-Option 2  [Score]        [Score]        [Score]        [Total]
-```
-
-**RECOMMENDATION:** [Chosen Option]
-**REASONING:** [Detailed explanation why this option is optimal]
-**CONFIDENCE LEVEL:** [High/Medium/Low with justification]
-
-**IMPLEMENTATION PLAN (CLEAR NEXT ACTIONS)**
-
-**TOTAL TIMELINE:** [Estimated total time]
-**KEY DEPENDENCIES:** [What needs to be in place before starting]
-
-1.  **IMMEDIATE ACTIONS (NEXT 24H):** [What to do first]
-2.  **SHORT-TERM (1-7 DAYS):** [Detailed implementation steps]
-3.  **MEDIUM-TERM (1-4 WEEKS):** [Ongoing tasks and milestones]
-4.  **VERIFICATION:** [How to confirm success]
-
-**SUCCESS METRICS**
-*   **PRIMARY SUCCESS INDICATOR:** [Main metric to measure success]
-*   **SECONDARY METRICS:** [Additional metrics to track]
-*   **MEASUREMENT TIMELINE:** [When to measure and review]
-
-**RISKS & CONSIDERATIONS**
-*   **RISK:** [Potential issue] -> **MITIGATION:** [How to address]
-*   **RISK:** [Potential issue] -> **MITIGATION:** [How to address]
-
-**ADDITIONAL RESOURCES**
-*   [Relevant documentation links]
-*   [Useful tools or libraries]
+**Response:** Direct answer → Why it works → Implementation steps
 
 ---
 
-### VALIDATION CHECKLIST
-- [ ] Problem fully understood with multi-source research
-- [ ] At least 2-3 distinct alternatives identified and analyzed
-- [ ] Clear pros/cons for each option documented
-- [ ] Evidence-based recommendation with reasoning
-- [ ] Implementation plan with clear timeline provided
-- [ ] Success metrics defined and measurable
-- [ ] Risks identified and mitigation strategies planned
-- [ ] Dependencies clearly identified
-- [ ] Octocode used to fetch full-file evidence when snippets are insufficient
- - [ ] Code citations provided using CODE REFERENCES format
+## DEEP WORKFLOW (Complex Problems) 🔴
 
-### VALIDATION CHECKPOINTS:
-- [ ] Problem fully understood with multi-source research (brave-search/exa for search web + bright data mcp for scrape multiple sites + context7 for search docs)
-- [ ] Using brave search mcp and scrape_batch_url by using Bright Data mcp to get the specific informations
-- [ ] At least 2-3 distinct alternatives identified and analyzed
-- [ ] Clear pros/cons for each option documented
-- [ ] Evidence-based recommendation with reasoning
-- [ ] User understanding confirmed before implementation
-- [ ] Implementation plan with clear steps provided
-- [ ] Octocode MCP used to retrieve repository code and full files when needed
+**When:** Multi-component, high risk, unclear requirements, architectural decisions
 
-### QUALITY STANDARDS:
-*   **THOROUGHNESS:** Cover all aspects of the problem domain
-*   **EVIDENCE-BASED:** All claims supported by research and citations
-*   **CLARITY:** Technical concepts explained clearly
-*   **ACTIONABILITY:** Provide concrete, implementable solutions
-*   **RISK AWARENESS:** Identify and address potential issues
+### PHASE 1: PLAN & RESEARCH
+- **Plan** (`sequential-thinking`): Break problem → identify unknowns → map research strategy
+- **Multi-Source Research** (parallel execution):
+  - `brave_web_search` → identify concepts/URLs
+  - `Bright_Data_scrape_batch` → extract content (max 10 URLs)
+  - `context7_get_library_docs` → official docs
+  - `exa_get_code_context` + `octocode_*` → real-world patterns
+- **Strategy**: Broad → Deep → Technical → Validate → Synthesize
+
+### PHASE 2: DISCOVER ALTERNATIVES
+- Find 2-3+ distinct approaches
+- For each: Description, Pros/Cons, Complexity (H/M/L), Timeline, Dependencies, Best for
+
+### PHASE 3: EVALUATE & DECIDE
+- Define criteria (Performance, Maintainability, Time, etc.) + weights
+- Score options (use `sequential-thinking`)
+- **Recommend:** Chosen option + reasoning + confidence + risks/mitigation
+
+### PHASE 4: VALIDATE & PLAN
+- Confirm understanding with user
+- Provide implementation roadmap:
+  - IMMEDIATE (24h) → SHORT-TERM (1-7d) → MEDIUM-TERM (1-4w)
+- Define success metrics + verification method
+
+## RESPONSE TEMPLATE
+
+**For LIGHT (adapt as needed):**
+- Solution + Why it works + Implementation steps
+
+**For DEEP (comprehensive):**
+1. **Executive Summary:** Problem + Recommended solution + Key insight
+2. **Research Insights:** Findings from each source (cited)
+3. **Solution Options:** 2-3 alternatives (Description, Pros/Cons, Complexity, Timeline, Best for)
+4. **Evaluation:** Scoring matrix → Recommended option + reasoning + confidence
+5. **Roadmap:** Immediate/Short/Medium-term steps + Success metrics + Risks/mitigation
 
 ---
 
-## STANDARD WORKFLOW INTEGRATION
+## VALIDATION CHECKLIST
 
-The above PRE-CODING WORKFLOW integrates with the existing standard workflow:
+**For LIGHT Workflow (Simple Problems):**
+- [ ] **Complexity assessed** as SIMPLE with clear justification
+- [ ] **Minimal research** completed (1-2 sources max)
+- [ ] **Direct solution** provided with brief reasoning
+- [ ] **Implementation steps** clear and actionable
+- [ ] **User confirmation** if any uncertainty
 
-1.  **PLAN (SEQUENTIAL-THINKING MCP)** - Now includes problem analysis planning
-2.  **RESEARCH (MCP SEARCH TOOL LIKE: BRAVE-SEARCH/EXA FOR SEARCH WEB + BRIGHT DATA MCP FOR SCRAPE MULTIPLE SITES + CONTEXT7 FOR SEARCH DOCS)**
-3.  **VALIDATE (SEQUENTIAL-THINKING MCP)** - Expanded to include solution validation and user confirmation
-4.  **SYNTHESIZE & DELIVER** - Now uses structured response template
+**For DEEP Workflow (Complex Problems):**
+- [ ] **Complexity assessed** as COMPLEX with clear justification
+- [ ] **Research completed** from ≥3 sources (web search + content scrape + docs/code)
+- [ ] **Problem decomposed** using sequential-thinking
+- [ ] **≥2-3 alternatives** identified with pros/cons
+- [ ] **Evidence-based** recommendation (all claims cited)
+- [ ] **Evaluation criteria** defined and applied
+- [ ] **Implementation plan** with timeline and success metrics
+- [ ] **Risks identified** with mitigation strategies
+- [ ] **User understanding** confirmed (ask questions if unclear)
+- [ ] **Code citations** in format `startLine:endLine:filepath` (when applicable)
+- [ ] **Parallel execution** used where possible (faster research)
+
+---
+
+## MCP TOOL QUICK REFERENCE
+
+| Task | Primary Tool | When to Use | Light 🟢 | Deep 🔴 |
+|------|-------------|-------------|---------|---------|
+| Plan investigation | `sequential-thinking` | Structure approach | Brief | Detailed |
+| General research | `brave_web_search` | Articles, discussions | ✓ | ✓ |
+| Deep content | `Bright_Data_scrape_batch` | Extract from URLs (max 10) | ✗ | ✓ |
+| Official docs | `context7_get_library_docs` | Authoritative sources | ✓ | ✓ |
+| Code patterns | `exa_get_code_context` | Real-world examples | ✓ | ✓ |
+| GitHub search | `octocode_githubSearchCode` | Find proven implementations | ✗ | ✓ |
+| Full files | `octocode_githubGetFileContent` | Complete context | ✗ | ✓ |
+| Repo structure | `octocode_githubViewRepoStructure` | Navigate projects | ✗ | ✓ |
+| Quality repos | `octocode_githubSearchRepositories` | Discover by stars/topics | ✗ | ✓ |
+
+**🟢 Light Workflow:** Use 1-2 tools max, minimal context  
+**🔴 Deep Workflow:** Use 3+ tools, parallel execution for speed
+
+---
+
+## PRACTICAL EXAMPLES
+
+**🟢 LIGHT:** "How to add timeout to Python requests?"
+- Single library function, known pattern, low risk
+- Action: `exa_get_code_context` → direct answer → done
+- **Context saved: ~80%**
+
+**🔴 DEEP:** "Best architecture for real-time analytics pipeline?"
+- Multi-component, architectural decision, high risk
+- Action: `sequential-thinking` + `brave_web_search` + `scrape_batch` + `context7` + `octocode` → compare 3 alternatives → detailed evaluation
+- **Context used: justified by complexity**
+
+**⚠️ UNCERTAIN:** "Optimize my database queries?"
+- Start LIGHT: ask specifics → if clarified → escalate to DEEP
+- **Better to start light and escalate than over-research**
+
+---
+
+**REMEMBER:** Context is expensive. Research smart, not hard. Match depth to complexity.
