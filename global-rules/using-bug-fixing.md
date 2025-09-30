@@ -1,33 +1,73 @@
-# RULE 1: Code Bug Fixing Workflow
+# RULE 1: Bug Fix Protocol
 
-**PRIMARY DIRECTIVE:** When tasked with fixing a bug, your mission is to systematically identify, research, and resolve the issue. Adhere strictly to this protocol.
+**GOAL:** Systematically identify, research, and resolve bugs using evidence-based solutions.
+
+**WHEN TO USE:** User reports error, linter shows issues, or tests fail.
 
 ---
 
-### STEP 1: ERROR ANALYSIS
-1.  **LOCATE THE ERROR:** Pinpoint the exact file, line number, and error message from the user's report or linter output.
-2.  **UNDERSTAND CONTEXT:** Read the code surrounding the error to understand its purpose. Use `read_file` with a specific line range if necessary.
+## WORKFLOW
 
-### STEP 2: RESEARCH SOLUTIONS (MCP USAGE IS MANDATORY)
-*   **MANDATORY REQUIREMENT:** You MUST research a solution before writing any code. DO NOT attempt to fix bugs based on pre-existing knowledge alone.
-*   **TOOL PRIORITY:**
-    1.  **Specific Errors (Library/Framework):** Use `mcp_exa_get_code_context_exa` FIRST. Query for the function, library, or error pattern to find real-world examples and fixes.
-    2.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` or `mcp_brave_search_brave_web_search` to find documentation or articles.
-*   **SYNTHESIZE:** Based on your research, determine the best and most appropriate solution.
+### 1. PLAN (Sequential Thinking)
+- Use `mcp_server-sequential-thinking_sequentialthinking` to break down the bug investigation
+- Map out: error location → root cause → potential solutions → validation strategy
 
-#### Octocode MCP (GitHub code evidence)
-- When Exa lacks full-file examples or deeper repository context, also use Octocode MCP:
-  - `mcp_octocode_githubSearchCode`: find similar fixes/usages by short focused keywords. Prefer ≤3 single-word terms; split different ideas into separate queries.
-  - `mcp_octocode_githubGetFileContent`: fetch the full source file or an exact line range to validate surrounding context of the snippet.
-  - `mcp_octocode_githubViewRepoStructure`: quickly inspect repo layout to locate `src/`, `app/`, or key entry files before fetching content.
-  - `mcp_octocode_githubSearchRepositories`: discover high-quality repos (by stars/topics) to source reliable examples.
-- Apply the smallest change that aligns with common, proven open-source patterns identified via Octocode.
+### 2. LOCATE & UNDERSTAND
+- **Find error:** exact file, line number, error message (use linter output or user report)
+- **Read context:** use Serena's `mcp_serena_read_file` with line ranges to understand surrounding code
+- **Trace symbols:** use `mcp_serena_find_symbol` and `mcp_serena_find_referencing_symbols` to understand dependencies
 
-### STEP 3: IMPLEMENT THE FIX
-1.  **MINIMAL CHANGE:** Apply the smallest possible code change to fix the bug.
-2.  **NO REFACTORING:** Absolutely DO NOT refactor or alter the style of unrelated code. Your change must only address the bug.
-3.  **EXPLAIN:** Clearly state what you changed and why it fixes the bug.
+### 3. RESEARCH (MANDATORY - Never guess)
+Execute in parallel when possible:
 
-### STEP 4: VERIFY
-1.  **LINTER CHECK:** After editing, run `read_lints` on the modified file to ensure no new errors were introduced.
-2.  **CONFIRMATION:** Inform the user that the fix is complete and suggest how they can verify it.
+**A. Code Patterns (Priority 1)**
+- `mcp_exa_get_code_context_exa`: search for error pattern + library name + "fix" to find working examples
+- `mcp_octocode_githubSearchCode`: find proven fixes in high-star repos (≤3 keywords: e.g., "error", "fix", "library")
+
+**B. Official Documentation**
+- `mcp_context7_get_library_docs`: get authoritative docs for the library/framework causing the error
+
+**C. Community Solutions**
+- `mcp_brave_search_brave_web_search`: search for error message + context to find Stack Overflow discussions
+
+**D. Full Context (if snippets insufficient)**
+- `mcp_octocode_githubGetFileContent`: fetch complete working implementations from quality repos
+- `mcp_octocode_githubViewRepoStructure`: explore repo structure to locate similar modules
+
+### 4. FIX
+- **Minimal change:** smallest edit that solves the bug, no refactoring
+- **Use Serena editors:** `mcp_serena_replace_regex` or `mcp_serena_replace_symbol_body`
+- **Preserve style:** match existing code patterns exactly
+
+### 5. VERIFY
+- **Lint check:** `read_lints` on modified file
+- **Run tests:** if available, execute relevant test suite
+- **Confirm:** explain change and how to verify
+
+---
+
+## MCP TOOL QUICK REFERENCE
+
+| Need | Tool | Usage |
+|------|------|-------|
+| Plan approach | `sequential-thinking` | Break down investigation |
+| Read code | `serena_read_file` | Targeted line ranges |
+| Find symbol | `serena_find_symbol` | Locate definitions |
+| Trace usage | `serena_find_referencing_symbols` | Find callers |
+| Code examples | `exa_get_code_context` | Real-world patterns |
+| GitHub search | `octocode_githubSearchCode` | Proven fixes |
+| Full files | `octocode_githubGetFileContent` | Complete implementations |
+| Official docs | `context7_get_library_docs` | Authoritative reference |
+| Community help | `brave_web_search` | Stack Overflow, blogs |
+| Edit code | `serena_replace_*` | Minimal changes |
+
+---
+
+## VALIDATION CHECKLIST
+- [ ] Error location identified (file, line, message)
+- [ ] Root cause understood via symbol tracing
+- [ ] Research completed (≥2 sources: code examples + docs)
+- [ ] Solution validated against proven patterns
+- [ ] Minimal change applied (no refactoring)
+- [ ] Linter passes
+- [ ] Fix explained with reasoning
