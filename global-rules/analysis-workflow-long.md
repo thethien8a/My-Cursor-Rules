@@ -61,7 +61,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 2. **Minimal Research** (pick 1-2 tools max)
    - **Known library/framework?** → `context7_get_library_docs` only
    - **Code pattern?** → `exa_get_code_context` only
-   - **General info?** → `brave_web_search` only
+   - **General info?** → `brave_web_search` and `exa_web_search` only
 
 3. **Direct Solution**
    - Provide 1 recommended approach (no need for multiple options)
@@ -101,15 +101,15 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 
 **B. Multi-Source Research** (execute in parallel when possible)
 
-| Research Goal | Primary Tool | Secondary Tool | Usage Notes |
-|--------------|--------------|----------------|-------------|
-| **General info/overview** | `brave_web_search` | `exa_web_search` | Broad queries, articles, discussions |
-| **Deep content extraction** | `Bright_Data_scrape_batch` | - | Extract full content from top URLs (max 10) |
-| **Official docs** | `context7_get_library_docs` | - | Authoritative library/framework docs |
-| **Code examples** | `exa_get_code_context` | `octocode_githubSearchCode` | Real-world patterns & implementations |
-| **Full source files** | `octocode_githubGetFileContent` | - | Complete context, imports, structure |
-| **Repo structure** | `octocode_githubViewRepoStructure` | - | Find src/, app/, key modules |
-| **Discover quality repos** | `octocode_githubSearchRepositories` | - | Filter by stars/topics |
+| Research Goal | Primary Tool | Usage Notes |
+|--------------|--------------|----------------|
+| **General info/overview** | `brave_web_search` and `exa_web_search` | Broad queries, articles, discussions |
+| **Deep content extraction** | `Bright_Data_scrape_batch` | Extract full content from top URLs (max 10) |
+| **Official docs** | `context7_get_library_docs` | Authoritative library/framework docs |
+| **Code examples** | `exa_get_code_context` and `octocode_githubSearchCode` | Real-world patterns & implementations |
+| **Full source files** | `octocode_githubGetFileContent` | Complete context, imports, structure |
+| **Repo structure** | `octocode_githubViewRepoStructure` | Find src/, app/, key modules |
+| **Discover quality repos** | `octocode_githubSearchRepositories` | Filter by stars/topics |
 
 **Research Strategy:**
 1. **Start broad**: Web search → identify key URLs/concepts
@@ -274,7 +274,7 @@ Use this as a guide, adapt based on problem complexity:
 | Task | Primary Tool | When to Use | Light 🟢 | Deep 🔴 |
 |------|-------------|-------------|---------|---------|
 | Plan investigation | `sequential-thinking` | Structure approach | Brief | Detailed |
-| General research | `brave_web_search` | Articles, discussions | ✓ | ✓ |
+| General research | `brave_web_search` and `exa_web_search` | Articles, discussions | ✓ | ✓ |
 | Deep content | `Bright_Data_scrape_batch` | Extract from URLs (max 10) | ✗ | ✓ |
 | Official docs | `context7_get_library_docs` | Authoritative sources | ✓ | ✓ |
 | Code patterns | `exa_get_code_context` | Real-world examples | ✓ | ✓ |
@@ -319,7 +319,7 @@ Use this as a guide, adapt based on problem complexity:
 
 **Action:**
 1. `sequential-thinking`: Break down requirements
-2. `brave_web_search`: Current trends in analytics pipelines
+2. `brave_web_search` and `exa_web_search`: Current trends in analytics pipelines
 3. `Bright_Data_scrape_batch`: Deep dive into top 3-5 articles
 4. `context7_get_library_docs`: Research Kafka, Flink, Spark docs
 5. `octocode_githubSearchRepositories`: Find production examples
@@ -363,7 +363,7 @@ Use this as a guide, adapt based on problem complexity:
 - ✅ **Confirm understanding** before implementation
 
 ### Tool Selection Guide:
-- **Simple problem?** Pick 1-2: `brave_web_search` OR `context7` OR `exa_get_code_context`
+- **Simple problem?** Pick 1-2: `brave_web_search` OR `exa_web_search`
 - **Complex problem?** Use 3+: All tools above + `Bright_Data_scrape_batch` + `octocode_*` + `sequential-thinking`
 
 ### Remember:
