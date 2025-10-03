@@ -1,4 +1,8 @@
-# RULE 1: Code Bug Fixing Workflow
+---
+alwaysApply: true
+---
+
+# Code Bug Fixing Workflow
 
 **PRIMARY DIRECTIVE:** When tasked with fixing a bug, your mission is to systematically identify, research, and resolve the issue. Adhere strictly to this protocol.
 
