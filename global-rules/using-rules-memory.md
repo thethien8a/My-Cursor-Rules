@@ -1,4 +1,4 @@
-# RULE 5: Memory Management Rule
+# RULE 6: Serena MCP Memory Management Rule
 
 **When use this rule**: 
 - When user ask "update memory" or "cập nhật memory"
