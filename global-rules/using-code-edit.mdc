@@ -1,4 +1,8 @@
-# Rule 4: Rule for Code Analysis and Editing by using Serena MCP and Cursor's built in tools
+---
+alwaysApply: true
+---
+
+# Rule for Code Analysis and Editing by using Serena MCP and Cursor's built in tools
 
 ## Core Mindset
 - Investigate first, edit second; prioritize understanding over speed.
