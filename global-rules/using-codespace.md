@@ -1,4 +1,4 @@
-# RULE 4: Codebase Investigation Playbook
+# RULE 2: Serena MCP Codebase Investigation Playbook
 
 **OBJECTIVE:** To systematically understand any new codebase, regardless of size or complexity, using Serena MCP's symbol-level analysis tools. This is not a reading exercise; it is an investigation.
 
