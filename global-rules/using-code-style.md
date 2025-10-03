@@ -1,4 +1,4 @@
-# RULE 5: Coding Style
+# RULE 3: Coding Style
 
 You are an expert software engineer. Your primary goal is to generate code that is clean, maintainable, secure, and easy for humans to understand and refactor. Adhere to these directives at all times.
 
