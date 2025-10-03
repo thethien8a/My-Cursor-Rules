@@ -14,76 +14,234 @@
 
 ## STEP 0: ASSESS COMPLEXITY (First!)
 
-**Quick Assessment:** Choose workflow based on:
+### Quick Decision Tree 🎯
 
-| → 🟢 LIGHT Workflow | → 🔴 DEEP Workflow |
-|---------------------|-------------------|
-| Clear "how to" question | Architectural decision needed |
-| Well-known pattern | Novel/unclear solution |
-| Single component | Multi-component system |
-| Low risk/impact | High risk/critical |
-| Specific request | Vague/exploratory |
+```
+User request received
+    ↓
+Is it a straightforward "how to" question? → YES → LIGHT WORKFLOW 🟢
+    ↓ NO
+Does it require architectural decision? → YES → DEEP WORKFLOW 🔴
+    ↓ NO
+Does it affect multiple components? → YES → DEEP WORKFLOW 🔴
+    ↓ NO
+Is the solution pattern well-known? → YES → LIGHT WORKFLOW 🟢
+    ↓ NO
+Is user requirement vague/exploratory? → YES → DEEP WORKFLOW 🔴
+    ↓ NO
+Still uncertain? → Start LIGHT, escalate if needed ⚠️
+```
 
-**When uncertain:** Start LIGHT, escalate to DEEP if needed (adaptive approach)
-**Context savings:** Light = ~80% saved vs Deep = justified usage
+### Detailed Assessment Criteria
+
+| Criteria | Simple Problem | Complex Problem |
+|----------|---------------|-----------------|
+| **Scope** | Single file/component | Multiple systems/components |
+| **Known solution?** | Common pattern exists | Novel or unclear |
+| **Dependencies** | Few or none | Many interconnected parts |
+| **Risk** | Low impact | High impact/critical |
+| **User clarity** | Clear, specific request | Vague or exploratory |
+
+**Decision:**
+- **SIMPLE** → Use **Light Workflow** (minimal research, saves ~80% context)
+- **COMPLEX** → Use **Deep Workflow** (comprehensive research, justified)
+- **UNCERTAIN** → Start Light, escalate if needed (adaptive approach)
 
 ---
 
-## LIGHT WORKFLOW (Simple Problems) 🟢
+## LIGHT WORKFLOW (Simple Problems)
 
-**When:** Clear request, known patterns, low risk, single component
+**Use when:** Clear request, known patterns, low risk, single component
 
-1. **Quick Check:** What's the core question? Known answer?
-2. **Minimal Research** (1-2 tools max):
-   - Library/framework → `context7_get_library_docs`
-   - Code pattern → `exa_get_code_context`
-   - General info → `brave_web_search`
-3. **Direct Solution:** 1 approach + brief explanation + steps
-4. **Validate:** Confirm with user if needed → Implement
+**Steps:**
+1. **Quick Check** (use `sequential-thinking` briefly)
+   - What's the core question?
+   - Do I know the answer from existing knowledge?
+   
+2. **Minimal Research** (pick 1-2 tools max)
+   - **Known library/framework?** → `context7_get_library_docs` only
+   - **Code pattern?** → `exa_get_code_context` only
+   - **General info?** → `brave_web_search` and `exa_web_search` only
 
-**Response:** Direct answer → Why it works → Implementation steps
+3. **Direct Solution**
+   - Provide 1 recommended approach (no need for multiple options)
+   - Brief explanation
+   - Implementation steps
+
+4. **Quick Validation**
+   - Verify with user if needed
+   - Implement or guide
+
+**Example Response Format:**
+```markdown
+## SOLUTION
+[Direct answer to the question]
+
+## WHY THIS WORKS
+[Brief reasoning]
+
+## IMPLEMENTATION
+[Step-by-step guide]
+```
 
 ---
 
-## DEEP WORKFLOW (Complex Problems) 🔴
+## DEEP WORKFLOW (Complex Problems)
 
-**When:** Multi-component, high risk, unclear requirements, architectural decisions
+**Use when:** Multi-component, high risk, unclear requirements, architectural decisions
 
-### PHASE 1: PLAN & RESEARCH
-- **Plan** (`sequential-thinking`): Break problem → identify unknowns → map research strategy
-- **Multi-Source Research** (parallel execution):
-  - `brave_web_search` → identify concepts/URLs
-  - `Bright_Data_scrape_batch` → extract content (max 10 URLs)
-  - `context7_get_library_docs` → official docs
-  - `exa_get_code_context` + `octocode_*` → real-world patterns
-- **Strategy**: Broad → Deep → Technical → Validate → Synthesize
+**Full 4 Phases:**
+
+### PHASE 1: PLAN & UNDERSTAND
+
+**A. Plan Your Investigation** (use `sequential-thinking`)
+- Map out: What do I need to know? → Where to find it? → How to synthesize?
+- Break problem into core components, dependencies, constraints
+- Identify assumptions and unknowns
+
+**B. Multi-Source Research** (execute in parallel when possible)
+
+| Research Goal | Primary Tool | Usage Notes |
+|--------------|--------------|----------------|
+| **General info/overview** | `brave_web_search` and `exa_web_search` | Broad queries, articles, discussions |
+| **Deep content extraction** | `Bright_Data_scrape_batch` | Extract full content from top URLs (max 10) |
+| **Official docs** | `context7_get_library_docs` | Authoritative library/framework docs |
+| **Code examples** | `exa_get_code_context` and `octocode_githubSearchCode` | Real-world patterns & implementations |
+| **Full source files** | `octocode_githubGetFileContent` | Complete context, imports, structure |
+| **Repo structure** | `octocode_githubViewRepoStructure` | Find src/, app/, key modules |
+| **Discover quality repos** | `octocode_githubSearchRepositories` | Filter by stars/topics |
+
+**Research Strategy:**
+1. **Start broad**: Web search → identify key URLs/concepts
+2. **Go deep**: Scrape top URLs with Bright Data for detailed content
+3. **Get technical**: Context7 for docs + Exa for code patterns
+4. **Validate with evidence**: Octocode for full-file context from quality repos
+5. **Synthesize**: Combine external research + internal knowledge
+
+**Parallel Execution Tips:**
+- Run web search + docs lookup simultaneously
+- After getting URLs, scrape multiple in one batch (max 10)
+- Execute code searches in parallel (≤3 keywords each, separate queries)
 
 ### PHASE 2: DISCOVER ALTERNATIVES
-- Find 2-3+ distinct approaches
-- For each: Description, Pros/Cons, Complexity (H/M/L), Timeline, Dependencies, Best for
+
+**Goal:** Find ALL feasible solutions (minimum 2-3 distinct approaches)
+
+**What to Document for Each Option:**
+- **Description**: What is it? How does it work?
+- **Pros**: Specific advantages
+- **Cons**: Specific limitations
+- **Complexity**: Implementation difficulty (High/Medium/Low)
+- **Timeline**: Estimated time to implement
+- **Dependencies**: What's required (tools, skills, infrastructure)
+- **Best for**: Ideal use cases
+
+**Sources:** Research from Phase 1 + internal knowledge
+
+---
 
 ### PHASE 3: EVALUATE & DECIDE
-- Define criteria (Performance, Maintainability, Time, etc.) + weights
-- Score options (use `sequential-thinking`)
-- **Recommend:** Chosen option + reasoning + confidence + risks/mitigation
+
+**A. Define Evaluation Criteria** (based on project context)
+- Performance, Maintainability, Complexity, Time-to-implement, Cost, Scalability, etc.
+- Assign weights (e.g., Performance: 40%, Maintainability: 30%, Time: 30%)
+
+**B. Score Each Option** (use `sequential-thinking` for structured comparison)
+
+Example scoring matrix:
+```
+OPTION         PERFORMANCE  MAINTAINABILITY  TIME  WEIGHTED SCORE
+-----------    -----------  ---------------  ----  --------------
+Option 1       8/10         6/10             9/10  7.7/10
+Option 2       6/10         9/10             7/10  7.3/10
+```
+
+**C. Recommendation**
+- **Chosen option** with clear reasoning
+- **Why it's optimal** for this specific context
+- **Confidence level** (High/Medium/Low) + caveats
+- **Risks** + mitigation strategies
+
+---
 
 ### PHASE 4: VALIDATE & PLAN
-- Confirm understanding with user
-- Provide implementation roadmap:
-  - IMMEDIATE (24h) → SHORT-TERM (1-7d) → MEDIUM-TERM (1-4w)
-- Define success metrics + verification method
 
-## RESPONSE TEMPLATE
+**A. Confirm Understanding** (before implementation)
+- Summarize the problem and proposed solution
+- Ask clarifying questions if ANY ambiguity remains
+- Ensure alignment with user's goals
 
-**For LIGHT (adapt as needed):**
-- Solution + Why it works + Implementation steps
+**B. Implementation Plan**
+```
+IMMEDIATE (Next 24h):    [First actions]
+SHORT-TERM (1-7 days):   [Core implementation steps]
+MEDIUM-TERM (1-4 weeks): [Ongoing tasks, refinements]
+```
 
-**For DEEP (comprehensive):**
-1. **Executive Summary:** Problem + Recommended solution + Key insight
-2. **Research Insights:** Findings from each source (cited)
-3. **Solution Options:** 2-3 alternatives (Description, Pros/Cons, Complexity, Timeline, Best for)
-4. **Evaluation:** Scoring matrix → Recommended option + reasoning + confidence
-5. **Roadmap:** Immediate/Short/Medium-term steps + Success metrics + Risks/mitigation
+**C. Define Success**
+- **Primary metric**: How to measure success?
+- **Verification**: How to test/confirm it works?
+- **Timeline**: When to check progress?
+
+## RESPONSE TEMPLATE (Flexible Structure)
+
+Use this as a guide, adapt based on problem complexity:
+
+```markdown
+## EXECUTIVE SUMMARY
+[2-3 sentences: Problem + Recommended solution + Key insight]
+
+## PROBLEM ANALYSIS
+[Current situation, context, constraints discovered]
+
+## RESEARCH INSIGHTS
+- **FROM [Brave/Exa Search]:** [Key findings + URLs]
+- **FROM [Bright Data Scrape]:** [Deep content insights]
+- **FROM [Context7/Docs]:** [Official documentation highlights]
+- **FROM [Exa Code/Octocode]:** [Real-world implementation examples with citations]
+
+## SOLUTION OPTIONS
+
+### Option 1: [NAME]
+**Description:** [How it works]
+**Pros:** [Advantages] | **Cons:** [Limitations]
+**Complexity:** [H/M/L] | **Timeline:** [Estimate]
+**Best for:** [Use cases]
+
+### Option 2: [NAME]
+[Same structure]
+
+### Option 3: [NAME]
+[Same structure]
+
+## EVALUATION & RECOMMENDATION
+
+**Scoring Matrix:**
+| Option | [Criterion 1] | [Criterion 2] | [Criterion 3] | Score |
+|--------|---------------|---------------|---------------|-------|
+| Opt 1  | X/10          | Y/10          | Z/10          | N/10  |
+| Opt 2  | X/10          | Y/10          | Z/10          | N/10  |
+
+**✅ RECOMMENDED:** [Option X]
+**WHY:** [Reasoning based on evaluation]
+**CONFIDENCE:** [High/Medium/Low + caveats]
+
+## IMPLEMENTATION ROADMAP
+
+**IMMEDIATE (24h):** [First steps]
+**SHORT-TERM (1-7d):** [Core work]
+**MEDIUM-TERM (1-4w):** [Refinement]
+
+**SUCCESS METRICS:**
+- Primary: [How to measure success]
+- Verification: [How to test]
+
+**RISKS & MITIGATION:**
+- **Risk:** [Issue] → **Fix:** [Mitigation]
+
+**RESOURCES:**
+- [Links to docs, tools, examples]
+```
 
 ---
 
@@ -116,7 +274,7 @@
 | Task | Primary Tool | When to Use | Light 🟢 | Deep 🔴 |
 |------|-------------|-------------|---------|---------|
 | Plan investigation | `sequential-thinking` | Structure approach | Brief | Detailed |
-| General research | `brave_web_search` | Articles, discussions | ✓ | ✓ |
+| General research | `brave_web_search` and `exa_web_search` | Articles, discussions | ✓ | ✓ |
 | Deep content | `Bright_Data_scrape_batch` | Extract from URLs (max 10) | ✗ | ✓ |
 | Official docs | `context7_get_library_docs` | Authoritative sources | ✓ | ✓ |
 | Code patterns | `exa_get_code_context` | Real-world examples | ✓ | ✓ |
@@ -132,20 +290,81 @@
 
 ## PRACTICAL EXAMPLES
 
-**🟢 LIGHT:** "How to add timeout to Python requests?"
-- Single library function, known pattern, low risk
-- Action: `exa_get_code_context` → direct answer → done
-- **Context saved: ~80%**
+### Example 1: SIMPLE Problem ✅
+**User asks:** "How to add a timeout to Python requests?"
 
-**🔴 DEEP:** "Best architecture for real-time analytics pipeline?"
-- Multi-component, architectural decision, high risk
-- Action: `sequential-thinking` + `brave_web_search` + `scrape_batch` + `context7` + `octocode` → compare 3 alternatives → detailed evaluation
-- **Context used: justified by complexity**
+**Assessment:** 
+- Scope: Single library function
+- Known solution: Yes (common pattern)
+- Risk: Low
+- **→ LIGHT WORKFLOW**
 
-**⚠️ UNCERTAIN:** "Optimize my database queries?"
-- Start LIGHT: ask specifics → if clarified → escalate to DEEP
-- **Better to start light and escalate than over-research**
+**Action:**
+1. `exa_get_code_context`: "Python requests timeout example"
+2. Provide direct answer with code snippet
+3. Done
+
+**Context saved:** ~80% (no need for docs scraping, multiple sources)
 
 ---
 
-**REMEMBER:** Context is expensive. Research smart, not hard. Match depth to complexity.
+### Example 2: COMPLEX Problem ❌
+**User asks:** "What's the best architecture for a real-time analytics pipeline?"
+
+**Assessment:**
+- Scope: Multi-component system
+- Known solution: Multiple approaches exist
+- Risk: High (architectural decision)
+- **→ DEEP WORKFLOW**
+
+**Action:**
+1. `sequential-thinking`: Break down requirements
+2. `brave_web_search` and `exa_web_search`: Current trends in analytics pipelines
+3. `Bright_Data_scrape_batch`: Deep dive into top 3-5 articles
+4. `context7_get_library_docs`: Research Kafka, Flink, Spark docs
+5. `octocode_githubSearchRepositories`: Find production examples
+6. Compare 3 alternatives (Lambda vs Kappa vs Hybrid)
+7. Provide detailed evaluation + recommendation
+
+**Context used:** More, but justified by complexity
+
+---
+
+### Example 3: UNCERTAIN → Start Light, Escalate ⚠️
+**User asks:** "How to optimize my database queries?"
+
+**Initial Assessment:** UNCLEAR (need more context)
+
+**Action:**
+1. Start LIGHT: Ask user for specifics (which DB? current performance? bottleneck?)
+2. If user clarifies: "PostgreSQL, 5-second queries, full table scans"
+3. Escalate to DEEP: Research indexing strategies, query optimization, partitioning
+
+**Remember:** Better to start light and escalate than over-research from the start.
+
+---
+
+## TL;DR - RULE SUMMARY
+
+**This rule helps you research problems efficiently without wasting context.**
+
+### The 3-Step Approach:
+1. **ASSESS** complexity first (use decision tree)
+2. **CHOOSE** workflow:
+   - 🟢 **LIGHT** = 1-2 tools, direct answer, ~80% context saved
+   - 🔴 **DEEP** = 3+ tools, multiple options, comprehensive analysis
+3. **EXECUTE** workflow and validate
+
+### Key Principles:
+- ✅ **Match effort to complexity** (don't over-research simple problems)
+- ✅ **Start light, escalate if needed** (when uncertain)
+- ✅ **Parallel execution** for deep workflow (faster research)
+- ✅ **Always cite sources** (evidence-based recommendations)
+- ✅ **Confirm understanding** before implementation
+
+### Tool Selection Guide:
+- **Simple problem?** Pick 1-2: `brave_web_search` OR `exa_web_search`
+- **Complex problem?** Use 3+: All tools above + `Bright_Data_scrape_batch` + `octocode_*` + `sequential-thinking`
+
+### Remember:
+**Context is expensive. Research smart, not hard.**
