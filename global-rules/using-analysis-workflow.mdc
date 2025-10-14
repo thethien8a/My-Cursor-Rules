@@ -58,7 +58,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 **Use when:** Clear request, known patterns, low risk, single component
 
 **Steps:**
-1. **Quick Check** (use `sequential-thinking` briefly)
+1. **Quick Check** (use `sequential-thinking mcp` briefly)
    - What's the core question?
    - Do I know the answer from existing knowledge?
    
@@ -98,7 +98,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 
 ### PHASE 1: PLAN & UNDERSTAND
 
-**A. Plan Your Investigation** (use `sequential-thinking`)
+**A. Plan Your Investigation** (use `sequential-thinking mcp`)
 - Map out: What do I need to know? → Where to find it? → How to synthesize?
 - Break problem into core components, dependencies, constraints
 - Identify assumptions and unknowns
@@ -150,7 +150,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 - Performance, Maintainability, Complexity, Time-to-implement, Cost, Scalability, etc.
 - Assign weights (e.g., Performance: 40%, Maintainability: 30%, Time: 30%)
 
-**B. Score Each Option** (use `sequential-thinking` for structured comparison)
+**B. Score Each Option** (use `sequential-thinking mcp` for structured comparison)
 
 Example scoring matrix:
 ```
@@ -261,7 +261,7 @@ Use this as a guide, adapt based on problem complexity:
 **For DEEP Workflow (Complex Problems):**
 - [ ] **Complexity assessed** as COMPLEX with clear justification
 - [ ] **Research completed** from ≥3 sources (web search + content scrape + docs/code)
-- [ ] **Problem decomposed** using sequential-thinking
+- [ ] **Problem decomposed** using sequential-thinking mcp
 - [ ] **≥2-3 alternatives** identified with pros/cons
 - [ ] **Evidence-based** recommendation (all claims cited)
 - [ ] **Evaluation criteria** defined and applied
@@ -277,7 +277,7 @@ Use this as a guide, adapt based on problem complexity:
 
 | Task | Primary Tool | When to Use | Light 🟢 | Deep 🔴 |
 |------|-------------|-------------|---------|---------|
-| Plan investigation | `sequential-thinking` | Structure approach | Brief | Detailed |
+| Plan investigation | `sequential-thinking mcp` | Structure approach | Brief | Detailed |
 | General research | `brave_web_search` and `exa_web_search` | Articles, discussions | ✓ | ✓ |
 | Deep content | `Bright_Data_scrape_batch` | Extract from URLs (max 10) | ✗ | ✓ |
 | Official docs | `context7_get_library_docs` | Authoritative sources | ✓ | ✓ |
@@ -322,7 +322,7 @@ Use this as a guide, adapt based on problem complexity:
 - **→ DEEP WORKFLOW**
 
 **Action:**
-1. `sequential-thinking`: Break down requirements
+1. `sequential-thinking mcp`: Break down requirements
 2. `brave_web_search` and `exa_web_search`: Current trends in analytics pipelines
 3. `Bright_Data_scrape_batch`: Deep dive into top 3-5 articles
 4. `context7_get_library_docs`: Research Kafka, Flink, Spark docs
@@ -368,7 +368,7 @@ Use this as a guide, adapt based on problem complexity:
 
 ### Tool Selection Guide:
 - **Simple problem?** Pick 1-2: `brave_web_search` OR `exa_web_search`
-- **Complex problem?** Use 3+: All tools above + `Bright_Data_scrape_batch` + `octocode_*` + `sequential-thinking`
+- **Complex problem?** Use 3+: All tools above + `Bright_Data_scrape_batch` + `octocode_*` + `sequential-thinking mcp`
 
 ### Remember:
 **Context is expensive. Research smart, not hard.**
