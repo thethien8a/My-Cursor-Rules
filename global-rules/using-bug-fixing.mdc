@@ -1,7 +1,6 @@
 ---
 alwaysApply: true
 ---
-
 # Code Bug Fixing Workflow
 
 **PRIMARY DIRECTIVE:** When tasked with fixing a bug, your mission is to systematically identify, research, and resolve the issue. Adhere strictly to this protocol.
@@ -33,5 +32,38 @@ alwaysApply: true
 3.  **EXPLAIN:** Clearly state what you changed and why it fixes the bug.
 
 ### STEP 4: VERIFY
-1.  **LINTER CHECK:** After editing, run `read_lints` on the modified file to ensure no new errors were introduced.
+1.  **QUALITY CHECK:** Run the lint or test command that fits the project (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
+2.  **CONFIRMATION:** Inform the user that the fix is complete and suggest how they can verify it.
+# RULE 1: Code Bug Fixing Workflow
+
+**PRIMARY DIRECTIVE:** When tasked with fixing a bug, your mission is to systematically identify, research, and resolve the issue. Adhere strictly to this protocol.
+
+---
+
+### STEP 1: ERROR ANALYSIS
+1.  **LOCATE THE ERROR:** Pinpoint the exact file, line number, and error message from the user's report or linter output.
+2.  **UNDERSTAND CONTEXT:** Read the code surrounding the error to understand its purpose. Use `read_file` with a specific line range if necessary.
+
+### STEP 2: RESEARCH SOLUTIONS (MCP USAGE IS MANDATORY)
+*   **MANDATORY REQUIREMENT:** You MUST research a solution before writing any code. DO NOT attempt to fix bugs based on pre-existing knowledge alone.
+*   **TOOL PRIORITY:**
+    1.  **Specific Errors (Library/Framework):** Use `mcp_exa_get_code_context_exa` FIRST. Query for the function, library, or error pattern to find real-world examples and fixes.
+    2.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` or `context7mcp` to find documentation or articles.
+*   **SYNTHESIZE:** Based on your research, determine the best and most appropriate solution.
+
+#### Octocode MCP (GitHub code evidence)
+- When Exa lacks full-file examples or deeper repository context, also use Octocode MCP:
+  - `mcp_octocode_githubSearchCode`: find similar fixes/usages by short focused keywords. Prefer ≤3 single-word terms; split different ideas into separate queries.
+  - `mcp_octocode_githubGetFileContent`: fetch the full source file or an exact line range to validate surrounding context of the snippet.
+  - `mcp_octocode_githubViewRepoStructure`: quickly inspect repo layout to locate `src/`, `app/`, or key entry files before fetching content.
+  - `mcp_octocode_githubSearchRepositories`: discover high-quality repos (by stars/topics) to source reliable examples.
+- Apply the smallest change that aligns with common, proven open-source patterns identified via Octocode.
+
+### STEP 3: IMPLEMENT THE FIX
+1.  **MINIMAL CHANGE:** Apply the smallest possible code change to fix the bug.
+2.  **NO REFACTORING:** Absolutely DO NOT refactor or alter the style of unrelated code. Your change must only address the bug.
+3.  **EXPLAIN:** Clearly state what you changed and why it fixes the bug.
+
+### STEP 4: VERIFY
+1.  **QUALITY CHECK:** Run the lint or test command that fits the project (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
 2.  **CONFIRMATION:** Inform the user that the fix is complete and suggest how they can verify it.
