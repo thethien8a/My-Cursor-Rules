@@ -63,7 +63,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
    - Do I know the answer from existing knowledge?
    
 2. **Minimal Research** (pick 1-2 tools max)
-   - **Known library/framework?** → `context7_get_library_docs` only
+   - **Known library/framework?** → `exa_get_code_context` docs lookup + `mcp_context7_resolve-library-id` → `mcp_context7_get-library-docs(topic=...)` for the exact API page.
    - **Code pattern?** → `exa_get_code_context` only
    - **General info?** → `brave_web_search` and `exa_web_search` only
 
@@ -109,7 +109,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 |--------------|--------------|----------------|
 | **General info/overview** | `brave_web_search` and `exa_web_search` | Broad queries, articles, discussions |
 | **Deep content extraction** | `Bright_Data_scrape_batch` | Extract full content from top URLs (max 10) |
-| **Official docs** | `context7_get_library_docs` | Authoritative library/framework docs |
+| **Official docs** | `mcp_context7_resolve-library-id` → `mcp_context7_get-library-docs` | Authoritative library/framework docs; set `topic` to narrow scope |
 | **Code examples** | `exa_get_code_context` and `octocode_githubSearchCode` | Real-world patterns & implementations |
 | **Full source files** | `octocode_githubGetFileContent` | Complete context, imports, structure |
 | **Repo structure** | `octocode_githubViewRepoStructure` | Find src/, app/, key modules |
@@ -118,7 +118,7 @@ Still uncertain? → Start LIGHT, escalate if needed ⚠️
 **Research Strategy:**
 1. **Start broad**: Web search → identify key URLs/concepts
 2. **Go deep**: Scrape top URLs with Bright Data for detailed content
-3. **Get technical**: Context7 for docs + Exa for code patterns
+3. **Get technical**: Exa for docs and code patterns
 4. **Validate with evidence**: Octocode for full-file context from quality repos
 5. **Synthesize**: Combine external research + internal knowledge
 
@@ -280,7 +280,7 @@ Use this as a guide, adapt based on problem complexity:
 | Plan investigation | `sequential-thinking mcp` | Structure approach | Brief | Detailed |
 | General research | `brave_web_search` and `exa_web_search` | Articles, discussions | ✓ | ✓ |
 | Deep content | `Bright_Data_scrape_batch` | Extract from URLs (max 10) | ✗ | ✓ |
-| Official docs | `context7_get_library_docs` | Authoritative sources | ✓ | ✓ |
+| Official docs | `exa_get_code_context` | Authoritative sources | ✓ | ✓ |
 | Code patterns | `exa_get_code_context` | Real-world examples | ✓ | ✓ |
 | GitHub search | `octocode_githubSearchCode` | Find proven implementations | ✗ | ✓ |
 | Full files | `octocode_githubGetFileContent` | Complete context | ✗ | ✓ |
@@ -325,7 +325,7 @@ Use this as a guide, adapt based on problem complexity:
 1. `sequential-thinking mcp`: Break down requirements
 2. `brave_web_search` and `exa_web_search`: Current trends in analytics pipelines
 3. `Bright_Data_scrape_batch`: Deep dive into top 3-5 articles
-4. `context7_get_library_docs`: Research Kafka, Flink, Spark docs
+4. `exa_get_code_context`: Research Kafka, Flink, Spark docs
 5. `octocode_githubSearchRepositories`: Find production examples
 6. Compare 3 alternatives (Lambda vs Kappa vs Hybrid)
 7. Provide detailed evaluation + recommendation
