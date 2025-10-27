@@ -15,7 +15,8 @@ alwaysApply: true
 *   **MANDATORY REQUIREMENT:** You MUST research a solution before writing any code. DO NOT attempt to fix bugs based on pre-existing knowledge alone.
 *   **TOOL PRIORITY:**
     1.  **Specific Errors (Library/Framework):** Use `mcp_exa_get_code_context_exa` FIRST. Query for the function, library, or error pattern to find real-world examples and fixes.
-    2.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` or `context7mcp` to find documentation or articles.
+    2.  **Official Docs (API surface, version specifics):** Resolve the library with `mcp_context7_resolve-library-id` and fetch focused docs via `mcp_context7_get-library-docs` (set `topic` when you need a subsection). Use this after Exa confirms the library/function name so you can quote the authoritative spec.
+    3.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` to find documentation or articles.
 *   **SYNTHESIZE:** Based on your research, determine the best and most appropriate solution.
 
 #### Octocode MCP (GitHub code evidence)
@@ -32,7 +33,7 @@ alwaysApply: true
 3.  **EXPLAIN:** Clearly state what you changed and why it fixes the bug.
 
 ### STEP 4: VERIFY
-1.  **QUALITY CHECK:** Run the lint or test command that fits the project (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
+1.  **QUALITY CHECK:** Run Cursor Diagnostics (built-in lint) first, then execute any project-specific lint or test command (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
 2.  **CONFIRMATION:** Inform the user that the fix is complete and suggest how they can verify it.
 # RULE 1: Code Bug Fixing Workflow
 
@@ -48,7 +49,8 @@ alwaysApply: true
 *   **MANDATORY REQUIREMENT:** You MUST research a solution before writing any code. DO NOT attempt to fix bugs based on pre-existing knowledge alone.
 *   **TOOL PRIORITY:**
     1.  **Specific Errors (Library/Framework):** Use `mcp_exa_get_code_context_exa` FIRST. Query for the function, library, or error pattern to find real-world examples and fixes.
-    2.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` or `context7mcp` to find documentation or articles.
+    2.  **Official Docs (API surface, version specifics):** Resolve the library with `mcp_context7_resolve-library-id` and fetch focused docs via `mcp_context7_get-library-docs` (set `topic` when you need a subsection). Use this after Exa confirms the library/function name so you can quote the authoritative spec.
+    3.  **General Errors/Concepts:** If the code context search yields no results, use `mcp_exa_web_search_exa` to find documentation or articles.
 *   **SYNTHESIZE:** Based on your research, determine the best and most appropriate solution.
 
 #### Octocode MCP (GitHub code evidence)
@@ -65,5 +67,5 @@ alwaysApply: true
 3.  **EXPLAIN:** Clearly state what you changed and why it fixes the bug.
 
 ### STEP 4: VERIFY
-1.  **QUALITY CHECK:** Run the lint or test command that fits the project (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
+1.  **QUALITY CHECK:** Run Cursor Diagnostics (built-in lint) first, then execute any project-specific lint or test command (for example `ruff`, `pytest`, or IDE diagnostics) to ensure no new issues were introduced.
 2.  **CONFIRMATION:** Inform the user that the fix is complete and suggest how they can verify it.
